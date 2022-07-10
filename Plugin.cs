@@ -50,8 +50,8 @@ namespace Notify
             AnnounceOnline = Config.Bind("UserOnline", "enabled", true, "Enable Announce when user online");
             AnnounceeOffline = Config.Bind("UserOffline", "enabled", true, "Enable Announce when user offline");
             AnnounceNewUser = Config.Bind("NewUserOnline", "enabled", true, "Enable Announce when new user create in server");
-            AnnounceVBlood = Config.Bind("AnnounceVBlood", "enabled", true, "Enable Announce when new user/users kill a VBlood Boss.");
-            VBloodFinalConcatCharacters = Config.Bind("AnnounceVBlood", "VBloodFinalConcatCharacters", "and", "Final string for concat all players kill a VBlood Boss.");
+            AnnounceVBlood = Config.Bind("AnnounceVBlood", "enabled", true, "Enable Announce when user/users kill a VBlood Boss.");
+            VBloodFinalConcatCharacters = Config.Bind("AnnounceVBlood", "VBloodFinalConcatCharacters", "and", "Final string for concat two or more players kill a VBlood Boss.");
 
             if (!File.Exists("BepInEx/config/Notify/users_online.json"))
             {
