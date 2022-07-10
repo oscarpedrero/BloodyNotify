@@ -11,7 +11,7 @@ namespace Notify.Helpers
         public static Dictionary<string, string> DefaultAnnounceDictionary => new Dictionary<string, string>()
         {
             {  "online" , "#user# is online!" },
-            {  "offline" , "#user# has gone offline!" },
+            {  "offline" , "#user# has gone offline!" },    
             {  "newUser" , "Welcome to server" },
             {  "VBlood" , "Congratulations to #user# for beating #vblood#!" }
         };
@@ -69,7 +69,7 @@ namespace Notify.Helpers
 
         public static void CreateDefaultNotificationTextConfig()
         {
-            var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(DefaultOnline);
+            var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(DefaultAnnounceDictionary);
             File.WriteAllText("BepInEx/config/Notify/default_announce.json", jsonOutPut);
         }
 
@@ -81,13 +81,13 @@ namespace Notify.Helpers
 
         public static void CreateOfflineDefaultConfig()
         {
-            var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(DefaultOnline);
+            var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(DefaultOffline);
             File.WriteAllText("BepInEx/config/Notify/users_offline.json", jsonOutPut);
         }
 
         public static void CreateLocationVBloodDefaultConfig()
         {
-            var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(DefaultOnline);
+            var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(PrefabToNamesDefault);
             File.WriteAllText("BepInEx/config/Notify/prefabs_names.json", jsonOutPut);
         }
 

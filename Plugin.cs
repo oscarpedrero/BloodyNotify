@@ -13,7 +13,7 @@ namespace Notify
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
     [BepInDependency("xyz.molenzwiebel.wetstone")]
     [Reloadable]
-    public class Plugin : BasePlugin
+    public class Plugin : BasePlugin, IRunOnInitialized
     {
         public static ManualLogSource Logger;
 
@@ -23,13 +23,16 @@ namespace Notify
         public static ConfigEntry<bool> AnnounceeOffline;
         public static ConfigEntry<bool> AnnounceNewUser;
         public static ConfigEntry<bool> AnnounceVBlood;
+        public static ConfigEntry<string> VBloodFinalConcatCharacters;
+
         public override void Load()
         {
             if (!VWorld.IsServer) return;
-            Logger = Log; 
+            InitConfig();
+            Logger = Log;
             _harmony = new Harmony(PluginInfo.PLUGIN_GUID);
             _harmony.PatchAll(Assembly.GetExecutingAssembly());
-            InitConfig();
+            LoadConfigHelper.LoadAllConfig();
             Log.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         }
 
@@ -47,7 +50,8 @@ namespace Notify
             AnnounceOnline = Config.Bind("UserOnline", "enabled", true, "Enable Announce when user online");
             AnnounceeOffline = Config.Bind("UserOffline", "enabled", true, "Enable Announce when user offline");
             AnnounceNewUser = Config.Bind("NewUserOnline", "enabled", true, "Enable Announce when new user create in server");
-            AnnounceVBlood = Config.Bind("AnnounceVBlood", "enabled", true, "Default message when a new user connects to the server.");
+            AnnounceVBlood = Config.Bind("AnnounceVBlood", "enabled", true, "Enable Announce when new user/users kill a VBlood Boss.");
+            VBloodFinalConcatCharacters = Config.Bind("AnnounceVBlood", "VBloodFinalConcatCharacters", "and", "Final string for concat all players kill a VBlood Boss.");
 
             if (!File.Exists("BepInEx/config/Notify/users_online.json"))
             {
@@ -57,7 +61,7 @@ namespace Notify
 
             if (!File.Exists("BepInEx/config/Notify/users_offline.json"))
             {
-                if (!Directory.Exists("BepInEx/config/HBMod")) Directory.CreateDirectory("BepInEx/config/Notify");
+                if (!Directory.Exists("BepInEx/config/Notify")) Directory.CreateDirectory("BepInEx/config/Notify");
                 ConfigDefaultHelper.CreateOfflineDefaultConfig();
             }
 
@@ -73,6 +77,15 @@ namespace Notify
                 ConfigDefaultHelper.CreateLocationVBloodDefaultConfig();
             }
 
+        }
+
+        public void OnGameInitialized()
+        {
+            DBHelper.setAnnounceOnline(AnnounceOnline.Value);
+            DBHelper.setAnnounceOffline(AnnounceeOffline.Value);
+            DBHelper.setAnnounceNewUser(AnnounceNewUser.Value);
+            DBHelper.setAnnounceVBlood(AnnounceVBlood.Value);
+            DBHelper.setVBloodFinalConcatCharacters(VBloodFinalConcatCharacters.Value);
         }
     }
 }
