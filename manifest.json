@@ -1,0 +1,10 @@
+﻿{
+  "name": "Notify",
+  "version_number": "0.0.1",
+  "website_url": "https://github.com/syllabicat/VBloodKills",
+  "description": "Sends notify to system message when user connect, disconnect or kill boss in v rising.",
+  "dependencies": [
+    "BepInEx-BepInExPack_V_Rising-1.0.0",
+    "molenzwiebel-Wetstone-1.1.0"
+  ]
+}
