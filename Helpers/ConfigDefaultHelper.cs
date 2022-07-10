@@ -53,7 +53,8 @@ namespace Notify.Helpers
             { "CHAR_BatVampire_VBlood", "Nightmarshal Styx the Sunderer" },
             { "CHAR_Cursed_MountainBeast_VBlood", "Gorecrusher the Behemoth" },
             { "CHAR_Manticore_VBlood", "The Winged Horror" },
-            { "CHAR_Paladin_VBlood", "Solarus the Immaculate" }
+            { "CHAR_Paladin_VBlood", "Solarus the Immaculate" },
+            { "NoPrefabName", "VBlood Boss" }
         };
 
         public static Dictionary<string, string> DefaultOnline => new Dictionary<string, string>()

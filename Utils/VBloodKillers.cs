@@ -79,7 +79,7 @@ namespace Notify.Utils
 
             var _message = DBHelper.getDefaultAnnounceValue("VBlood");
             _message = _message.Replace("#user#", $"{sbKillersLabel}");
-            _message = _message.Replace("#vblood#", $"{vbloodLabel}");
+            _message = _message.Replace("#vblood#", $"{FontColorChat.Red(vbloodLabel)}");
             return FontColorChat.Green($"{_message}");
         }
     }

@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using Notify.Helpers;
 using Notify.Utils;
 using ProjectM;
 using ProjectM.Network;
@@ -29,36 +30,39 @@ public class VBloodSystem_Patch
     [HarmonyPrefix]
     public static void OnUpdate_Prefix(VBloodSystem __instance)
     {
-        if (__instance._eventList.Length > 0)
+        if (DBHelper.isEnabledAnnounceVBlood())
         {
-            foreach (var event_vblood in __instance._eventList)
+            if (__instance._eventList.Length > 0)
             {
-                if (entityManager.HasComponent<PlayerCharacter>(event_vblood.Target))
+                foreach (var event_vblood in __instance._eventList)
                 {
-                    var player = entityManager.GetComponentData<PlayerCharacter>(event_vblood.Target);
-                    var user = entityManager.GetComponentData<User>(player.UserEntity._Entity);
-                    // Modify from original code for get PrefabName(string) and not GuidHash(int)
-                    var vblood = PrefabsUtils.getPrefabName(event_vblood.Source);
-                    VBloodKillers.AddKiller(vblood, user.CharacterName.ToString());
-                    lastKillerUpdate[vblood] = DateTime.Now;
-                    checkKiller = true;
+                    if (entityManager.HasComponent<PlayerCharacter>(event_vblood.Target))
+                    {
+                        var player = entityManager.GetComponentData<PlayerCharacter>(event_vblood.Target);
+                        var user = entityManager.GetComponentData<User>(player.UserEntity._Entity);
+                        // Modify from original code for get PrefabName(string) and not GuidHash(int)
+                        var vblood = PrefabsUtils.getPrefabName(event_vblood.Source);
+                        VBloodKillers.AddKiller(vblood, user.CharacterName.ToString());
+                        lastKillerUpdate[vblood] = DateTime.Now;
+                        checkKiller = true;
+                    }
                 }
             }
-        }
-        else if (checkKiller)
-        {
-            var didSkip = false;
-            foreach (KeyValuePair<string, DateTime> kvp in lastKillerUpdate)
+            else if (checkKiller)
             {
-                var lastUpdateTime = kvp.Value;
-                if (DateTime.Now - lastUpdateTime < TimeSpan.FromSeconds(SendMessageDelay))
+                var didSkip = false;
+                foreach (KeyValuePair<string, DateTime> kvp in lastKillerUpdate)
                 {
-                    didSkip = true;
-                    continue;
+                    var lastUpdateTime = kvp.Value;
+                    if (DateTime.Now - lastUpdateTime < TimeSpan.FromSeconds(SendMessageDelay))
+                    {
+                        didSkip = true;
+                        continue;
+                    }
+                    Utils.VBloodKillers.SendAnnouncementMessage(kvp.Key);
                 }
-                Utils.VBloodKillers.SendAnnouncementMessage(kvp.Key);
+                checkKiller = didSkip;
             }
-            checkKiller = didSkip;
         }
     }
 }

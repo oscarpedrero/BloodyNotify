@@ -19,7 +19,6 @@
   <ItemGroup>
     <PackageReference Include="BepInEx.IL2CPP" Version="6.0.0-*" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
-    <PackageReference Include="OneOf" Version="3.0.223" />
     <PackageReference Include="System.Text.Json" Version="6.0.5" />
     <PackageReference Include="Wetstone" Version="1.1.0" />
   </ItemGroup>

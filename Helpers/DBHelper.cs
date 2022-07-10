@@ -1,7 +1,6 @@
 ﻿using ProjectM;
 using System.Collections.Generic;
 using Notify.Utils;
-using OneOf;
 
 namespace Notify.Helpers
 {
@@ -149,31 +148,19 @@ namespace Notify.Helpers
             }
         }
 
-        public static string getPrefabNameValue(OneOf<PrefabGUID, string> prefab)
+        public static string getPrefabNameValue(string prefabName)
         {
-
-            var _prefabName = "";
-
-            if (prefab.TryPickT0(out PrefabGUID prefabGUID, out string prefabName))
-            {
-                _prefabName = PrefabsUtils.getPrefabName(prefabGUID);
-            }
-            else
-            {
-                _prefabName = prefabName;
-            }
-
-            if (_prefabName == null)
+            if (prefabName == null)
             {
                 return "NoPrefabName";
             }
 
-            if (PrefabToNames.ContainsKey(_prefabName))
+            if (PrefabToNames.ContainsKey(prefabName))
             {
-                return PrefabToNames[_prefabName];
+                return PrefabToNames[prefabName];
             } else
             {
-                return _prefabName;
+                return PrefabToNames["NoPrefabName"];
             }
         }
     }
