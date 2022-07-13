@@ -54,7 +54,7 @@ public class ServerBootstrapSystem_Patch
     [HarmonyPrefix]
     public static void Prefix(ServerBootstrapSystem __instance, NetConnectionId netConnectionId, ConnectionStatusChangeReason connectionStatusReason, string extraData)
     {
-        if (DBHelper.isEnabledAnnounceOnline())
+        if (DBHelper.isEnabledAnnounceeOffline())
         {
             if (connectionStatusReason != ConnectionStatusChangeReason.IncorrectPassword)
             {
@@ -64,7 +64,7 @@ public class ServerBootstrapSystem_Patch
                 var userEntity = serverClient.UserEntity;
                 LoadConfigHelper.LoadUsersConfigOffline();
                 var userNick = PlayerUtils.getCharacterName(userEntity);
-                var _message = DBHelper.getUserOnlineValue(userNick);
+                var _message = DBHelper.getUserOfflineValue(userNick);
                 Plugin.Logger.LogInfo($"User disconnect '{userNick}'");
                 _message = _message.Replace("#user#", $"{FontColorChat.Yellow(userNick)}");
                 ServerChatUtils.SendSystemMessageToAllClients(entityManager, $"{_message}");

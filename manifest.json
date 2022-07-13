@@ -1,8 +1,8 @@
 ﻿{
   "name": "Notify",
-  "version_number": "0.0.1",
-  "website_url": "https://github.com/syllabicat/VBloodKills",
-  "description": "Sends notify to system message when user connect, disconnect or kill boss in v rising.",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/oscarpedrero/Notify",
+  "description": "A mod that notifies when a user connects or disconnects from the server and when a player kills a VBlood boss.",
   "dependencies": [
     "BepInEx-BepInExPack_V_Rising-1.0.0",
     "molenzwiebel-Wetstone-1.1.0"
