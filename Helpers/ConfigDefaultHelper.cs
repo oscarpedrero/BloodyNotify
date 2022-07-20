@@ -7,7 +7,7 @@ namespace Notify.Helpers
 {
     internal class ConfigDefaultHelper
     {
-        public static readonly string ConfigPath = Path.Combine(BepInEx.Paths.BepInExConfigPath, "Notify");
+        public static readonly string ConfigPath = Path.Combine(BepInEx.Paths.ConfigPath, "Notify");
 
         public static Dictionary<string, string> DefaultAnnounceDictionary => new Dictionary<string, string>()
         {
