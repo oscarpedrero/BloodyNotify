@@ -7,6 +7,7 @@ namespace Notify.Helpers
 {
     internal class ConfigDefaultHelper
     {
+        public static readonly string ConfigPath = Path.Combine(BepInEx.Paths.ConfigPath, "Notify");
 
         public static Dictionary<string, string> DefaultAnnounceDictionary => new Dictionary<string, string>()
         {
@@ -71,26 +72,25 @@ namespace Notify.Helpers
         public static void CreateDefaultNotificationTextConfig()
         {
             var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(DefaultAnnounceDictionary);
-            File.WriteAllText("BepInEx/config/Notify/default_announce.json", jsonOutPut);
+            File.WriteAllText(Path.Combine(ConfigPath, "default_announce.json"), jsonOutPut);
         }
 
         public static void CreateOnlineDefaultConfig()
         {
             var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(DefaultOnline);
-            File.WriteAllText("BepInEx/config/Notify/users_online.json", jsonOutPut);
+            File.WriteAllText(Path.Combine(ConfigPath, "users_online.json"), jsonOutPut);
         }
 
         public static void CreateOfflineDefaultConfig()
         {
             var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(DefaultOffline);
-            File.WriteAllText("BepInEx/config/Notify/users_offline.json", jsonOutPut);
+            File.WriteAllText(Path.Combine(ConfigPath, "users_offline.json"), jsonOutPut);
         }
 
         public static void CreateLocationVBloodDefaultConfig()
         {
             var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(PrefabToNamesDefault);
-            File.WriteAllText("BepInEx/config/Notify/prefabs_names.json", jsonOutPut);
+            File.WriteAllText(Path.Combine(ConfigPath, "prefabs_names.json"), jsonOutPut);
         }
-
     }
 }

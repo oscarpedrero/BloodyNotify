@@ -17,7 +17,7 @@ namespace Notify.Helpers
         }
         public static void LoadDefaultAnnounce()
         {
-            var json = File.ReadAllText("BepInEx/config/Notify/default_announce.json");
+            var json = File.ReadAllText(Path.Combine(ConfigDefaultHelper.ConfigPath, "default_announce.json"));
             var dictionary = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
             DBHelper.setDefaultAnnounce(dictionary);
             Plugin.Logger.LogInfo("DefaultAnnounce Load OK.");
@@ -25,7 +25,7 @@ namespace Notify.Helpers
 
         public static void LoadUsersConfigOnline()
         {
-            var json = File.ReadAllText("BepInEx/config/Notify/users_online.json");
+            var json = File.ReadAllText(Path.Combine(ConfigDefaultHelper.ConfigPath, "users_online.json"));
             Plugin.Logger.LogInfo($"cargado fichero {json}");
             var dictionary = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
             Plugin.Logger.LogInfo($"convertido fichero en diccionario");
@@ -35,7 +35,7 @@ namespace Notify.Helpers
 
         public static void LoadUsersConfigOffline()
         {
-            var json = File.ReadAllText("BepInEx/config/Notify/users_offline.json");
+            var json = File.ReadAllText(Path.Combine(ConfigDefaultHelper.ConfigPath, "users_offline.json"));
             var dictionary = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
             DBHelper.setUsersOffline(dictionary);
             Plugin.Logger.LogInfo("UsersConfigOffline Load OK.");
@@ -43,7 +43,7 @@ namespace Notify.Helpers
 
         public static void LoadPrefabsName()
         {
-            var json = File.ReadAllText("BepInEx/config/Notify/prefabs_names.json");
+            var json = File.ReadAllText(Path.Combine(ConfigDefaultHelper.ConfigPath, "prefabs_names.json"));
             var dictionary = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
             DBHelper.setPrefabsNames(dictionary);
             Plugin.Logger.LogInfo("PrefabToNames Load OK.");
