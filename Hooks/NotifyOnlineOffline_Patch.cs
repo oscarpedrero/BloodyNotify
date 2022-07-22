@@ -27,13 +27,7 @@ public class ServerBootstrapSystem_Patch
             if (DBHelper.isEnabledAnnounceOnline())
             {
                 var userNick = PlayerUtils.getCharacterName(userEntity);
-                Plugin.Logger.LogWarning($"Search '{userNick}' in database.");
-
-                LoadConfigHelper.LoadUsersConfigOnline();
-
                 var _message = DBHelper.getUserOnlineValue(userNick);
-
-                Plugin.Logger.LogInfo($"FIND '{userNick}' in database with message {_message}");
                 _message = _message.Replace("#user#", $"{FontColorChat.Yellow(userNick)}");
                 ServerChatUtils.SendSystemMessageToAllClients(entityManager, FontColorChat.Green($"{_message}"));
 
@@ -44,7 +38,6 @@ public class ServerBootstrapSystem_Patch
             if (DBHelper.isEnabledAnnounceNewUser())
             {
                 var _message = DBHelper.getUserOnlineValue("");
-                Plugin.Logger.LogInfo($"New User");
                 ServerChatUtils.SendSystemMessageToAllClients(entityManager, FontColorChat.Green($"{_message}"));
             }
         }
@@ -62,10 +55,8 @@ public class ServerBootstrapSystem_Patch
                 var userIndex = __instance._NetEndPointToApprovedUserIndex[netConnectionId];
                 var serverClient = __instance._ApprovedUsersLookup[userIndex];
                 var userEntity = serverClient.UserEntity;
-                LoadConfigHelper.LoadUsersConfigOffline();
                 var userNick = PlayerUtils.getCharacterName(userEntity);
                 var _message = DBHelper.getUserOfflineValue(userNick);
-                Plugin.Logger.LogInfo($"User disconnect '{userNick}'");
                 _message = _message.Replace("#user#", $"{FontColorChat.Yellow(userNick)}");
                 ServerChatUtils.SendSystemMessageToAllClients(entityManager, $"{_message}");
             }

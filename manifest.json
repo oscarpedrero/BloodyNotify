@@ -1,6 +1,6 @@
 ﻿{
   "name": "Notify",
-  "version_number": "1.0.0",
+  "version_number": "1.1.0",
   "website_url": "https://github.com/oscarpedrero/Notify",
   "description": "A mod that notifies when a user connects or disconnects from the server and when a player kills a VBlood boss.",
   "dependencies": [

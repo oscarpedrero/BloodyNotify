@@ -7,6 +7,8 @@ using System.Reflection;
 using Wetstone.API;
 using BepInEx.Logging;
 using Notify.Helpers;
+using Wetstone.Hooks;
+using ProjectM;
 
 namespace Notify
 {
@@ -15,6 +17,7 @@ namespace Notify
     [Reloadable]
     public class Plugin : BasePlugin, IRunOnInitialized
     {
+
         public static ManualLogSource Logger;
 
         private Harmony _harmony;
@@ -25,6 +28,8 @@ namespace Notify
         public static ConfigEntry<bool> AnnounceVBlood;
         public static ConfigEntry<string> VBloodFinalConcatCharacters;
 
+        public static readonly string ConfigPath = Path.Combine(BepInEx.Paths.ConfigPath, "Notify");
+
         public override void Load()
         {
             if (!VWorld.IsServer) return;
@@ -34,11 +39,13 @@ namespace Notify
             _harmony.PatchAll(Assembly.GetExecutingAssembly());
             LoadConfigHelper.LoadAllConfig();
             Log.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
+            Chat.OnChatMessage += Chat_OnChatMessage;
         }
 
         public override bool Unload()
         {
             if (!VWorld.IsServer) return true;
+            Chat.OnChatMessage -= Chat_OnChatMessage;
             Config.Clear();
             _harmony.UnpatchSelf();
             return true;
@@ -53,27 +60,25 @@ namespace Notify
             AnnounceVBlood = Config.Bind("AnnounceVBlood", "enabled", true, "Enable Announce when user/users kill a VBlood Boss.");
             VBloodFinalConcatCharacters = Config.Bind("AnnounceVBlood", "VBloodFinalConcatCharacters", "and", "Final string for concat two or more players kill a VBlood Boss.");
 
-            if (!File.Exists("BepInEx/config/Notify/users_online.json"))
+            if (!Directory.Exists(ConfigPath)) Directory.CreateDirectory(ConfigPath);
+
+            if (!File.Exists(Path.Combine(ConfigPath, "users_online.json")))
             {
-                if (!Directory.Exists("BepInEx/config/Notify")) Directory.CreateDirectory("BepInEx/config/Notify");
                 ConfigDefaultHelper.CreateOnlineDefaultConfig();
             }
 
-            if (!File.Exists("BepInEx/config/Notify/users_offline.json"))
+            if (!File.Exists(Path.Combine(ConfigPath, "users_offline.json")))
             {
-                if (!Directory.Exists("BepInEx/config/Notify")) Directory.CreateDirectory("BepInEx/config/Notify");
                 ConfigDefaultHelper.CreateOfflineDefaultConfig();
             }
 
-            if (!File.Exists("BepInEx/config/Notify/default_announce.json"))
+            if (!File.Exists(Path.Combine(ConfigPath, "default_announce.json")))
             {
-                if (!Directory.Exists("BepInEx/config/Notify")) Directory.CreateDirectory("BepInEx/config/Notify");
                 ConfigDefaultHelper.CreateDefaultNotificationTextConfig();
             }
 
-            if (!File.Exists("BepInEx/config/Notify/prefabs_names.json"))
+            if (!File.Exists(Path.Combine(ConfigPath, "prefabs_names.json")))
             {
-                if (!Directory.Exists("BepInEx/config/Notify")) Directory.CreateDirectory("BepInEx/config/Notify");
                 ConfigDefaultHelper.CreateLocationVBloodDefaultConfig();
             }
 
@@ -86,6 +91,51 @@ namespace Notify
             DBHelper.setAnnounceNewUser(AnnounceNewUser.Value);
             DBHelper.setAnnounceVBlood(AnnounceVBlood.Value);
             DBHelper.setVBloodFinalConcatCharacters(VBloodFinalConcatCharacters.Value);
+        }
+
+        internal static void Chat_OnChatMessage(VChatEvent e)
+        {
+            var message = e.Message.Trim().ToLowerInvariant();
+            var entityManager = VWorld.Server.EntityManager;
+
+            if (!e.User.IsAdmin)
+            {
+                return;
+            }
+            if (!message.StartsWith("!notify"))
+            {
+                return;
+            }
+
+            var command = message.Replace("!notify", string.Empty);
+            switch (command)
+            {
+                case "":
+                case " reload":
+                    if (!DBHelper.isEnabledAnnounceeOffline())
+                    {
+                        LoadConfigHelper.LoadUsersConfigOffline();
+                    }
+
+                    if (!DBHelper.isEnabledAnnounceOnline())
+                    {
+                        LoadConfigHelper.LoadUsersConfigOnline();
+                    }
+
+                    if (!DBHelper.isEnabledAnnounceVBlood())
+                    {
+                        LoadConfigHelper.LoadPrefabsName();
+                    }
+
+                    if (!DBHelper.isEnabledAnnounceNewUser())
+                    {
+                        LoadConfigHelper.LoadDefaultAnnounce();
+                    }
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "Reloaded configuration of Notify mod.");
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

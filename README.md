@@ -4,6 +4,30 @@ A mod that notifies when a user connects or disconnects from the server and when
 
 The notifications are fully customizable both by default and by each player, thos of connecting and disconnecting.
 
+<details>
+<summary>Changelog</summary>
+`1.1.0`
+- Added command to refresh mod settings `!notify realod`
+
+`1.0.1`
+- Fixed configuration file paths to get BepInEx configuration path programmatically. By [PhantomGamers](https://github.com/PhantomGamers)
+- Commented all the BepInX logger info
+
+`1.0.0`
+- Added custom config files for VBlodd boss names
+
+`0.5.0`
+- Added notifications when a player kills a VBlodd boss 
+
+`0.4.0`
+- Fixed notification when a new player creates a character on the server
+- Added custom config files by character name
+
+`0.3.0`
+- Added notifications when a user connect to the server 
+- Added notifications when a user disconnects from the server
+</details>
+
 # Configuration
 
 Once the mod installed, a configuration file will be created in the \BepInEx\config server folder where you can activate or desactivate any of the mod notifications.
@@ -18,6 +42,7 @@ Once the mod installed, a configuration file will be created in the \BepInEx\con
 |UserOffline|`enabled `|Enable Announce when user offline |true
 |UserOnline|`enabled `|Enable Announce when user online|true
 
+> To reload the configuration of the user messages online, offline or death of the VBlood boss there is the chat command `!notify reload`
 
 ## Default Messages
 
@@ -105,9 +130,10 @@ To translate the name of VBlood boss, you only have to edit the configuration fi
 }
 ```
 
+## Reload messages config
+
+To reload the configuration of the user messages online, offline or death of the VBlood boss there is the chat command `!notify reload`
+
 ## Credits
 
-For the development of this mod i have used parts of the code of Kaltharos (RPGMods) and syllabicat (VBloodKills)
-
-https://github.com/Kaltharos/RPGMods
-https://github.com/syllabicat/VBloodKills
+For the development of this mod i have used parts of the code of [Kaltharos (RPGMods)](https://github.com/Kaltharos/RPGMods) and [syllabicat (VBloodKills)](https://github.com/syllabicat/VBloodKills)
