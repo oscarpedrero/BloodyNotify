@@ -6,6 +6,7 @@ The notifications are fully customizable both by default and by each player, tho
 
 <details>
 <summary>Changelog</summary>
+
 `1.1.0`
 - Added command to refresh mod settings `!notify realod`
 
