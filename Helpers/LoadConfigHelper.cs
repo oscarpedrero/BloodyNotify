@@ -43,5 +43,12 @@ namespace Notify.Helpers
             DBHelper.setPrefabsNames(dictionary);
         }
 
+        public static void VBloodNotifyIgnoreConfig()
+        {
+            var json = File.ReadAllText(Path.Combine(ConfigDefaultHelper.ConfigPath, "vbloodannounce_ignore_users.json"));
+            var dictionary = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+            DBHelper.setPrefabsNames(dictionary);
+        }
+
     }
 }

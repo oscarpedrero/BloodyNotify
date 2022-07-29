@@ -69,6 +69,12 @@ namespace Notify.Helpers
             {  "nick" , "#user# is ofline!" }
         };
 
+
+        public static Dictionary<string, bool> DefaultVBloodAnnounceIgnoreUsers => new Dictionary<string, bool>()
+        {
+            {  "nick" , true }
+        };
+
         public static void CreateDefaultNotificationTextConfig()
         {
             var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(DefaultAnnounceDictionary);
@@ -91,6 +97,12 @@ namespace Notify.Helpers
         {
             var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(PrefabToNamesDefault);
             File.WriteAllText(Path.Combine(ConfigPath, "prefabs_names.json"), jsonOutPut);
+        }
+
+        public static void CreateVBloodNotifyIgnoreConfig()
+        {
+            var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(DefaultVBloodAnnounceIgnoreUsers);
+            File.WriteAllText(Path.Combine(ConfigPath, "vbloodannounce_ignore_users.json"), jsonOutPut);
         }
     }
 }

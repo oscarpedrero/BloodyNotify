@@ -5,6 +5,7 @@ using ProjectM;
 using ProjectM.Network;
 using Stunlock.Network;
 using Wetstone.API;
+using VRising.GameData;
 
 namespace Notify.Hooks;
 
@@ -20,14 +21,16 @@ public class ServerBootstrapSystem_Patch
         var serverClient = __instance._ApprovedUsersLookup[userIndex];
         var userEntity = serverClient.UserEntity;
 
+        var user = GameData.Users.GetUserFromEntity(userEntity);
+
 
         bool isNewPlayer = PlayerUtils.isNewUser(userEntity);
         if (!isNewPlayer)
         {
             if (DBHelper.isEnabledAnnounceOnline())
             {
-                var userNick = PlayerUtils.getCharacterName(userEntity);
-                var _message = DBHelper.getUserOnlineValue(userNick);
+                var userNick = user.CharacterName;
+                var _message = DBHelper.getUserOnlineValue(user.CharacterName);
                 _message = _message.Replace("#user#", $"{FontColorChat.Yellow(userNick)}");
                 ServerChatUtils.SendSystemMessageToAllClients(entityManager, FontColorChat.Green($"{_message}"));
 
@@ -55,7 +58,8 @@ public class ServerBootstrapSystem_Patch
                 var userIndex = __instance._NetEndPointToApprovedUserIndex[netConnectionId];
                 var serverClient = __instance._ApprovedUsersLookup[userIndex];
                 var userEntity = serverClient.UserEntity;
-                var userNick = PlayerUtils.getCharacterName(userEntity);
+                var user = GameData.Users.GetUserFromEntity(userEntity);
+                var userNick = user.CharacterName;
                 var _message = DBHelper.getUserOfflineValue(userNick);
                 _message = _message.Replace("#user#", $"{FontColorChat.Yellow(userNick)}");
                 ServerChatUtils.SendSystemMessageToAllClients(entityManager, $"{_message}");

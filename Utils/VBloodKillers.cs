@@ -4,13 +4,14 @@ using System.Text;
 using Wetstone.API;
 using ProjectM;
 using Notify.Helpers;
+using VRising.GameData;
+using VRising.GameData.Methods;
 
-
- /**
-  * 
-  * Based in Code By syllabicat from VBloodKills (https://github.com/syllabicat/VBloodKills)
-  * 
- **/
+/**
+ * 
+ * Based in Code By syllabicat from VBloodKills (https://github.com/syllabicat/VBloodKills)
+ * 
+**/
 namespace Notify.Utils
 {
     public class VBloodKillers
@@ -43,9 +44,18 @@ namespace Notify.Utils
             var message = GetAnnouncementMessage(vblood);
             if (message != null)
             {
-                ServerChatUtils.SendSystemMessageToAllClients(VWorld.Server.EntityManager, message);
+                var usersOnline = GameData.Users.GetOnlineUsers();
+                foreach (var user in usersOnline)
+                {
+                    var isUserIgnore = DBHelper.getVBloodNotifyIgnore(user.CharacterName);
+                    if (!isUserIgnore)
+                    {
+                        user.SendSystemMessage(message);
+                    }
+                }
                 RemoveKillers(vblood);
             }
+            
         }
 
         public static string GetAnnouncementMessage(string vblood)

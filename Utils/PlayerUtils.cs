@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Unity.Collections;
 using Unity.Entities;
+using VRising.GameData;
 using Wetstone.API;
 
 namespace Notify.Utils
@@ -10,6 +12,7 @@ namespace Notify.Utils
     internal class PlayerUtils
     {
         private static EntityManager entityManager = VWorld.Server.EntityManager;
+
 
         public static bool isNewUser(Entity userEntity)
         {
@@ -29,6 +32,17 @@ namespace Notify.Utils
         private static User getUserComponente(Entity userEntity)
         {
             return entityManager.GetComponentData<User>(userEntity);
+        }
+
+        public IEnumerable<string> GetAllUsersOnline()
+        {
+
+            var users = GameData.Users.GetOnlineUsers();
+            foreach (var user in users)
+            {
+                yield return user.CharacterName;
+            }
+
         }
     }
 }

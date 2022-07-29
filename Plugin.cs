@@ -9,6 +9,8 @@ using BepInEx.Logging;
 using Notify.Helpers;
 using Wetstone.Hooks;
 using ProjectM;
+using Notify.Utils;
+using VRising.GameData;
 
 namespace Notify
 {
@@ -82,10 +84,16 @@ namespace Notify
                 ConfigDefaultHelper.CreateLocationVBloodDefaultConfig();
             }
 
+            if (!File.Exists(Path.Combine(ConfigPath, "vbloodannounce_ignore_users.json")))
+            {
+                ConfigDefaultHelper.CreateVBloodNotifyIgnoreConfig();
+            }
+
         }
 
         public void OnGameInitialized()
         {
+            GameData.Initialize();
             DBHelper.setAnnounceOnline(AnnounceOnline.Value);
             DBHelper.setAnnounceOffline(AnnounceeOffline.Value);
             DBHelper.setAnnounceNewUser(AnnounceNewUser.Value);
@@ -97,11 +105,9 @@ namespace Notify
         {
             var message = e.Message.Trim().ToLowerInvariant();
             var entityManager = VWorld.Server.EntityManager;
+            var text = string.Empty;
 
-            if (!e.User.IsAdmin)
-            {
-                return;
-            }
+            
             if (!message.StartsWith("!notify"))
             {
                 return;
@@ -111,7 +117,14 @@ namespace Notify
             switch (command)
             {
                 case "":
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "Missing parameters for the !notify command");
+                    break;
                 case " reload":
+                    if (!e.User.IsAdmin)
+                    {
+                        ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "You do not have permissions to run this command");
+                        break;
+                    }
                     if (!DBHelper.isEnabledAnnounceeOffline())
                     {
                         LoadConfigHelper.LoadUsersConfigOffline();
@@ -133,8 +146,30 @@ namespace Notify
                     }
                     ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "Reloaded configuration of Notify mod.");
                     break;
-                default:
+            case " unignore vbloodannounce":
+                    DBHelper.removeVBloodNotifyIgnore(e.User.CharacterName.ToString());
+                    text = FontColorChat.Green($"You will receive notifications about the death of the VBlood. To undo this option use the command {FontColorChat.Yellow("!notify ignore vbloodannounce")}");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
                     break;
+            case " ignore vbloodannounce":
+                    DBHelper.addVBloodNotifyIgnore(e.User.CharacterName.ToString());
+                    text = FontColorChat.Green($"You will not receive any more notifications about the death of the VBlood. To undo this option use the command {FontColorChat.Yellow("!notify unignore vbloodannounce")}");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    break;
+            case " help":
+                    text = FontColorChat.Green($"{FontColorChat.Yellow("!notify unignore vbloodannounce")} for unignore notifications about the death of the VBlood.");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    text = FontColorChat.Green($"{FontColorChat.Yellow("!notify ignore vbloodannounce")} for ignore notifications about the death of the VBlood.");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    if (e.User.IsAdmin)
+                    {
+                        text = FontColorChat.Green($"{FontColorChat.Yellow(FontColorChat.Red("[ADMIN]")+" !notify reload ")} To reload the configuration of the user messages online, offline or death of the VBlood boss.");
+                        ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                        break;
+                    }
+                    break;
+            default:
+                break;
             }
         }
     }

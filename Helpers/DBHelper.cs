@@ -20,6 +20,8 @@ namespace Notify.Helpers
 
         private static Dictionary<string, string> PrefabToNames { get; set; } = new Dictionary<string, string>();
 
+        private static Dictionary<string, bool> VBloodNotifyIgnore { get; set; } = new Dictionary<string, bool>();
+
         public static void setAnnounceOnline(bool value)
         {
             AnnounceOnline = value;
@@ -101,6 +103,14 @@ namespace Notify.Helpers
             PrefabToNames = value;
             return true;
         }
+        public static bool setVBloodNotifyIgnore(Dictionary<string, bool> value)
+        {
+            if (value == null)
+                return false;
+
+            VBloodNotifyIgnore = value;
+            return true;
+        }
 
         public static string getDefaultAnnounceValue(string value)
         {
@@ -163,5 +173,52 @@ namespace Notify.Helpers
                 return PrefabToNames["NoPrefabName"];
             }
         }
+
+        public static bool getVBloodNotifyIgnore(string characterName)
+        {
+            if (characterName == null)
+            {
+                return false;
+            }
+
+            if (VBloodNotifyIgnore.ContainsKey(characterName))
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+
+        public static bool addVBloodNotifyIgnore(string characterName)
+        {
+            
+            if (VBloodNotifyIgnore.ContainsKey(characterName))
+            {
+                return true;
+            } else
+            {
+                VBloodNotifyIgnore.Add(characterName, true);
+                SaveConfigHelper.SaveVBloodNotifyIgnoreConfig(VBloodNotifyIgnore);
+                return true;
+            }
+        }
+
+        public static bool removeVBloodNotifyIgnore(string characterName)
+        {
+
+            if (VBloodNotifyIgnore.ContainsKey(characterName))
+            {
+                VBloodNotifyIgnore.Remove(characterName);
+                SaveConfigHelper.SaveVBloodNotifyIgnoreConfig(VBloodNotifyIgnore);
+                return true;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
     }
 }
