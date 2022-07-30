@@ -7,6 +7,9 @@ The notifications are fully customizable both by default and by each player, tho
 <details>
 <summary>Changelog</summary>
 
+`1.2.2`
+- Fixed error when there was no configuration file, it gave an error when loading it
+
 `1.2.1`
 - Fixed bug where when you reload from chat, it didn't reload ignores from VBlood kills
 
