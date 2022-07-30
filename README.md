@@ -6,6 +6,10 @@ The notifications are fully customizable both by default and by each player, tho
 
 <details>
 <summary>Changelog</summary>
+
+`1.2.1`
+- Fixed bug where when you reload from chat, it didn't reload ignores from VBlood kills
+
 `1.2.0`
 - Added that users can enable/disable VBlood kills via chat command.
 - Added command to ignore VBlood Announce `!notify ignore vbloodannounce`
@@ -34,14 +38,18 @@ The notifications are fully customizable both by default and by each player, tho
 `0.3.0`
 - Added notifications when a user connect to the server 
 - Added notifications when a user disconnects from the server
+
 </details>
 
 ## Chat Commands - New feature
 
 `!notify help` : Command that returns all available commands
+
 `!notify reload` (Only Admins) : To reload the configuration of the user messages online, offline or death of the VBlood boss
-`!notify reload` : Turn on VBlood death notifications
-`!notify reload` : Turn off VBlood death notifications
+
+`!notify ignore vbloodannounce` : Turn on VBlood death notifications
+
+`!notify unignore vbloodannounce` : Turn off VBlood death notifications
 
 # Configuration
 
@@ -142,6 +150,17 @@ To translate the name of VBlood boss, you only have to edit the configuration fi
 	"CHAR_Manticore_VBlood": "The Winged Horror" ,
 	"CHAR_Paladin_VBlood": "Solarus the Immaculate" ,
 	"NoPrefabName": "VBlood Boss"
+}
+```
+
+## VBlood Announce Ignore - New Feature
+
+If you want to do it by hand you just have to edit the **/BepInEx/config/Notify/vbloodannounce_ignore_users.json** file to add or remove players
+
+```
+{
+   "CharacterName": true,
+   "OtherCharacterName": true
 }
 ```
 

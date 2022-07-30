@@ -8,12 +8,14 @@ namespace Notify.Helpers
 {
     internal class LoadConfigHelper
     {
+
         public static void LoadAllConfig()
         {
             LoadDefaultAnnounce();
             LoadUsersConfigOnline();
             LoadUsersConfigOffline();
             LoadPrefabsName();
+            VBloodNotifyIgnoreConfig();
         }
         public static void LoadDefaultAnnounce()
         {
