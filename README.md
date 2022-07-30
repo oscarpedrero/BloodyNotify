@@ -43,13 +43,12 @@ The notifications are fully customizable both by default and by each player, tho
 
 ## Chat Commands - New feature
 
-`!notify help` : Command that returns all available commands
-
-`!notify reload` (Only Admins) : To reload the configuration of the user messages online, offline or death of the VBlood boss
-
-`!notify ignore vbloodannounce` : Turn on VBlood death notifications
-
-`!notify unignore vbloodannounce` : Turn off VBlood death notifications
+|COMMAND|DESCRIPTION
+|----------------|-------------------------------|
+|`!notify help`| Command that returns all available commands         
+|`!notify reload` (Only Admins)| To reload the configuration of the user messages online, offline or death of the VBlood boss
+|`!notify ignore vbloodannounce`| Turn on VBlood death notifications
+|`!notify unignore vbloodannounce`| Turn off VBlood death notifications
 
 # Configuration
 
