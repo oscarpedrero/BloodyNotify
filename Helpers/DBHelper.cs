@@ -58,12 +58,12 @@ namespace Notify.Helpers
 
         public static bool isEnabledAnnounceNewUser()
         {
-            return AnnounceOnline;
+            return AnnounceNewUser;
         }
 
         public static bool isEnabledAnnounceVBlood()
         {
-            return AnnounceOnline;
+            return AnnounceVBlood;
         }
 
         public static string getVBloodFinalConcatCharacters()

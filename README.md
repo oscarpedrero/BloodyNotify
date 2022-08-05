@@ -7,6 +7,10 @@ The notifications are fully customizable both by default and by each player, tho
 <details>
 <summary>Changelog</summary>
 
+`1.2.3`
+- Fixed bug that affected the AnnounceVBlood mod configuration parameter not working correctly
+- Fixed bug that affected the NewUserOnline mod configuration parameter not working correctly
+
 `1.2.2`
 - Fixed error when there was no configuration file, it gave an error when loading it
 
@@ -44,7 +48,7 @@ The notifications are fully customizable both by default and by each player, tho
 
 </details>
 
-## Chat Commands - New feature
+## Chat Commands
 
 |COMMAND|DESCRIPTION
 |-------------------------|-------------------------------|
@@ -155,7 +159,7 @@ To translate the name of VBlood boss, you only have to edit the configuration fi
 }
 ```
 
-## VBlood Announce Ignore - New Feature
+## VBlood Announce Ignore
 
 If you want to do it by hand you just have to edit the **/BepInEx/config/Notify/vbloodannounce_ignore_users.json** file to add or remove players
 
