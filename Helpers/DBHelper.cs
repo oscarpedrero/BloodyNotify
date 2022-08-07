@@ -1,6 +1,7 @@
 ﻿using ProjectM;
 using System.Collections.Generic;
 using Notify.Utils;
+using Notify.AutoAnnouncer.Models;
 
 namespace Notify.Helpers
 {
@@ -11,6 +12,9 @@ namespace Notify.Helpers
         private static bool AnnounceNewUser = false;
         private static bool AnnounceVBlood = false;
         private static string VBloodFinalConcatCharacters = "and";
+        private static bool AutoAnnouncer = false;
+        private static int IntervalAutoAnnouncer = 0;
+        private static List<AutoAnnouncerMessage> AutoAnnouncerMessages = new List<AutoAnnouncerMessage>();
 
         private static Dictionary<string, string> DefaultAnnounce { get; set; } = new Dictionary<string, string>();
 
@@ -217,6 +221,36 @@ namespace Notify.Helpers
             {
                 return true;
             }
+        }
+
+        public static bool isEnabledAutoAnnouncer()
+        {
+            return AutoAnnouncer;
+        }
+
+        public static void setAutoAnnouncer(bool autoAnnouncer)
+        {
+            AutoAnnouncer = autoAnnouncer;
+        }
+
+        public static int getIntervalAutoAnnouncer()
+        {
+            return IntervalAutoAnnouncer;
+        }
+
+        public static void setIntervalAutoAnnouncer(int intervalAutoAnnouncer)
+        {
+            IntervalAutoAnnouncer = intervalAutoAnnouncer * 1000;
+        }
+
+        public static List<AutoAnnouncerMessage> getAutoAnnouncerMessages()
+        {
+            return AutoAnnouncerMessages;
+        }
+
+        public static void addAutoAnnouncerMessages(AutoAnnouncerMessage autoAnnouncerMessages)
+        {
+            AutoAnnouncerMessages.Add(autoAnnouncerMessages);
         }
 
 

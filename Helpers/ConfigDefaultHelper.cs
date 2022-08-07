@@ -12,7 +12,7 @@ namespace Notify.Helpers
         public static Dictionary<string, string> DefaultAnnounceDictionary => new Dictionary<string, string>()
         {
             {  "online" , "#user# is online!" },
-            {  "offline" , "#user# has gone offline!" },    
+            {  "offline" , "#user# has gone offline!" },
             {  "newUser" , "Welcome to server" },
             {  "VBlood" , "Congratulations to #user# for beating #vblood#!" }
         };
@@ -75,6 +75,8 @@ namespace Notify.Helpers
             {  "nick" , true }
         };
 
+        public static string DefaultAutoAnnounceMessagesConfig = @"[[""Message 1 Line 1"",""Message 1 Line 2""],[""Message 2 Line 1"",""Message 2 Line 2"",""Message 2 Line 3"",""Message 2 Line 4""]]";
+
         public static void CreateDefaultNotificationTextConfig()
         {
             var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(DefaultAnnounceDictionary);
@@ -103,6 +105,11 @@ namespace Notify.Helpers
         {
             var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(DefaultVBloodAnnounceIgnoreUsers);
             File.WriteAllText(Path.Combine(ConfigPath, "vbloodannounce_ignore_users.json"), jsonOutPut);
+        }
+
+        public static void CreateAutoAnnouncerMessagesConfig()
+        {
+            File.WriteAllText(Path.Combine(ConfigPath, "auto_announcer_messages.json"), DefaultAutoAnnounceMessagesConfig);
         }
     }
 }

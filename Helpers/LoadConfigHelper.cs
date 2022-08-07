@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Notify.AutoAnnouncer.Models;
+using Notify.AutoAnnouncer.Parser;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -16,6 +18,7 @@ namespace Notify.Helpers
             LoadUsersConfigOffline();
             LoadPrefabsName();
             VBloodNotifyIgnoreConfig();
+            LoadAutoAnnouncerMessagesConfig();
         }
         public static void LoadDefaultAnnounce()
         {
@@ -50,6 +53,19 @@ namespace Notify.Helpers
             var json = File.ReadAllText(Path.Combine(ConfigDefaultHelper.ConfigPath, "vbloodannounce_ignore_users.json"));
             var dictionary = JsonSerializer.Deserialize<Dictionary<string, bool>>(json);
             DBHelper.setVBloodNotifyIgnore(dictionary);
+        }
+
+        public static void LoadAutoAnnouncerMessagesConfig()
+        {
+            var json = File.ReadAllText(Path.Combine(ConfigDefaultHelper.ConfigPath, "auto_announcer_messages.json"));
+            var parser = new MessageParser();
+            IEnumerable<AutoAnnouncerMessage> messages = parser.Parse(json);
+
+            foreach (AutoAnnouncerMessage message in messages)
+            {
+                DBHelper.addAutoAnnouncerMessages(message);
+            }
+            
         }
 
     }

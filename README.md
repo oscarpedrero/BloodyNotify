@@ -1,11 +1,26 @@
 # Notify - Mod Server for V Rising
 
-A mod that notifies when a user connects or disconnects from the server and when a player kills a VBlood boss.
+A mod that notifies when a user connects or disconnects from the server, new user connect from the server, when a player kills a VBlood boss and auto announce system that runs every certain interval
 
 The notifications are fully customizable both by default and by each player, thos of connecting and disconnecting.
 
 <details>
 <summary>Changelog</summary>
+
+`1.3.0`
+
+- Added automatic announce system every certain time defined in the configuration file
+- Added a configuration file was added to be able to configure as many automatic messages as you want.
+- Added chat command only for admins to enabled announce when user online `!notify announceonline enabled`
+- Added chat command only for admins to disabled announce when user online `!notify announceonline disabled`
+- Added chat command only for admins to enabled announce when user offline `!notify announceoffline enabled`
+- Added chat command only for admins to disabled announce when user offline `!notify announceoffline disabled`
+- Added chat command only for admins to enabled announce when new user connect to a server `!notify announcenewuser enabled`
+- Added chat command only for admins to disabled announce when new user connect to a server `!notify announcenewuser disabled`
+- Added chat command only for admins to enabled VBlood Announce `!notify vbloodannounce enabled`
+- Added chat command only for admins to disabled VBlood Announce  `!notify vbloodannounce disabled`
+- Added chat command only for admins to enabled auto announce `!notify autoannouncer enabled`
+- Added chat command only for admins to disabled auto announce `!notify autoannouncer disabled`
 
 `1.2.3`
 - Fixed bug that affected the AnnounceVBlood mod configuration parameter not working correctly
@@ -53,7 +68,17 @@ The notifications are fully customizable both by default and by each player, tho
 |COMMAND|DESCRIPTION
 |-------------------------|-------------------------------|
 |`!notify help`| Command that returns all available commands         
-|`!notify reload` (Only Admins)    | To reload the configuration of all config files
+|`!notify reload` (Only Admins)    | To reload the configuration of all config files.
+|`!notify announceonline enabled` (Only Admins)    | Enabled announceonline System. - NEW -
+|`!notify announceonline disabled` (Only Admins)    | Disabled announceonline System. - NEW -
+|`!notify announceoffline enabled` (Only Admins)    | Enabled announceoffline System. - NEW -
+|`!notify announceoffline disabled` (Only Admins)    | Disabled announceoffline System. - NEW -
+|`!notify announcenewuser enabled` (Only Admins)    | Enabled announcenewuser System. - NEW -
+|`!notify announcenewuser disabled` (Only Admins)    |  Disabled announcenewuser System. - NEW -
+|`!notify vbloodannounce enabled` (Only Admins)    | Enabled vbloodannounce System. - NEW -
+|`!notify vbloodannounce disabled` (Only Admins)    | Disabled vbloodannounce System. - NEW -
+|`!notify autoannouncer start` (Only Admins)    | Start AutoAnnouncer System. - NEW -
+|`!notify autoannouncer stop` (Only Admins)    | Stop AutoAnnouncer System. - NEW -
 |`!notify ignore vbloodannounce`| Turn on VBlood death notifications
 |`!notify unignore vbloodannounce`| Turn off VBlood death notifications
 
@@ -70,6 +95,8 @@ Once the mod installed, a configuration file will be created in the \BepInEx\con
 |NewUserOnline|`enabled `|Enable Announce when new user create in server|true
 |UserOffline|`enabled `|Enable Announce when user offline |true
 |UserOnline|`enabled `|Enable Announce when user online|true
+|AutoAnnouncer|`enabled `|Enable Auto Announcer|false
+|AutoAnnouncer|`interval `| Interval seconds for spam AutoAnnouncer.|300
 
 > To reload the configuration of the user messages online, offline or death of the VBlood boss there is the chat command `!notify reload`
 
@@ -158,6 +185,30 @@ To translate the name of VBlood boss, you only have to edit the configuration fi
 	"NoPrefabName": "VBlood Boss"
 }
 ```
+## Auto Announcer Messages - NEW
+
+To configure the Auto Announce messages you must edit the configuration file that is in **/BepInEx/config/Notify/auto_announcer_messages.json**
+```
+[
+    [
+        "<color=#FFFFFF> Message 1 Line 1</color>", 
+        "<color=#B22222><i>-Message 1 Line 2</i></color>",
+        "<color=#00FFFF>Message 1 Line 3</color>",
+        "<color=#FFFFFF>Message 1 Line 4</color>"
+    ],
+    [
+        "Message 2 Line 1",
+        "Message 2 Line 2",
+        "Message 2 Line 3",
+        "Message 2 Line 4"
+    ]
+]
+```
+
+> Each element of the array is a line that will paint the message system
+
+> If you configure several messages, the system will go through one by one for each of the configured messages each time the defined interval is met.
+
 
 ## VBlood Announce Ignore
 
@@ -169,7 +220,9 @@ If you want to do it by hand you just have to edit the **/BepInEx/config/Notify/
    "OtherCharacterName": true
 }
 ```
+## Help
 
+If you need assistance you can ask in the discord [V Rising Mod Community](https://discord.gg/vrisingmods)
 
 ## Credits
 

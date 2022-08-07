@@ -11,6 +11,7 @@ using Wetstone.Hooks;
 using ProjectM;
 using Notify.Utils;
 using VRising.GameData;
+using Notify.AutoAnnouncer.Timers;
 
 namespace Notify
 {
@@ -29,6 +30,8 @@ namespace Notify
         public static ConfigEntry<bool> AnnounceNewUser;
         public static ConfigEntry<bool> AnnounceVBlood;
         public static ConfigEntry<string> VBloodFinalConcatCharacters;
+        public static ConfigEntry<bool> AutoAnnouncer;
+        public static ConfigEntry<int> IntervalAutoAnnouncer;
 
         public static readonly string ConfigPath = Path.Combine(BepInEx.Paths.ConfigPath, "Notify");
 
@@ -50,6 +53,10 @@ namespace Notify
             Chat.OnChatMessage -= Chat_OnChatMessage;
             Config.Clear();
             _harmony.UnpatchSelf();
+            if (AutoAnnouncer.Value)
+            {
+                AutoAnnouncerTimer.Stop();
+            }
             return true;
         }
 
@@ -61,6 +68,8 @@ namespace Notify
             AnnounceNewUser = Config.Bind("NewUserOnline", "enabled", true, "Enable Announce when new user create in server");
             AnnounceVBlood = Config.Bind("AnnounceVBlood", "enabled", true, "Enable Announce when user/users kill a VBlood Boss.");
             VBloodFinalConcatCharacters = Config.Bind("AnnounceVBlood", "VBloodFinalConcatCharacters", "and", "Final string for concat two or more players kill a VBlood Boss.");
+            AutoAnnouncer = Config.Bind("AutoAnnouncer", "enabled", false, "Enable AutoAnnouncer.");
+            IntervalAutoAnnouncer = Config.Bind("AutoAnnouncer", "interval", 300, "Interval seconds for spam AutoAnnouncer.");
 
             if (!Directory.Exists(ConfigPath)) Directory.CreateDirectory(ConfigPath);
 
@@ -89,6 +98,11 @@ namespace Notify
                 ConfigDefaultHelper.CreateVBloodNotifyIgnoreConfig();
             }
 
+            if (!File.Exists(Path.Combine(ConfigPath, "auto_announcer_messages.json")))
+            {
+                ConfigDefaultHelper.CreateAutoAnnouncerMessagesConfig();
+            }
+
         }
 
         public void OnGameInitialized()
@@ -99,6 +113,13 @@ namespace Notify
             DBHelper.setAnnounceNewUser(AnnounceNewUser.Value);
             DBHelper.setAnnounceVBlood(AnnounceVBlood.Value);
             DBHelper.setVBloodFinalConcatCharacters(VBloodFinalConcatCharacters.Value);
+            DBHelper.setAutoAnnouncer(AutoAnnouncer.Value);
+            if (AutoAnnouncer.Value)
+            {
+                DBHelper.setIntervalAutoAnnouncer(IntervalAutoAnnouncer.Value);
+                AutoAnnouncerTimer.Start();
+            }
+            
         }
 
         internal static void Chat_OnChatMessage(VChatEvent e)
@@ -144,6 +165,11 @@ namespace Notify
                     {
                         LoadConfigHelper.LoadDefaultAnnounce();
                     }
+
+                    if (!DBHelper.isEnabledAutoAnnouncer())
+                    {
+                        LoadConfigHelper.LoadAutoAnnouncerMessagesConfig();
+                    }
                     ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "Reloaded configuration of Notify mod.");
                     break;
             case " unignore vbloodannounce":
@@ -156,18 +182,143 @@ namespace Notify
                     text = FontColorChat.Green($"You will not receive any more notifications about the death of the VBlood. To undo this option use the command {FontColorChat.Yellow("!notify unignore vbloodannounce")}");
                     ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
                     break;
-            case " help":
-                    text = FontColorChat.Green($"{FontColorChat.Yellow("!notify unignore vbloodannounce")} for unignore notifications about the death of the VBlood.");
-                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
-                    text = FontColorChat.Green($"{FontColorChat.Yellow("!notify ignore vbloodannounce")} for ignore notifications about the death of the VBlood.");
-                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
-                    if (e.User.IsAdmin)
+            case " autoannouncer stop":
+                    if (!e.User.IsAdmin)
                     {
-                        text = FontColorChat.Green($"{FontColorChat.Yellow(FontColorChat.Red("[ADMIN]")+" !notify reload ")} To reload the configuration of the user messages online, offline or death of the VBlood boss.");
-                        ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                        ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "You do not have permissions to run this command");
                         break;
                     }
+                    DBHelper.setAutoAnnouncer(false);
+                    text = FontColorChat.Green($"AutoAnnouncer: {FontColorChat.Yellow("stop")}");
+                    AutoAnnouncerTimer.Stop();
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
                     break;
+            case " autoannouncer start":
+                    if (!e.User.IsAdmin)
+                    {
+                        ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "You do not have permissions to run this command");
+                        break;
+                    }
+                    DBHelper.setAutoAnnouncer(true);
+                    text = FontColorChat.Green($"AutoAnnouncer: {FontColorChat.Yellow("start")}");
+                    AutoAnnouncerTimer.Start();
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    break;
+            case " announceonline enabled":
+                if (!e.User.IsAdmin)
+                {
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "You do not have permissions to run this command");
+                    break;
+                }
+                DBHelper.setAnnounceOnline(true);
+                text = FontColorChat.Green($"announceonline: {FontColorChat.Yellow("enable")}");
+                ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                break;
+            case " announceonline disabled":
+                if (!e.User.IsAdmin)
+                {
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "You do not have permissions to run this command");
+                    break;
+                }
+                DBHelper.setAnnounceOnline(false);
+                text = FontColorChat.Green($"announceonline: {FontColorChat.Yellow("disabled")}");
+                ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                break;
+
+            case " announceoffline enabled":
+                if (!e.User.IsAdmin)
+                {
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "You do not have permissions to run this command");
+                    break;
+                }
+                DBHelper.setAnnounceOffline(true);
+                text = FontColorChat.Green($"announceoffline: {FontColorChat.Yellow("enable")}");
+                ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                break;
+            case " announceoffline disabled":
+                if (!e.User.IsAdmin)
+                {
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "You do not have permissions to run this command");
+                    break;
+                }
+                DBHelper.setAnnounceOffline(false);
+                text = FontColorChat.Green($"announceoffline: {FontColorChat.Yellow("disabled")}");
+                ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                break;
+
+            case " announcenewuser enabled":
+                if (!e.User.IsAdmin)
+                {
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "You do not have permissions to run this command");
+                    break;
+                }
+                DBHelper.setAnnounceNewUser(true);
+                text = FontColorChat.Green($"announcenewuser: {FontColorChat.Yellow("enable")}");
+                ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                break;
+            case " announcenewuser disabled":
+                if (!e.User.IsAdmin)
+                {
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "You do not have permissions to run this command");
+                    break;
+                }
+                DBHelper.setAnnounceNewUser(false);
+                text = FontColorChat.Green($"announcenewuser: {FontColorChat.Yellow("disabled")}");
+                ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                break;
+
+            case " vbloodannounce enabled":
+                if (!e.User.IsAdmin)
+                {
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "You do not have permissions to run this command");
+                    break;
+                }
+                DBHelper.setAnnounceVBlood(true);
+                text = FontColorChat.Green($"vbloodannounce: {FontColorChat.Yellow("enable")}");
+                ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                break;
+            case " vbloodannounce disabled":
+                if (!e.User.IsAdmin)
+                {
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, "You do not have permissions to run this command");
+                    break;
+                }
+                DBHelper.setAnnounceVBlood(false);
+                text = FontColorChat.Green($"vbloodannounce: {FontColorChat.Yellow("disabled")}");
+                ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                break;
+            case " help":
+                text = FontColorChat.Green($"{FontColorChat.Yellow("!notify unignore vbloodannounce")} for unignore notifications about the death of the VBlood.");
+                ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                text = FontColorChat.Green($"{FontColorChat.Yellow("!notify ignore vbloodannounce")} for ignore notifications about the death of the VBlood.");
+                ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                if (e.User.IsAdmin)
+                {
+                    text = FontColorChat.Green($"{FontColorChat.Yellow(FontColorChat.Red("[ADMIN]") + " !notify announceonline enabled")} Enabled announceonline System.");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    text = FontColorChat.Green($"{FontColorChat.Yellow(FontColorChat.Red("[ADMIN]") + " !notify announceonline disabled")} Disabled announceonline System.");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    text = FontColorChat.Green($"{FontColorChat.Yellow(FontColorChat.Red("[ADMIN]") + " !notify announceoffline enabled")} Enabled announceoffline System.");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    text = FontColorChat.Green($"{FontColorChat.Yellow(FontColorChat.Red("[ADMIN]") + " !notify announceoffline disabled")} Disabled announceoffline System.");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    text = FontColorChat.Green($"{FontColorChat.Yellow(FontColorChat.Red("[ADMIN]") + " !notify announcenewuser enabled")} Enabled announcenewuser System.");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    text = FontColorChat.Green($"{FontColorChat.Yellow(FontColorChat.Red("[ADMIN]") + " !notify announcenewuser disabled")} Disabled announcenewuser System.");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    text = FontColorChat.Green($"{FontColorChat.Yellow(FontColorChat.Red("[ADMIN]") + " !notify vbloodannounce enabled")} Enabled vbloodannounce System.");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    text = FontColorChat.Green($"{FontColorChat.Yellow(FontColorChat.Red("[ADMIN]") + " !notify vbloodannounce disabled")} Disabled vbloodannounce System.");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    text = FontColorChat.Green($"{FontColorChat.Yellow(FontColorChat.Red("[ADMIN]")+ " !notify autoannouncer start")} Start AutoAnnouncer System.");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    text = FontColorChat.Green($"{FontColorChat.Yellow(FontColorChat.Red("[ADMIN]")+ " !notify autoannouncer stop")} Stop AutoAnnouncer System.");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    text = FontColorChat.Green($"{FontColorChat.Yellow(FontColorChat.Red("[ADMIN]") + " !notify reload ")} To reload the configuration of the user messages online, offline or death of the VBlood boss.");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
+                    break;
+                }
+                break;
             default:
                 break;
             }

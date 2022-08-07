@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Notify</AssemblyName>
     <Description>Sends notify to system message when user connect, disconnect or kill boss in v rising</Description>
-    <Version>1.2.3</Version>
+    <Version>1.3.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
 	<UnhollowedDllPath>D:\steamcmd\steamapps\common\VRisingDedicatedServer\BepInEx\unhollowed</UnhollowedDllPath>
