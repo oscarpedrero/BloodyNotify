@@ -73,22 +73,24 @@ The notifications are fully customizable both by default and by each player, tho
 
 ## Chat Commands
 
-|COMMAND|DESCRIPTION
-|-------------------------|-------------------------------|
-|`!notify help`| Command that returns all available commands         
-|`!notify reload` (Only Admins)    | To reload the configuration of all config files.
-|`!notify announceonline enabled` (Only Admins)    | Enabled announceonline System. - NEW -
-|`!notify announceonline disabled` (Only Admins)    | Disabled announceonline System. - NEW -
-|`!notify announceoffline enabled` (Only Admins)    | Enabled announceoffline System. - NEW -
-|`!notify announceoffline disabled` (Only Admins)    | Disabled announceoffline System. - NEW -
-|`!notify announcenewuser enabled` (Only Admins)    | Enabled announcenewuser System. - NEW -
-|`!notify announcenewuser disabled` (Only Admins)    |  Disabled announcenewuser System. - NEW -
-|`!notify vbloodannounce enabled` (Only Admins)    | Enabled vbloodannounce System. - NEW -
-|`!notify vbloodannounce disabled` (Only Admins)    | Disabled vbloodannounce System. - NEW -
-|`!notify autoannouncer start` (Only Admins)    | Start AutoAnnouncer System. - NEW -
-|`!notify autoannouncer stop` (Only Admins)    | Stop AutoAnnouncer System. - NEW -
-|`!notify ignore vbloodannounce`| Turn on VBlood death notifications
-|`!notify unignore vbloodannounce`| Turn off VBlood death notifications
+| COMMAND                                          |DESCRIPTION
+|--------------------------------------------------|-------------------------------|
+| `!notify help`                                   | Command that returns all available commands         
+| `!notify reload` (Only Admins)                   | To reload the configuration of all config files.
+| `!notify announceonline enabled` (Only Admins)   | Enabled announceonline System. - NEW -
+| `!notify announceonline disabled` (Only Admins)  | Disabled announceonline System. - NEW -
+| `!notify announceoffline enabled` (Only Admins)  | Enabled announceoffline System. - NEW -
+| `!notify announceoffline disabled` (Only Admins) | Disabled announceoffline System. - NEW -
+| `!notify announcenewuser enabled` (Only Admins)  | Enabled announcenewuser System. - NEW -
+| `!notify announcenewuser disabled` (Only Admins) |  Disabled announcenewuser System. - NEW -
+| `!notify vbloodannounce enabled` (Only Admins)   | Enabled vbloodannounce System. - NEW -
+| `!notify vbloodannounce disabled` (Only Admins)  | Disabled vbloodannounce System. - NEW -
+| `!notify autoannouncer start` (Only Admins)      | Start AutoAnnouncer System. - NEW -
+| `!notify autoannouncer stop` (Only Admins)       | Stop AutoAnnouncer System. - NEW -
+| `!notify motd start` (Only Admins)               | Start Message of the day System. - NEW -
+| `!notify motd stop` (Only Admins)                | Stop Message of the day System. - NEW -
+| `!notify ignore vbloodannounce`                  | Turn on VBlood death notifications
+| `!notify unignore vbloodannounce`                | Turn off VBlood death notifications
 
 # Configuration
 
@@ -105,6 +107,7 @@ Once the mod installed, a configuration file will be created in the \BepInEx\con
 |UserOnline|`enabled `|Enable Announce when user online|true
 |AutoAnnouncer|`enabled `|Enable Auto Announcer|false
 |AutoAnnouncer|`interval `| Interval seconds for spam AutoAnnouncer.|300
+|MessageOfTheDay|`enabled `|Enable Auto Announcer|false
 
 > To reload the configuration of the user messages online, offline or death of the VBlood boss there is the chat command `!notify reload`
 
