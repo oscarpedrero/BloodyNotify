@@ -7,6 +7,13 @@ The notifications are fully customizable both by default and by each player, tho
 <details>
 <summary>Changelog</summary>
 
+`1.4.0`
+
+- Added a system for automatic message of the day (MOTD's) to go out to any player who connects to the server.
+- Added a configuration file was added to be able to configure Message of the day as you want.
+- Added chat command only for admins to enabled MOTD's when user online `!notify motd enabled`
+- Added chat command only for admins to disabled MOTD's when user online `!notify motd disabled`
+
 `1.3.0`
 
 - Added automatic announce system every certain time defined in the configuration file
@@ -208,6 +215,23 @@ To configure the Auto Announce messages you must edit the configuration file tha
 > Each element of the array is a line that will paint the message system
 
 > If you configure several messages, the system will go through one by one for each of the configured messages each time the defined interval is met.
+
+
+## Message of the day ( MOTD's ) - NEW
+
+To configure the Message of the day you must edit the configuration file that is in **/BepInEx/config/Notify/message_of_the_day.json**
+```
+{
+    "<color=#FFFFFF>Hello <i>#user#</i> this is Message of the day Line 1</color>", 
+    "<color=#B22222>Message of the day Line 2</color>",
+    "<color=#00FFFF>Message of the day Line 3</color>",
+    "<color=#FFFFFF>Message of the day Line 4</color>"
+}
+```
+
+> Each element of the array is a line that will paint the message system
+
+> The text string #user# is used to overwrite the name of the corresponding player(s)
 
 
 ## VBlood Announce Ignore

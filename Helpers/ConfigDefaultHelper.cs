@@ -75,6 +75,14 @@ namespace Notify.Helpers
             {  "nick" , true }
         };
 
+        public static List<string> DefaultMessageOfTheDay => new List<string>()
+        {
+            {  "#user# this is Message of the day Line 1" },
+            {  "Message of the day Line 2" },
+            {  "Message of the day Line 3" }
+        };
+
+
         public static string DefaultAutoAnnounceMessagesConfig = @"[[""Message 1 Line 1"",""Message 1 Line 2""],[""Message 2 Line 1"",""Message 2 Line 2"",""Message 2 Line 3"",""Message 2 Line 4""]]";
 
         public static void CreateDefaultNotificationTextConfig()
@@ -110,6 +118,50 @@ namespace Notify.Helpers
         public static void CreateAutoAnnouncerMessagesConfig()
         {
             File.WriteAllText(Path.Combine(ConfigPath, "auto_announcer_messages.json"), DefaultAutoAnnounceMessagesConfig);
+        }
+
+        public static void CreateMessagesOfTheDayConfig()
+        {
+            var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(DefaultMessageOfTheDay);
+            File.WriteAllText(Path.Combine(ConfigPath, "message_of_the_day.json"), jsonOutPut);
+        }
+
+        public static void CheckAndCreateConfigs()
+        {
+            if (!File.Exists(Path.Combine(ConfigPath, "users_online.json")))
+            {
+                CreateOnlineDefaultConfig();
+            }
+
+            if (!File.Exists(Path.Combine(ConfigPath, "users_offline.json")))
+            {
+                CreateOfflineDefaultConfig();
+            }
+
+            if (!File.Exists(Path.Combine(ConfigPath, "default_announce.json")))
+            {
+                CreateDefaultNotificationTextConfig();
+            }
+
+            if (!File.Exists(Path.Combine(ConfigPath, "prefabs_names.json")))
+            {
+                CreateLocationVBloodDefaultConfig();
+            }
+
+            if (!File.Exists(Path.Combine(ConfigPath, "vbloodannounce_ignore_users.json")))
+            {
+                CreateVBloodNotifyIgnoreConfig();
+            }
+
+            if (!File.Exists(Path.Combine(ConfigPath, "auto_announcer_messages.json")))
+            {
+                CreateAutoAnnouncerMessagesConfig();
+            }
+
+            if (!File.Exists(Path.Combine(ConfigPath, "message_of_the_day.json")))
+            {
+                CreateMessagesOfTheDayConfig();
+            }
         }
     }
 }

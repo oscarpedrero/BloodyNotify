@@ -13,8 +13,11 @@ namespace Notify.Helpers
         private static bool AnnounceVBlood = false;
         private static string VBloodFinalConcatCharacters = "and";
         private static bool AutoAnnouncer = false;
+        private static bool MessageOfTheDayEnabled = false;
         private static int IntervalAutoAnnouncer = 0;
         private static List<AutoAnnouncerMessage> AutoAnnouncerMessages = new List<AutoAnnouncerMessage>();
+
+        private static List<string> MessageOfTheDay = new List<string>();
 
         private static Dictionary<string, string> DefaultAnnounce { get; set; } = new Dictionary<string, string>();
 
@@ -251,6 +254,27 @@ namespace Notify.Helpers
         public static void addAutoAnnouncerMessages(AutoAnnouncerMessage autoAnnouncerMessages)
         {
             AutoAnnouncerMessages.Add(autoAnnouncerMessages);
+        }
+
+
+        public static void setMessageOfTheDayEnabled(bool _messageOfTheDay)
+        {
+            MessageOfTheDayEnabled = _messageOfTheDay;
+        }
+
+        public static bool isEnabledMessageOfTheDay()
+        {
+            return MessageOfTheDayEnabled;
+        }
+
+        public static void setMessageOfTheDay(List<string> _messageOfTheDay)
+        {
+            MessageOfTheDay = _messageOfTheDay;
+        }
+
+        public static List<string> getMessageOfTheDay()
+        {
+            return MessageOfTheDay;
         }
 
 

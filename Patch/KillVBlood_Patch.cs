@@ -15,7 +15,7 @@ using Wetstone.API;
  * Based in Code By syllabicat from VBloodKills (https://github.com/syllabicat/VBloodKills)
  * 
 **/
-namespace Notify.Hooks;
+namespace Notify.Patch;
 
 [HarmonyPatch]
 public class VBloodSystem_Patch
@@ -59,7 +59,7 @@ public class VBloodSystem_Patch
                         didSkip = true;
                         continue;
                     }
-                    Utils.VBloodKillers.SendAnnouncementMessage(kvp.Key);
+                    VBloodKillers.SendAnnouncementMessage(kvp.Key);
                 }
                 checkKiller = didSkip;
             }

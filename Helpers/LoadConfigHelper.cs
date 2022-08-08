@@ -19,6 +19,7 @@ namespace Notify.Helpers
             LoadPrefabsName();
             VBloodNotifyIgnoreConfig();
             LoadAutoAnnouncerMessagesConfig();
+            LoadMessageOfTheDayConfig();
         }
         public static void LoadDefaultAnnounce()
         {
@@ -66,6 +67,13 @@ namespace Notify.Helpers
                 DBHelper.addAutoAnnouncerMessages(message);
             }
             
+        }
+
+        public static void LoadMessageOfTheDayConfig()
+        {
+            var json = File.ReadAllText(Path.Combine(ConfigDefaultHelper.ConfigPath, "message_of_the_day.json"));
+            var dictionary = JsonSerializer.Deserialize<List<string>>(json);
+            DBHelper.setMessageOfTheDay(dictionary);
         }
 
     }

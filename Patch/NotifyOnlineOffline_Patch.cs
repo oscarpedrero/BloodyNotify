@@ -6,8 +6,9 @@ using ProjectM.Network;
 using Stunlock.Network;
 using Wetstone.API;
 using VRising.GameData;
+using VRising.GameData.Methods;
 
-namespace Notify.Hooks;
+namespace Notify.Patch;
 
 [HarmonyPatch]
 public class ServerBootstrapSystem_Patch
@@ -43,6 +44,18 @@ public class ServerBootstrapSystem_Patch
                 var _message = DBHelper.getUserOnlineValue("");
                 ServerChatUtils.SendSystemMessageToAllClients(entityManager, FontColorChat.Green($"{_message}"));
             }
+        }
+
+        if (DBHelper.isEnabledMessageOfTheDay())
+        {
+            var _messageLines = DBHelper.getMessageOfTheDay();
+            var lineReplace = "";
+            foreach (string line in _messageLines)
+            {
+                lineReplace = line.Replace("#user#", $"{user.CharacterName}");
+                user.SendSystemMessage(lineReplace);
+            }
+            
         }
     }
 
