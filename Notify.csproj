@@ -4,11 +4,11 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Notify</AssemblyName>
     <Description>Sends notify to system message when user connect, disconnect or kill boss in v rising</Description>
-    <Version>1.4.0</Version>
+    <Version>1.4.1</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
 	<UnhollowedDllPath>D:\steamcmd\steamapps\common\VRisingDedicatedServer\BepInEx\unhollowed</UnhollowedDllPath>
-	<UnhollowedDllMacPath>/Users/opedrero/Projects/unhollowed</UnhollowedDllMacPath>
+	  <UnhollowedDllMacPath>/Users/opedrero/Projects/unhollowed</UnhollowedDllMacPath>
   </PropertyGroup>
 
 	<Target Name="CopyDLLs" AfterTargets="Build">
@@ -29,433 +29,433 @@
   </ItemGroup>
 	<ItemGroup>
 		<Reference Include="com.stunlock.console">
-			<HintPath>$(UnhollowedDllMacPath)\com.stunlock.console.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\com.stunlock.console.dll</HintPath>
 		</Reference>
 		<Reference Include="com.stunlock.metrics">
-			<HintPath>$(UnhollowedDllMacPath)\com.stunlock.metrics.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\com.stunlock.metrics.dll</HintPath>
 		</Reference>
 		<Reference Include="com.stunlock.network.lidgren">
-			<HintPath>$(UnhollowedDllMacPath)\com.stunlock.network.lidgren.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\com.stunlock.network.lidgren.dll</HintPath>
 		</Reference>
 		<Reference Include="com.stunlock.network.steam">
-			<HintPath>$(UnhollowedDllMacPath)\com.stunlock.network.steam.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\com.stunlock.network.steam.dll</HintPath>
 		</Reference>
 		<Reference Include="Il2CppMono.Security">
-			<HintPath>$(UnhollowedDllMacPath)\Il2CppMono.Security.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Il2CppMono.Security.dll</HintPath>
 		</Reference>
 		<Reference Include="Il2CppSystem">
-			<HintPath>$(UnhollowedDllMacPath)\Il2CppSystem.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Il2CppSystem.dll</HintPath>
 		</Reference>
 		<Reference Include="Il2CppSystem.Configuration">
-			<HintPath>$(UnhollowedDllMacPath)\Il2CppSystem.Configuration.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Il2CppSystem.Configuration.dll</HintPath>
 		</Reference>
 		<Reference Include="Il2CppSystem.Core">
-			<HintPath>$(UnhollowedDllMacPath)\Il2CppSystem.Core.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Il2CppSystem.Core.dll</HintPath>
 		</Reference>
 		<Reference Include="Il2CppSystem.Data">
-			<HintPath>$(UnhollowedDllMacPath)\Il2CppSystem.Data.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Il2CppSystem.Data.dll</HintPath>
 		</Reference>
 		<Reference Include="Il2CppSystem.Numerics">
-			<HintPath>$(UnhollowedDllMacPath)\Il2CppSystem.Numerics.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Il2CppSystem.Numerics.dll</HintPath>
 		</Reference>
 		<Reference Include="Il2CppSystem.Runtime.Serialization">
-			<HintPath>$(UnhollowedDllMacPath)\Il2CppSystem.Runtime.Serialization.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Il2CppSystem.Runtime.Serialization.dll</HintPath>
 		</Reference>
 		<Reference Include="Il2CppSystem.Xml">
-			<HintPath>$(UnhollowedDllMacPath)\Il2CppSystem.Xml.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Il2CppSystem.Xml.dll</HintPath>
 		</Reference>
 		<Reference Include="Il2CppSystem.Xml.Linq">
-			<HintPath>$(UnhollowedDllMacPath)\Il2CppSystem.Xml.Linq.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Il2CppSystem.Xml.Linq.dll</HintPath>
 		</Reference>
 		<Reference Include="Lidgren.Network">
-			<HintPath>$(UnhollowedDllMacPath)\Lidgren.Network.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Lidgren.Network.dll</HintPath>
 		</Reference>
 		<Reference Include="MagicaCloth">
-			<HintPath>$(UnhollowedDllMacPath)\MagicaCloth.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\MagicaCloth.dll</HintPath>
 		</Reference>
 		<Reference Include="Malee.ReorderableList">
-			<HintPath>$(UnhollowedDllMacPath)\Malee.ReorderableList.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Malee.ReorderableList.dll</HintPath>
 		</Reference>
 		<Reference Include="Newtonsoft.Json">
-			<HintPath>$(UnhollowedDllMacPath)\Newtonsoft.Json.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Newtonsoft.Json.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.Behaviours">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.Behaviours.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.Behaviours.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.Camera">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.Camera.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.Camera.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.CastleBuilding.Systems">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.CastleBuilding.Systems.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.CastleBuilding.Systems.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.Conversion">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.Conversion.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.Conversion.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.Gameplay.Scripting">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.Gameplay.Scripting.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.Gameplay.Scripting.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.Gameplay.Systems">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.Gameplay.Systems.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.Gameplay.Systems.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.GeneratedNetCode">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.GeneratedNetCode.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.GeneratedNetCode.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.Misc.Systems">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.Misc.Systems.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.Misc.Systems.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.Pathfinding">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.Pathfinding.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.Pathfinding.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.Presentation.Systems">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.Presentation.Systems.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.Presentation.Systems.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.Roofs">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.Roofs.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.Roofs.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.ScriptableSystems">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.ScriptableSystems.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.ScriptableSystems.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.Shared">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.Shared.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.Shared.dll</HintPath>
 		</Reference>
 		<Reference Include="IL2Cppmscorlib">
-			<HintPath>$(UnhollowedDllMacPath)\Il2Cppmscorlib.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Il2Cppmscorlib.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.dll</HintPath>
 		</Reference>
 		<Reference Include="com.stunlock.network">
-			<HintPath>$(UnhollowedDllMacPath)\com.stunlock.network.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\com.stunlock.network.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.Shared.Systems">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.Shared.Systems.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.Shared.Systems.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.Terrain">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.Terrain.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.Terrain.dll</HintPath>
 		</Reference>
 		<Reference Include="RootMotion">
-			<HintPath>$(UnhollowedDllMacPath)\RootMotion.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\RootMotion.dll</HintPath>
 		</Reference>
 		<Reference Include="Sequencer">
-			<HintPath>$(UnhollowedDllMacPath)\Sequencer.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Sequencer.dll</HintPath>
 		</Reference>
 		<Reference Include="Stunlock.Fmod">
-			<HintPath>$(UnhollowedDllMacPath)\Stunlock.Fmod.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Stunlock.Fmod.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Burst">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Burst.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Burst.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Burst.Unsafe">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Burst.Unsafe.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Burst.Unsafe.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Collections">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Collections.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Collections.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Collections.LowLevel.ILSupport">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Deformations">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Deformations.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Deformations.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Entities">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Entities.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Entities.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.HUD">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.HUD.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.HUD.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Entities.Hybrid">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Entities.Hybrid.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Entities.Hybrid.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Jobs">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Jobs.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Jobs.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Mathematics">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Mathematics.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Mathematics.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Mathematics.Extensions">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Mathematics.Extensions.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Mathematics.Extensions.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Mathematics.Extensions.Hybrid">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Mathematics.Extensions.Hybrid.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Mathematics.Extensions.Hybrid.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Physics">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Physics.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Physics.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Physics.Hybrid">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Physics.Hybrid.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Physics.Hybrid.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Properties">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Properties.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Properties.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Rendering.Hybrid">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Rendering.Hybrid.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Rendering.Hybrid.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.RenderPipelines.Core.Runtime">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.RenderPipelines.HighDefinition.Config.Runtime">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.RenderPipelines.HighDefinition.Config.Runtime.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.RenderPipelines.HighDefinition.Config.Runtime.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Scenes">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Scenes.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Scenes.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Serialization">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Serialization.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Serialization.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Services.Analytics">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Services.Analytics.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Services.Analytics.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Services.Core">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Services.Core.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Services.Core.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Services.Core.Configuration">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Services.Core.Configuration.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Services.Core.Configuration.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Services.Core.Device">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Services.Core.Device.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Services.Core.Device.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Services.Core.Environments">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Services.Core.Environments.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Services.Core.Environments.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Services.Core.Environments.Internal">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Services.Core.Environments.Internal.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Services.Core.Environments.Internal.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Services.Core.Internal">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Services.Core.Internal.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Services.Core.Internal.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Services.Core.Registration">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Services.Core.Registration.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Services.Core.Registration.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Services.Core.Scheduler">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Services.Core.Scheduler.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Services.Core.Scheduler.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Services.Core.Telemetry">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Services.Core.Telemetry.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Services.Core.Telemetry.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Services.Core.Threading">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Services.Core.Threading.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Services.Core.Threading.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.TextMeshPro">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.TextMeshPro.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.TextMeshPro.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Transforms">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Transforms.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Transforms.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.Transforms.Hybrid">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.Transforms.Hybrid.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.Transforms.Hybrid.dll</HintPath>
 		</Reference>
 		<Reference Include="Unity.VisualEffectGraph.Runtime">
-			<HintPath>$(UnhollowedDllMacPath)\Unity.VisualEffectGraph.Runtime.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Unity.VisualEffectGraph.Runtime.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.AccessibilityModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.AccessibilityModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.AccessibilityModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.AIModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.AIModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.AIModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.AndroidJNIModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.AndroidJNIModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.AndroidJNIModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.AnimationModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.AnimationModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.AnimationModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.ARModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.ARModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.ARModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.AssetBundleModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.AssetBundleModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.AssetBundleModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.AudioModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.AudioModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.AudioModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.ClothModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.ClothModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.ClothModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.ClusterInputModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.ClusterInputModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.ClusterInputModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.ClusterRendererModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.ClusterRendererModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.ClusterRendererModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.CoreModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.CoreModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.CoreModule.dll</HintPath>
 		</Reference>
 		<Reference Include="ProjectM.CodeGeneration">
-			<HintPath>$(UnhollowedDllMacPath)\ProjectM.CodeGeneration.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\ProjectM.CodeGeneration.dll</HintPath>
 		</Reference>
 		<Reference Include="Stunlock.Core">
-			<HintPath>$(UnhollowedDllMacPath)\Stunlock.Core.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\Stunlock.Core.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.CrashReportingModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.CrashReportingModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.CrashReportingModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.DirectorModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.DirectorModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.DirectorModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.DSPGraphModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.DSPGraphModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.DSPGraphModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.GameCenterModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.GameCenterModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.GameCenterModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.GIModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.GIModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.GIModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.GridModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.GridModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.GridModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.HotReloadModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.HotReloadModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.HotReloadModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.ImageConversionModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.ImageConversionModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.ImageConversionModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.IMGUIModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.IMGUIModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.IMGUIModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.InputLegacyModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.InputLegacyModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.InputLegacyModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.InputModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.InputModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.InputModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.JSONSerializeModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.JSONSerializeModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.JSONSerializeModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.LocalizationModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.LocalizationModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.LocalizationModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.ParticleSystemModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.ParticleSystemModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.ParticleSystemModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.PerformanceReportingModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.PerformanceReportingModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.PerformanceReportingModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.Physics2DModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.Physics2DModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.Physics2DModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.PhysicsModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.PhysicsModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.PhysicsModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.ProfilerModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.ProfilerModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.ProfilerModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.ScreenCaptureModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.ScreenCaptureModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.ScreenCaptureModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.SharedInternalsModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.SharedInternalsModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.SharedInternalsModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.SpriteMaskModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.SpriteMaskModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.SpriteMaskModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.SpriteShapeModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.SpriteShapeModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.SpriteShapeModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.StreamingModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.StreamingModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.StreamingModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.SubstanceModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.SubstanceModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.SubstanceModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.SubsystemsModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.SubsystemsModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.SubsystemsModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.TerrainModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.TerrainModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.TerrainModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.TerrainPhysicsModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.TerrainPhysicsModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.TextCoreModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.TextCoreModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.TextCoreModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.TextRenderingModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.TextRenderingModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.TextRenderingModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.TilemapModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.TilemapModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.TilemapModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.TLSModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.TLSModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.TLSModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UI">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UI.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UI.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UIElementsModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UIElementsModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UIElementsModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UIElementsNativeModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UIElementsNativeModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UIElementsNativeModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UIModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UIModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UIModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UmbraModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UmbraModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UmbraModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UNETModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UNETModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UNETModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UnityAnalyticsModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UnityAnalyticsModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UnityConnectModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UnityConnectModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UnityConnectModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UnityCurlModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UnityCurlModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UnityCurlModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UnityTestProtocolModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UnityTestProtocolModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UnityWebRequestAudioModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UnityWebRequestModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UnityWebRequestModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UnityWebRequestModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UnityWebRequestTextureModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.UnityWebRequestWWWModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.VehiclesModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.VehiclesModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.VehiclesModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.VFXModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.VFXModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.VFXModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.VideoModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.VideoModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.VideoModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.VirtualTexturingModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.VirtualTexturingModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.VirtualTexturingModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.VRModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.VRModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.VRModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.WindModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.WindModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.WindModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.XRModule">
-			<HintPath>$(UnhollowedDllMacPath)\UnityEngine.XRModule.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\UnityEngine.XRModule.dll</HintPath>
 		</Reference>
 		<Reference Include="VivoxUnity">
-			<HintPath>$(UnhollowedDllMacPath)\VivoxUnity.dll</HintPath>
+			<HintPath>$(UnhollowedDllPath)\VivoxUnity.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 	<ItemGroup>
