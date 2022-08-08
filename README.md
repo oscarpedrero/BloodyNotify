@@ -13,6 +13,7 @@ The notifications are fully customizable both by default and by each player, tho
 - Added a configuration file was added to be able to configure Message of the day as you want.
 - Added chat command only for admins to enabled MOTD's when user online `!notify motd enabled`
 - Added chat command only for admins to disabled MOTD's when user online `!notify motd disabled`
+- Refactor folders of proyect
 
 `1.3.0`
 
