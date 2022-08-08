@@ -114,7 +114,7 @@ Once the mod installed, a configuration file will be created in the \BepInEx\con
 ## Default Messages
 
 To configure the default messages in case you do not have personalized messages per player you only have to edit the configuration file that is in **/BepInEx/config/Notify/default_announce.json**
-```
+```json
 {
   "online":"#user# is online!",
   "offline":"#user# has gone offline!",
@@ -133,7 +133,7 @@ To configure the default messages in case you do not have personalized messages 
 
 To configure the customize messages per player connected, you only have to edit the configuration file that is in **/BepInEx/config/Notify/users_online.json**
 
-```
+```json
 {
    "CharacterName": "#user# The best player of server is online!",
    "OtherCharacterName": "The most wanted #user# is online!"
@@ -143,7 +143,7 @@ To configure the customize messages per player connected, you only have to edit 
 
 To configure the customize messages per player disconnected, you only have to edit the configuration file that is in **/BepInEx/config/Notify/users_offline.json**
 
-```
+```json
 {
    "CharacterName": "#user# The best player of server is offline!",
    "OtherCharacterName": "The most wanted #user# is offline!"
@@ -154,7 +154,7 @@ To configure the customize messages per player disconnected, you only have to ed
 ## Translate VBlod boss name
 
 To translate the name of VBlood boss, you only have to edit the configuration file that is in **/BepInEx/config/Notify/prefabs_names.json**
-```
+```json
 {
 	"CHAR_Wildlife_Wolf_VBlood": "Alpha Wolf" ,
 	"CHAR_Bandit_Deadeye_Frostarrow_VBlood": "Keely the Frost Archer" ,
@@ -199,7 +199,7 @@ To translate the name of VBlood boss, you only have to edit the configuration fi
 ## Auto Announcer Messages - NEW
 
 To configure the Auto Announce messages you must edit the configuration file that is in **/BepInEx/config/Notify/auto_announcer_messages.json**
-```
+```json
 [
     [
         "<color=#FFFFFF> Message 1 Line 1</color>", 
@@ -224,7 +224,7 @@ To configure the Auto Announce messages you must edit the configuration file tha
 ## Message of the day ( MOTD's ) - NEW
 
 To configure the Message of the day you must edit the configuration file that is in **/BepInEx/config/Notify/message_of_the_day.json**
-```
+```json
 {
     "<color=#FFFFFF>Hello <i>#user#</i> this is Message of the day Line 1</color>", 
     "<color=#B22222>Message of the day Line 2</color>",
@@ -242,7 +242,7 @@ To configure the Message of the day you must edit the configuration file that is
 
 If you want to do it by hand you just have to edit the **/BepInEx/config/Notify/vbloodannounce_ignore_users.json** file to add or remove players
 
-```
+```json
 {
    "CharacterName": true,
    "OtherCharacterName": true
