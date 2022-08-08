@@ -98,16 +98,16 @@ Once the mod installed, a configuration file will be created in the \BepInEx\con
 
 **Notify.cfg**
 
-|SECTION|PARAM|DESCRIPTION| DEFAULT
-|----------------|-------------------------------|-----------------------------|-----------------------------|
-|AnnounceVBlood|`enabled `            |Enable Announce when user/users kill a VBlood Boss            | True
-|AnnounceVBlood        |`VBloodFinalConcatCharacters`            |Final string for concat two or more players kill a VBlood Boss.            | and
-|NewUserOnline|`enabled `|Enable Announce when new user create in server|true
-|UserOffline|`enabled `|Enable Announce when user offline |true
-|UserOnline|`enabled `|Enable Announce when user online|true
-|AutoAnnouncer|`enabled `|Enable Auto Announcer|false
-|AutoAnnouncer|`interval `| Interval seconds for spam AutoAnnouncer.|300
-|MessageOfTheDay|`enabled `|Enable Auto Announcer|false
+|SECTION|PARAM| DESCRIPTION                                                     | DEFAULT
+|----------------|-------------------------------|-----------------------------------------------------------------|-----------------------------|
+|AnnounceVBlood|`enabled `            | Enable Announce when user/users kill a VBlood Boss              | true
+|AnnounceVBlood        |`VBloodFinalConcatCharacters`            | Final string for concat two or more players kill a VBlood Boss. | and
+|NewUserOnline|`enabled `| Enable Announce when new user create in server                  |true
+|UserOffline|`enabled `| Enable Announce when user offline                               |true
+|UserOnline|`enabled `| Enable Announce when user online                                |true
+|AutoAnnouncer|`enabled `| Enable Auto Announcer                                           |false
+|AutoAnnouncer|`interval `| Interval seconds for spam AutoAnnouncer.                        |300
+|MessageOfTheDay|`enabled `| Enable Message Of The Day                                       |false
 
 > To reload the configuration of the user messages online, offline or death of the VBlood boss there is the chat command `!notify reload`
 
