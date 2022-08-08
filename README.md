@@ -4,6 +4,18 @@ A mod that notifies when a user connects or disconnects from the server, new use
 
 The notifications are fully customizable both by default and by each player, thos of connecting and disconnecting.
 
+### Actual Features
+
+- [x] Announce User Online
+- [x] Announce User Offline
+- [x] Announce kill VBlood Boss
+- [x] Auto Announcer
+- [x] Message Of The Day
+
+### Next Features
+
+- [ ] Announce Admin use console command to another admins online
+
 <details>
 <summary>Changelog</summary>
 
