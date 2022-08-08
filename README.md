@@ -1,9 +1,5 @@
 # Notify - Mod Server for V Rising
 
-A mod that notifies when a user connects or disconnects from the server, new user connect from the server, when a player kills a VBlood boss and auto announce system that runs every certain interval
-
-The notifications are fully customizable both by default and by each player, thos of connecting and disconnecting.
-
 ### Actual Features
 
 - [x] Announce User Online
