@@ -87,8 +87,8 @@ The notifications are fully customizable both by default and by each player, tho
 | `!notify vbloodannounce disabled` (Only Admins)  | Disabled vbloodannounce System. - NEW -
 | `!notify autoannouncer start` (Only Admins)      | Start AutoAnnouncer System. - NEW -
 | `!notify autoannouncer stop` (Only Admins)       | Stop AutoAnnouncer System. - NEW -
-| `!notify motd start` (Only Admins)               | Start Message of the day System. - NEW -
-| `!notify motd stop` (Only Admins)                | Stop Message of the day System. - NEW -
+| `!notify motd start` (Only Admins)               | Enabled Message of the day System. - NEW -
+| `!notify motd stop` (Only Admins)                | Disabled Message of the day System. - NEW -
 | `!notify ignore vbloodannounce`                  | Turn on VBlood death notifications
 | `!notify unignore vbloodannounce`                | Turn off VBlood death notifications
 
