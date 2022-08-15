@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Notify</AssemblyName>
     <Description>Sends notify to system message when user connect, disconnect or kill boss in v rising</Description>
-    <Version>1.4.2</Version>
+    <Version>1.4.3</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
 	<UnhollowedDllPath>D:\steamcmd\steamapps\common\VRisingDedicatedServer\BepInEx\unhollowed</UnhollowedDllPath>
@@ -23,8 +23,8 @@
 	  <PackageReference Include="Costura.Fody" Version="5.7.0">
 		  <PrivateAssets>all</PrivateAssets>
 	  </PackageReference>
+	  <PackageReference Include="GT.VRising.GameData" Version="0.2.3" />
 	  <PackageReference Include="System.Text.Json" Version="6.0.5" />
-	  <PackageReference Include="VRising.GameData" Version="0.2.2" />
 	  <PackageReference Include="Wetstone" Version="1.1.0" />
   </ItemGroup>
 	<ItemGroup>

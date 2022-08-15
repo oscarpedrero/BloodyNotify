@@ -5,8 +5,8 @@ using ProjectM;
 using ProjectM.Network;
 using Stunlock.Network;
 using Wetstone.API;
-using VRising.GameData;
-using VRising.GameData.Methods;
+using GT.VRising.GameData;
+using GT.VRising.GameData.Methods;
 
 namespace Notify.Patch;
 

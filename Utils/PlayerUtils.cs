@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Unity.Collections;
 using Unity.Entities;
-using VRising.GameData;
+using GT.VRising.GameData;
 using Wetstone.API;
 
 namespace Notify.Utils

@@ -6,7 +6,7 @@ For the correct functioning of this mod you must have the following dependencies
 
 - [BepInExPack V Rising ](https://v-rising.thunderstore.io/package/BepInEx/BepInExPack_V_Rising/) 
 - [WetStone 1.1.0](https://v-rising.thunderstore.io/package/molenzwiebel/Wetstone/) 
-- [VRising.GameData 0.2.2](https://v-rising.thunderstore.io/package/adainrivers/VRising_GameData/) -- IMPORTANT: NEW FROM VERSION 1.4.2
+- [GT.VRising.GameData 0.2.2](https://v-rising.thunderstore.io/package/adainrivers/GT_VRising_GameData/) -- IMPORTANT: NEW FROM VERSION 1.4.3
 
 ### Actual Features
 
@@ -23,9 +23,13 @@ For the correct functioning of this mod you must have the following dependencies
 <details>
 <summary>Changelog</summary>
 
+`1.4.3`
+
+- Updated the GT.VRising.GameData framework to version 0.2.3
+
 `1.4.2`
 
-- Fixed bugs and improve performance with AutoAnnouncer
+- Fixed bugs and improve performance with AutoAnnouncer Timer ( use solution from [RandomEncounters](https://github.com/adainrivers/randomencounters))
 - Updated the VRising.GameData framework to version 0.2.2
 
 `1.4.1`
@@ -279,4 +283,8 @@ If you need assistance you can ask in the discord [V Rising Mod Community](https
 
 ## Credits
 
-For the development of this mod i have used parts of the code of [Kaltharos (RPGMods)](https://github.com/Kaltharos/RPGMods) , [syllabicat (VBloodKills)](https://github.com/syllabicat/VBloodKills) and [adainrivers (VRising.GameData)](https://github.com/adainrivers/VRising.GameData)
+For the development of this mod i have used parts of the code of: 
+- [Kaltharos (RPGMods)](https://github.com/Kaltharos/RPGMods) 
+- [syllabicat (VBloodKills)](https://github.com/syllabicat/VBloodKills) 
+- [adainrivers (VRising.GameData)](https://github.com/adainrivers/VRising.GameData)
+- [adainrivers (RandomEncounters)](https://github.com/adainrivers/randomencounters)
