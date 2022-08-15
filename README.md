@@ -6,7 +6,7 @@ For the correct functioning of this mod you must have the following dependencies
 
 - [BepInExPack V Rising ](https://v-rising.thunderstore.io/package/BepInEx/BepInExPack_V_Rising/) 
 - [WetStone 1.1.0](https://v-rising.thunderstore.io/package/molenzwiebel/Wetstone/) 
-- [VRising.GameData 0.2.2](https://v-rising.thunderstore.io/package/adainrivers/VRising_GameData/) -- IMPORTANT FROM VERSION 1.4.1
+- [VRising.GameData 0.2.2](https://v-rising.thunderstore.io/package/adainrivers/VRising_GameData/) -- IMPORTANT FROM VERSION 1.4.2
 
 ### Actual Features
 
