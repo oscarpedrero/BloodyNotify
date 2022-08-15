@@ -1,72 +1,87 @@
 ﻿using Notify.Helpers;
-using ProjectM;
+using Notify.Patch;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Timers;
-using Wetstone.API;
+using Unity.Entities;
 
 namespace Notify.AutoAnnouncer.Timers
 {
 
-    public class AutoAnnouncerTimer
+    public class AutoAnnouncerTimer : IDisposable
     {
-        private static int __indexMessage = 0;
-        private static Timer aTimer;
-        public static void Start()
+
+        private bool _enabled;
+        private bool _isRunning;
+        private DateTime _lastRunTime;
+        private TimeSpan _delay;
+        private Action<World> _action;
+        private Func<object, TimeSpan> _delayAction;
+
+        public void Start(Action<World> action, TimeSpan delay)
         {
-            aTimer = new Timer
-            {
-                Interval = DBHelper.getIntervalAutoAnnouncer()
-            };
-
-            aTimer.Elapsed += OnTimedEvent;
-
-            aTimer.AutoReset = true;
-
-            aTimer.Enabled = true;
-
+            _delay = delay;
+            _lastRunTime = DateTime.UtcNow - delay;
+            _action = action;
+            _enabled = true;
+            ServerEvents_Patch.OnUpdate += Update;
         }
 
-        public static void Stop()
+        public void Start(Action<World> action, Func<object, TimeSpan> delayAction)
         {
-            aTimer.Enabled = false;
+            _delayAction = delayAction;
+            _delay = _delayAction.Invoke(1);
+            _lastRunTime = DateTime.UtcNow;
+            _action = action;
+            _enabled = true;
+            ServerEvents_Patch.OnUpdate += Update;
         }
 
-        private static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
+        private void Update(World world)
         {
-            var messages = DBHelper.getAutoAnnouncerMessages();
-
-            if(messages.Count > 0)
+            if (!_enabled || _isRunning)
             {
-                if(messages.Count == 1)
-                {
-                    foreach (var line in messages[0].MessageLines)
-                    {
-                        ServerChatUtils.SendSystemMessageToAllClients(VWorld.Server.EntityManager, line);
-                    }
-                } else
-                {
-                    foreach(var line in messages[__indexMessage].MessageLines)
-                    {
-                        ServerChatUtils.SendSystemMessageToAllClients(VWorld.Server.EntityManager, line);
-                    }
-
-                    __indexMessage++;
-
-                    if (__indexMessage >= messages.Count)
-                    {
-                        __indexMessage = 0;
-                    }
-                }
-            } else
-            {
-                aTimer.Enabled = false;
+                return;
             }
 
+            if (_lastRunTime + _delay >= DateTime.UtcNow)
+            {
+                return;
+            }
 
-            Plugin.Logger.LogWarning("Timer executed");
+            _isRunning = true;
+            try
+            {
+                Plugin.Logger.LogDebug("Executing timer.");
+                _action.Invoke(world);
+            }
+            catch (Exception ex)
+            {
+                Plugin.Logger.LogError(ex);
+            }
+            finally
+            {
+                var secondAutoAnnouncer = DBHelper.getIntervalAutoAnnouncer();
+                if (_delayAction != null)
+                {
+                    _delay = _delayAction.Invoke(secondAutoAnnouncer);
+                }
+                _lastRunTime = DateTime.UtcNow;
+                _isRunning = false;
+            }
         }
 
+        public void Stop()
+        {
+            ServerEvents_Patch.OnUpdate -= Update;
+            _enabled = false;
+        }
+
+        public void Dispose()
+        {
+            if (_enabled)
+            {
+                Stop();
+            }
+        }
     }
 }
+

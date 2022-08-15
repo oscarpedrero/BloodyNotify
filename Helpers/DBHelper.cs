@@ -243,7 +243,7 @@ namespace Notify.Helpers
 
         public static void setIntervalAutoAnnouncer(int intervalAutoAnnouncer)
         {
-            IntervalAutoAnnouncer = intervalAutoAnnouncer * 1000;
+            IntervalAutoAnnouncer = intervalAutoAnnouncer;
         }
 
         public static List<AutoAnnouncerMessage> getAutoAnnouncerMessages()

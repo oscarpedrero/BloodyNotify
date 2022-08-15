@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Notify</AssemblyName>
     <Description>Sends notify to system message when user connect, disconnect or kill boss in v rising</Description>
-    <Version>1.4.1</Version>
+    <Version>1.4.2</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
 	<UnhollowedDllPath>D:\steamcmd\steamapps\common\VRisingDedicatedServer\BepInEx\unhollowed</UnhollowedDllPath>
@@ -18,14 +18,14 @@
 	</Target>
 
   <ItemGroup>
-    <PackageReference Include="BepInEx.IL2CPP" Version="6.0.0-be.574" IncludeAssets="compile" />
-    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.1.0" />
-    <PackageReference Include="Costura.Fody" Version="5.7.0">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="System.Text.Json" Version="6.0.5" />
-    <PackageReference Include="VRising.GameData" Version="0.1.0" />
-    <PackageReference Include="Wetstone" Version="1.1.0" />
+	  <PackageReference Include="BepInEx.IL2CPP" Version="6.0.0-*" IncludeAssets="compile" />
+	  <PackageReference Include="BepInEx.PluginInfoProps" Version="1.1.0" />
+	  <PackageReference Include="Costura.Fody" Version="5.7.0">
+		  <PrivateAssets>all</PrivateAssets>
+	  </PackageReference>
+	  <PackageReference Include="System.Text.Json" Version="6.0.5" />
+	  <PackageReference Include="VRising.GameData" Version="0.2.2" />
+	  <PackageReference Include="Wetstone" Version="1.1.0" />
   </ItemGroup>
 	<ItemGroup>
 		<Reference Include="com.stunlock.console">
@@ -463,7 +463,6 @@
 	  <None Remove="Hooks\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Patch\" />
 	  <Folder Include="Hooks\" />
 	</ItemGroup>
 </Project>

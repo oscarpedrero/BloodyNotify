@@ -83,7 +83,7 @@ namespace Notify.Hooks
                     }
                     DBHelper.setAutoAnnouncer(false);
                     text = FontColorChat.Green($"AutoAnnouncer: {FontColorChat.Yellow("stop")}");
-                    AutoAnnouncerTimer.Stop();
+                    Plugin.StopAutoAnnouncer();
                     ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
                     break;
                 case " autoannouncer start":
@@ -94,7 +94,7 @@ namespace Notify.Hooks
                     }
                     DBHelper.setAutoAnnouncer(true);
                     text = FontColorChat.Green($"AutoAnnouncer: {FontColorChat.Yellow("start")}");
-                    AutoAnnouncerTimer.Start();
+                    Plugin.StartAutoAnnouncer();
                     ServerChatUtils.SendSystemMessageToClient(entityManager, e.User, text);
                     break;
                 case " announceonline enabled":

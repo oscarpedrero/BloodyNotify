@@ -22,7 +22,7 @@ public class ServerBootstrapSystem_Patch
         var serverClient = __instance._ApprovedUsersLookup[userIndex];
         var userEntity = serverClient.UserEntity;
 
-        var user = GameData.Users.GetUserFromEntity(userEntity);
+        var user = GameData.Users.FromEntity(userEntity);
 
 
         bool isNewPlayer = PlayerUtils.isNewUser(userEntity);
@@ -71,7 +71,7 @@ public class ServerBootstrapSystem_Patch
                 var userIndex = __instance._NetEndPointToApprovedUserIndex[netConnectionId];
                 var serverClient = __instance._ApprovedUsersLookup[userIndex];
                 var userEntity = serverClient.UserEntity;
-                var user = GameData.Users.GetUserFromEntity(userEntity);
+                var user = GameData.Users.FromEntity(userEntity);
                 var userNick = user.CharacterName;
                 var _message = DBHelper.getUserOfflineValue(userNick);
                 _message = _message.Replace("#user#", $"{FontColorChat.Yellow(userNick)}");

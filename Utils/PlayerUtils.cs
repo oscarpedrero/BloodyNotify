@@ -37,7 +37,7 @@ namespace Notify.Utils
         public IEnumerable<string> GetAllUsersOnline()
         {
 
-            var users = GameData.Users.GetOnlineUsers();
+            var users = GameData.Users.Online;
             foreach (var user in users)
             {
                 yield return user.CharacterName;

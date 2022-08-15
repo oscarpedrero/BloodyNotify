@@ -44,7 +44,7 @@ namespace Notify.Utils
             var message = GetAnnouncementMessage(vblood);
             if (message != null)
             {
-                var usersOnline = GameData.Users.GetOnlineUsers();
+                var usersOnline = GameData.Users.Online;
                 foreach (var user in usersOnline)
                 {
                     var isUserIgnore = DBHelper.getVBloodNotifyIgnore(user.CharacterName);

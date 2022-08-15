@@ -1,5 +1,13 @@
 # Notify - Mod Server for V Rising
 
+## Requirements:
+
+For the correct functioning of this mod you must have the following dependencies installed on your server:
+
+- [BepInExPack V Rising ](https://v-rising.thunderstore.io/package/BepInEx/BepInExPack_V_Rising/) 
+- [WetStone 1.1.0](https://v-rising.thunderstore.io/package/molenzwiebel/Wetstone/) 
+- [VRising.GameData 0.2.2](https://v-rising.thunderstore.io/package/adainrivers/VRising_GameData/) -- IMPORTANT FROM VERSION 1.4.1
+
 ### Actual Features
 
 - [x] Announce User Online
@@ -14,6 +22,11 @@
 
 <details>
 <summary>Changelog</summary>
+
+`1.4.2`
+
+- Fixed bugs and improve performance with AutoAnnouncer
+- Updated the VRising.GameData framework to version 0.2.2
 
 `1.4.1`
 
