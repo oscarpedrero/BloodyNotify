@@ -7,33 +7,38 @@
     <Version>1.4.5</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
-	<UnhollowedDllPath>D:\steamcmd\steamapps\common\VRisingDedicatedServer\BepInEx\unhollowed</UnhollowedDllPath>
-	  <UnhollowedDllMacPath>/Users/opedrero/Projects/unhollowed</UnhollowedDllMacPath>
+    <UnhollowedDllPath>D:\steamcmd\steamapps\common\VRisingDedicatedServer\BepInEx\unhollowed</UnhollowedDllPath>
+    <UnhollowedDllMacPath>/Users/opedrero/Projects/unhollowed</UnhollowedDllMacPath>
+    <RestoreSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json;
+    </RestoreSources>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
-	<Target Name="CopyDLLs" AfterTargets="Build">
-		<Message Text="DLL to V Rising Server" Importance="High" />
-		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="D:\steamcmd\steamapps\common\VRisingDedicatedServer\BepInEx\WetstonePlugins\" />
-		<Message Text="DLL Copied OK" Importance="High" />
-	</Target>
+  <Target Name="CopyDLLs" AfterTargets="Build">
+    <Message Text="DLL to V Rising Server" Importance="High" />
+    <Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="D:\steamcmd\steamapps\common\VRisingDedicatedServer\BepInEx\WetstonePlugins\" />
+    <Message Text="DLL Copied OK" Importance="High" />
+  </Target>
 
   <ItemGroup>
-	  <PackageReference Include="BepInEx.IL2CPP" Version="6.0.0-*" IncludeAssets="compile" />
-	  <PackageReference Include="BepInEx.PluginInfoProps" Version="1.1.0" />
-	  <PackageReference Include="Costura.Fody" Version="5.7.0">
-		  <PrivateAssets>all</PrivateAssets>
-	  </PackageReference>
-	  <PackageReference Include="ILMerge.Fody" Version="1.23.0" />
-	  <PackageReference Include="System.Text.Json" Version="6.0.5" />
-	  <PackageReference Include="VRising.GameData" Version="0.3.1" />
-	  <PackageReference Include="Wetstone" Version="1.1.0" />
-	  <PackageReference Include="VRising.Unhollowed.Client" Version="0.5.*" />
+    <PackageReference Include="BepInEx.IL2CPP" Version="6.0.0-*" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="1.1.0" />
+    <PackageReference Include="Fody" Version="6.6.3">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="ILMerge.Fody" Version="1.23.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.5" />
+    <PackageReference Include="VRising.GameData" Version="0.3.1" />
+    <PackageReference Include="Wetstone" Version="1.1.0" />
+    <PackageReference Include="VRising.Unhollowed.Client" Version="0.5.*" />
   </ItemGroup>
-	<ItemGroup>
-	  <None Remove="Patch\" />
-	  <None Remove="Hooks\" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Hooks\" />
-	</ItemGroup>
+  <ItemGroup>
+    <None Remove="Patch\" />
+    <None Remove="Hooks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Hooks\" />
+  </ItemGroup>
 </Project>
