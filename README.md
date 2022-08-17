@@ -8,9 +8,9 @@ For the correct functioning of this mod you must have the following dependencies
 - [WetStone 1.1.0](https://v-rising.thunderstore.io/package/molenzwiebel/Wetstone/) 
 
 
-### NEW FROM VERSION 1.4.5
+### NEW FROM VERSION 1.4.6
 
-As of version 1.4.5 it is no longer necessary to install the [GT.VRising.GameData](https://v-rising.thunderstore.io/package/adainrivers/GT_VRising_GameData/) framework on the server since it includes the mod itself. 
+As of version 1.4.6 it is no longer necessary to install the [GT.VRising.GameData](https://v-rising.thunderstore.io/package/adainrivers/GT_VRising_GameData/) framework on the server since it includes the mod itself. 
 If you have version 1.4.3 installed on your server, upgrade to 1.4.5 or higher and remove GT.VRising.GameData.dll from your server
 
 ### Actual Features
@@ -27,6 +27,10 @@ If you have version 1.4.3 installed on your server, upgrade to 1.4.5 or higher a
 
 <details>
 <summary>Changelog</summary>
+`1.4.5`
+
+- Fixed the error that occurred when initializing the VRisingData dependency. Thank you [adainrivers](https://github.com/adainrivers)
+
 
 `1.4.5`
 
