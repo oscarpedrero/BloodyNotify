@@ -4,8 +4,8 @@ using System.Text;
 using Wetstone.API;
 using ProjectM;
 using Notify.Helpers;
-using GT.VRising.GameData;
-using GT.VRising.GameData.Methods;
+using VRising.GameData;
+using VRising.GameData.Methods;
 
 /**
  * 

@@ -6,7 +6,12 @@ For the correct functioning of this mod you must have the following dependencies
 
 - [BepInExPack V Rising ](https://v-rising.thunderstore.io/package/BepInEx/BepInExPack_V_Rising/) 
 - [WetStone 1.1.0](https://v-rising.thunderstore.io/package/molenzwiebel/Wetstone/) 
-- [GT.VRising.GameData 0.2.2](https://v-rising.thunderstore.io/package/adainrivers/GT_VRising_GameData/) -- IMPORTANT: NEW FROM VERSION 1.4.3
+
+
+### NEW FROM VERSION 1.4.5
+
+As of version 1.4.5 it is no longer necessary to install the [GT.VRising.GameData](https://v-rising.thunderstore.io/package/adainrivers/GT_VRising_GameData/) framework on the server since it includes the mod itself. 
+If you have version 1.4.3 installed on your server, upgrade to 1.4.5 or higher and remove GT.VRising.GameData.dll from your server
 
 ### Actual Features
 
@@ -22,6 +27,10 @@ For the correct functioning of this mod you must have the following dependencies
 
 <details>
 <summary>Changelog</summary>
+
+`1.4.5`
+
+- Removed dependency GT.Rising.GameData by VRIsing.GameData and include it inside the dll
 
 `1.4.3`
 

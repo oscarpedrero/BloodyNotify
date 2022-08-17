@@ -8,7 +8,7 @@ using Wetstone.API;
 using BepInEx.Logging;
 using Notify.Helpers;
 using Wetstone.Hooks;
-using GT.VRising.GameData;
+using VRising.GameData;
 using Notify.AutoAnnouncer.Timers;
 using Notify.Hooks;
 using Unity.Entities;
@@ -19,7 +19,6 @@ using Notify.Patch;
 namespace Notify
 {
     [BepInPlugin(PluginInfo.PLUGIN_GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
-    [BepInDependency("GT.VRising.GameData")]
     [BepInDependency("xyz.molenzwiebel.wetstone")]
     [Reloadable]
     public class Plugin : BasePlugin, IRunOnInitialized
