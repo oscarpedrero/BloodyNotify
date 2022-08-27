@@ -27,7 +27,13 @@ If you have version 1.4.3 installed on your server, upgrade to 1.4.5 or higher a
 
 <details>
 <summary>Changelog</summary>
-`1.4.5`
+
+`1.4.7`
+- Updated timer for AutoAnnouncer functionality. Thank you [adainrivers](https://github.com/adainrivers)
+- Fixed bug that only repeated the first message of the AutoAnnouncer configuration
+- Updated the version of VRising.GameData to version 3.3
+
+`1.4.6`
 
 - Fixed the error that occurred when initializing the VRisingData dependency. Thank you [adainrivers](https://github.com/adainrivers)
 
