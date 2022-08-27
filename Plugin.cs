@@ -10,6 +10,7 @@ using Notify.Helpers;
 using Wetstone.Hooks;
 using VRising.GameData;
 using Notify.AutoAnnouncer.Timers;
+using Notify.AutoAnnouncer;
 using Notify.Hooks;
 using Unity.Entities;
 using ProjectM;
@@ -28,12 +29,14 @@ namespace Notify
 
         private Harmony _harmony;
 
+        internal static Plugin Instance { get; private set; }
+
         public static ConfigEntry<bool> AnnounceOnline;
         public static ConfigEntry<bool> AnnounceeOffline;
         public static ConfigEntry<bool> AnnounceNewUser;
         public static ConfigEntry<bool> AnnounceVBlood;
         public static ConfigEntry<string> VBloodFinalConcatCharacters;
-        public static ConfigEntry<bool> AutoAnnouncer;
+        public static ConfigEntry<bool> AutoAnnouncerConfig;
         public static ConfigEntry<int> IntervalAutoAnnouncer;
         public static ConfigEntry<bool> MessageOfTheDay;
 
@@ -44,15 +47,17 @@ namespace Notify
         public override void Load()
         {
             if (!VWorld.IsServer) return;
+            Instance = this;
             InitConfig();
             Logger = Log;
             _harmony = new Harmony(PluginInfo.PLUGIN_GUID);
             _harmony.PatchAll(Assembly.GetExecutingAssembly());
             LoadConfigHelper.LoadAllConfig();
-            Log.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
+            
             Chat.OnChatMessage += ChatCommandHook.Chat_OnChatMessage;
             GameData.OnInitialize += GameDataOnInitialize;
-            ServerEvents_Patch.OnServerStartupStateChanged += ServerEvents_OnServerStartupStateChanged;
+            GameFrame.Initialize();
+            Log.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         }
 
         public override bool Unload()
@@ -60,16 +65,11 @@ namespace Notify
             if (!VWorld.IsServer) return true;
             Chat.OnChatMessage -= ChatCommandHook.Chat_OnChatMessage;
             GameData.OnInitialize -= GameDataOnInitialize;
-            ServerEvents_Patch.OnServerStartupStateChanged -= ServerEvents_OnServerStartupStateChanged;
             Config.Clear();
+            GameFrame.Uninitialize();
             _autoAnnouncerTimer?.Stop();
             _harmony.UnpatchSelf();
             return true;
-        }
-
-        private static void GameDataOnInitialize(World world)
-        {
-            Logger.LogInfo("GameData Init");
         }
 
         private void InitConfig()
@@ -80,7 +80,7 @@ namespace Notify
             AnnounceNewUser = Config.Bind("NewUserOnline", "enabled", true, "Enable Announce when new user create in server");
             AnnounceVBlood = Config.Bind("AnnounceVBlood", "enabled", true, "Enable Announce when user/users kill a VBlood Boss.");
             VBloodFinalConcatCharacters = Config.Bind("AnnounceVBlood", "VBloodFinalConcatCharacters", "and", "Final string for concat two or more players kill a VBlood Boss.");
-            AutoAnnouncer = Config.Bind("AutoAnnouncer", "enabled", false, "Enable AutoAnnouncer.");
+            AutoAnnouncerConfig = Config.Bind("AutoAnnouncer", "enabled", false, "Enable AutoAnnouncer.");
             IntervalAutoAnnouncer = Config.Bind("AutoAnnouncer", "interval", 300, "Interval seconds for spam AutoAnnouncer.");
             MessageOfTheDay = Config.Bind("MessageOfTheDay", "enabled", false, "Enable Message Of The Day.");
 
@@ -91,18 +91,6 @@ namespace Notify
 
         }
 
-        private void ServerEvents_OnServerStartupStateChanged(LoadPersistenceSystemV2 sender, ServerStartupState.State serverStartupState)
-        {
-            if (serverStartupState == ServerStartupState.State.SuccessfulStartup)
-            {
-                _autoAnnouncerTimer = new AutoAnnouncerTimer();
-                if (AutoAnnouncer.Value)
-                {
-                    StartAutoAnnouncer();
-                }
-            }
-        }
-
         public void OnGameInitialized()
         {
             DBHelper.setAnnounceOnline(AnnounceOnline.Value);
@@ -110,7 +98,7 @@ namespace Notify
             DBHelper.setAnnounceNewUser(AnnounceNewUser.Value);
             DBHelper.setAnnounceVBlood(AnnounceVBlood.Value);
             DBHelper.setVBloodFinalConcatCharacters(VBloodFinalConcatCharacters.Value);
-            DBHelper.setAutoAnnouncer(AutoAnnouncer.Value);
+            DBHelper.setAutoAnnouncer(AutoAnnouncerConfig.Value);
             DBHelper.setMessageOfTheDayEnabled(MessageOfTheDay.Value);
             DBHelper.setIntervalAutoAnnouncer(IntervalAutoAnnouncer.Value);
 
@@ -122,7 +110,7 @@ namespace Notify
                 world =>
                 {
                     Logger.LogInfo("Starting AutoAnnouncer");
-                    OnTimedAutoAnnouncer();
+                    AutoAnnouncerFunction.OnTimedAutoAnnouncer();
                 },
                 input =>
                 {
@@ -143,40 +131,16 @@ namespace Notify
             _autoAnnouncerTimer?.Stop();
         }
 
-        private static void OnTimedAutoAnnouncer()
+        
+        private static void GameDataOnInitialize(World world)
         {
-            var messages = DBHelper.getAutoAnnouncerMessages();
-
-            int __indexMessage = 0;
-
-            if (messages.Count > 0)
+            Logger.LogInfo("GameData Init");
+            _autoAnnouncerTimer = new AutoAnnouncerTimer();
+            if (AutoAnnouncerConfig.Value)
             {
-                if (messages.Count == 1)
-                {
-                    foreach (var line in messages[0].MessageLines)
-                    {
-                        ServerChatUtils.SendSystemMessageToAllClients(VWorld.Server.EntityManager, line);
-                    }
-                }
-                else
-                {
-                    foreach (var line in messages[__indexMessage].MessageLines)
-                    {
-                        ServerChatUtils.SendSystemMessageToAllClients(VWorld.Server.EntityManager, line);
-                    }
-
-                    __indexMessage++;
-
-                    if (__indexMessage >= messages.Count)
-                    {
-                        __indexMessage = 0;
-                    }
-                }
+                StartAutoAnnouncer();
             }
-
-            Plugin.Logger.LogWarning("Timer executed");
         }
-
 
     }
 }

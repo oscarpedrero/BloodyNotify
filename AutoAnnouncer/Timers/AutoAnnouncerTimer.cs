@@ -2,11 +2,12 @@
 using Notify.Patch;
 using System;
 using Unity.Entities;
+using VRising.GameData;
 
 namespace Notify.AutoAnnouncer.Timers
 {
 
-    public class AutoAnnouncerTimer : IDisposable
+    public class AutoAnnouncerTimer
     {
 
         private bool _enabled;
@@ -22,7 +23,7 @@ namespace Notify.AutoAnnouncer.Timers
             _lastRunTime = DateTime.UtcNow - delay;
             _action = action;
             _enabled = true;
-            ServerEvents_Patch.OnUpdate += Update;
+            GameFrame.OnUpdate += GameFrame_OnUpdate;
         }
 
         public void Start(Action<World> action, Func<object, TimeSpan> delayAction)
@@ -32,7 +33,12 @@ namespace Notify.AutoAnnouncer.Timers
             _lastRunTime = DateTime.UtcNow;
             _action = action;
             _enabled = true;
-            ServerEvents_Patch.OnUpdate += Update;
+            GameFrame.OnUpdate += GameFrame_OnUpdate;
+        }
+
+        private void GameFrame_OnUpdate()
+        {
+            Update(GameData.World);
         }
 
         private void Update(World world)
@@ -71,7 +77,7 @@ namespace Notify.AutoAnnouncer.Timers
 
         public void Stop()
         {
-            ServerEvents_Patch.OnUpdate -= Update;
+            GameFrame.OnUpdate -= GameFrame_OnUpdate;
             _enabled = false;
         }
 
