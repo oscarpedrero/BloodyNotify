@@ -3,6 +3,7 @@ using Notify.Patch;
 using System;
 using Unity.Entities;
 using VRising.GameData;
+using Wetstone.Hooks;
 
 namespace Notify.AutoAnnouncer.Timers
 {

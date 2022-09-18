@@ -53,10 +53,8 @@ namespace Notify
             _harmony = new Harmony(PluginInfo.PLUGIN_GUID);
             _harmony.PatchAll(Assembly.GetExecutingAssembly());
             LoadConfigHelper.LoadAllConfig();
-            
             Chat.OnChatMessage += ChatCommandHook.Chat_OnChatMessage;
             GameData.OnInitialize += GameDataOnInitialize;
-            GameFrame.Initialize();
             Log.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         }
 
@@ -66,7 +64,6 @@ namespace Notify
             Chat.OnChatMessage -= ChatCommandHook.Chat_OnChatMessage;
             GameData.OnInitialize -= GameDataOnInitialize;
             Config.Clear();
-            GameFrame.Uninitialize();
             _autoAnnouncerTimer?.Stop();
             _harmony.UnpatchSelf();
             return true;

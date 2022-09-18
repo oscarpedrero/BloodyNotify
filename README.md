@@ -28,6 +28,9 @@ If you have version 1.4.3 installed on your server, upgrade to 1.4.5 or higher a
 <details>
 <summary>Changelog</summary>
 
+`1.4.8`
+- Updated wetstone to version 1.2.0
+
 `1.4.7`
 - Updated timer for AutoAnnouncer functionality. Thank you [adainrivers](https://github.com/adainrivers)
 - Fixed bug that only repeated the first message of the AutoAnnouncer configuration
