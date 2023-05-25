@@ -7,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Unity.Entities;
-using Wetstone.API;
 
 
 /**
@@ -32,14 +31,14 @@ public class VBloodSystem_Patch
     {
         if (DBHelper.isEnabledAnnounceVBlood())
         {
-            if (__instance._eventList.Length > 0)
+            if (__instance.EventList.Length > 0)
             {
-                foreach (var event_vblood in __instance._eventList)
+                foreach (var event_vblood in __instance.EventList)
                 {
                     if (entityManager.HasComponent<PlayerCharacter>(event_vblood.Target))
                     {
                         var player = entityManager.GetComponentData<PlayerCharacter>(event_vblood.Target);
-                        var user = entityManager.GetComponentData<User>(player.UserEntity._Entity);
+                        var user = entityManager.GetComponentData<User>(player.UserEntity);
                         // Modify from original code for get PrefabName(string) and not GuidHash(int)
                         var vblood = PrefabsUtils.getPrefabName(event_vblood.Source);
                         VBloodKillers.AddKiller(vblood, user.CharacterName.ToString());

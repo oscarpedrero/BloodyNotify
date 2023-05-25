@@ -4,14 +4,13 @@
 
 For the correct functioning of this mod you must have the following dependencies installed on your server:
 
-- [BepInExPack V Rising ](https://v-rising.thunderstore.io/package/BepInEx/BepInExPack_V_Rising/) 
-- [WetStone 1.1.0](https://v-rising.thunderstore.io/package/molenzwiebel/Wetstone/) 
+- [BepInExPack V Rising ](https://github.com/decaprime/VRising-Modding/releases/tag/0.668.001) 
+- [VRising.VampireCommandFramework 0.5.3](https://github.com/decaprime/VampireCommandFramework) 
 
 
-### NEW FROM VERSION 1.4.6
+### NEW FROM VERSION 2.0 ( BETA ) Gloomrot update
 
-As of version 1.4.6 it is no longer necessary to install the [GT.VRising.GameData](https://v-rising.thunderstore.io/package/adainrivers/GT_VRising_GameData/) framework on the server since it includes the mod itself. 
-If you have version 1.4.3 installed on your server, upgrade to 1.4.5 or higher and remove GT.VRising.GameData.dll from your server
+Gloomrot update
 
 ### Actual Features
 
@@ -27,6 +26,12 @@ If you have version 1.4.3 installed on your server, upgrade to 1.4.5 or higher a
 
 <details>
 <summary>Changelog</summary>
+
+`2.0`
+- Gloomrot update
+- Remove Wetstone
+- Remove VRising.GameData
+- Added new system of chat commands [VampireCommandFramework](https://github.com/decaprime/VampireCommandFramework)
 
 `1.4.8`
 - Updated wetstone to version 1.2.0
@@ -62,24 +67,24 @@ If you have version 1.4.3 installed on your server, upgrade to 1.4.5 or higher a
 
 - Added a system for automatic message of the day (MOTD) to go out to any player who connects to the server.
 - Added a configuration file was added to be able to configure Message of the day as you want.
-- Added chat command only for admins to enabled MOTD when user online `!notify motd enabled`
-- Added chat command only for admins to disabled MOTD when user online `!notify motd disabled`
+- Added chat command only for admins to enabled MOTD when user online `.notify motd enabled`
+- Added chat command only for admins to disabled MOTD when user online `.notify motd disabled`
 - Refactor folders of proyect
 
 `1.3.0`
 
 - Added automatic announce system every certain time defined in the configuration file
 - Added a configuration file was added to be able to configure as many automatic messages as you want.
-- Added chat command only for admins to enabled announce when user online `!notify announceonline enabled`
-- Added chat command only for admins to disabled announce when user online `!notify announceonline disabled`
-- Added chat command only for admins to enabled announce when user offline `!notify announceoffline enabled`
-- Added chat command only for admins to disabled announce when user offline `!notify announceoffline disabled`
-- Added chat command only for admins to enabled announce when new user connect to a server `!notify announcenewuser enabled`
-- Added chat command only for admins to disabled announce when new user connect to a server `!notify announcenewuser disabled`
-- Added chat command only for admins to enabled VBlood Announce `!notify vbloodannounce enabled`
-- Added chat command only for admins to disabled VBlood Announce  `!notify vbloodannounce disabled`
-- Added chat command only for admins to enabled auto announce `!notify autoannouncer enabled`
-- Added chat command only for admins to disabled auto announce `!notify autoannouncer disabled`
+- Added chat command only for admins to enabled announce when user online `.notify announceonline enabled`
+- Added chat command only for admins to disabled announce when user online `.notify announceonline disabled`
+- Added chat command only for admins to enabled announce when user offline `.notify announceoffline enabled`
+- Added chat command only for admins to disabled announce when user offline `.notify announceoffline disabled`
+- Added chat command only for admins to enabled announce when new user connect to a server `.notify announcenewuser enabled`
+- Added chat command only for admins to disabled announce when new user connect to a server `.notify announcenewuser disabled`
+- Added chat command only for admins to enabled VBlood Announce `.notify vbloodannounce enabled`
+- Added chat command only for admins to disabled VBlood Announce  `.notify vbloodannounce disabled`
+- Added chat command only for admins to enabled auto announce `.notify autoannouncer enabled`
+- Added chat command only for admins to disabled auto announce `.notify autoannouncer disabled`
 
 `1.2.3`
 - Fixed bug that affected the AnnounceVBlood mod configuration parameter not working correctly
@@ -93,14 +98,14 @@ If you have version 1.4.3 installed on your server, upgrade to 1.4.5 or higher a
 
 `1.2.0`
 - Added that users can enable/disable VBlood kills via chat command.
-- Added command to ignore VBlood Announce `!notify ignore vbloodannounce`
-- Added command to ignore VBlood Announce `!notify ignore vbloodannounce`
-- Added command to unignore VBlood Announce `!notify unignore vbloodannounce`
-- Added command to help `!notify help`
+- Added command to ignore VBlood Announce `.notify ignore vbloodannounce`
+- Added command to ignore VBlood Announce `.notify ignore vbloodannounce`
+- Added command to unignore VBlood Announce `.notify unignore vbloodannounce`
+- Added command to help `.notify help`
 - Added VRising.GameData package from adainrivers
 
 `1.1.0`
-- Added command to refresh mod settings `!notify realod`
+- Added command to refresh mod settings `.notify realod`
 
 `1.0.1`
 - Fixed configuration file paths to get BepInEx configuration path programmatically. By [PhantomGamers](https://github.com/PhantomGamers)
@@ -126,22 +131,22 @@ If you have version 1.4.3 installed on your server, upgrade to 1.4.5 or higher a
 
 | COMMAND                                          |DESCRIPTION
 |--------------------------------------------------|-------------------------------|
-| `!notify help`                                   | Command that returns all available commands         
-| `!notify reload` (Only Admins)                   | To reload the configuration of all config files.
-| `!notify announceonline enabled` (Only Admins)   | Enabled announceonline System. - NEW -
-| `!notify announceonline disabled` (Only Admins)  | Disabled announceonline System. - NEW -
-| `!notify announceoffline enabled` (Only Admins)  | Enabled announceoffline System. - NEW -
-| `!notify announceoffline disabled` (Only Admins) | Disabled announceoffline System. - NEW -
-| `!notify announcenewuser enabled` (Only Admins)  | Enabled announcenewuser System. - NEW -
-| `!notify announcenewuser disabled` (Only Admins) |  Disabled announcenewuser System. - NEW -
-| `!notify vbloodannounce enabled` (Only Admins)   | Enabled vbloodannounce System. - NEW -
-| `!notify vbloodannounce disabled` (Only Admins)  | Disabled vbloodannounce System. - NEW -
-| `!notify autoannouncer start` (Only Admins)      | Start AutoAnnouncer System. - NEW -
-| `!notify autoannouncer stop` (Only Admins)       | Stop AutoAnnouncer System. - NEW -
-| `!notify motd start` (Only Admins)               | Enabled Message of the day System. - NEW -
-| `!notify motd stop` (Only Admins)                | Disabled Message of the day System. - NEW -
-| `!notify ignore vbloodannounce`                  | Turn on VBlood death notifications
-| `!notify unignore vbloodannounce`                | Turn off VBlood death notifications
+| `.help notify`                                   | Command that returns all available commands - NEW -         
+| `.notify reload` (Only Admins)                   | To reload the configuration of all config files. - NEW -
+| `.notify config online enabled` (Only Admins)   | Enabled announceonline System. - NEW -
+| `.notify config online disabled` (Only Admins)  | Disabled announceonline System. - NEW -
+| `.notify config offline enabled` (Only Admins)  | Enabled announceoffline System. - NEW -
+| `.notify config offline disabled` (Only Admins) | Disabled announceoffline System. - NEW -
+| `.notify config newuser enabled` (Only Admins)  | Enabled announcenewuser System. - NEW -
+| `.notify config newuser disabled` (Only Admins) |  Disabled announcenewuser System. - NEW -
+| `.notify config vblood enabled` (Only Admins)   | Enabled vbloodannounce System. - NEW -
+| `.notify config vblood disabled` (Only Admins)  | Disabled vbloodannounce System. - NEW -
+| `.notify config auto start` (Only Admins)      | Start AutoAnnouncer System. - NEW -
+| `.notify config auto stop` (Only Admins)       | Stop AutoAnnouncer System. - NEW -
+| `.notify config motd enabled` (Only Admins)               | Enabled Message of the day System. - NEW -
+| `.notify config motd disabled` (Only Admins)                | Disabled Message of the day System. - NEW -
+| `.notify vblood ignore`                  | Turn on VBlood death notifications - NEW -
+| `.notify vblood unignore`                | Turn off VBlood death notifications - NEW -
 
 # Configuration
 
@@ -160,7 +165,7 @@ Once the mod installed, a configuration file will be created in the \BepInEx\con
 |AutoAnnouncer|`interval `| Interval seconds for spam AutoAnnouncer.                        |300
 |MessageOfTheDay|`enabled `| Enable Message Of The Day                                       |false
 
-> To reload the configuration of the user messages online, offline or death of the VBlood boss there is the chat command `!notify reload`
+> To reload the configuration of the user messages online, offline or death of the VBlood boss there is the chat command `.notify reload`
 
 ## Default Messages
 
@@ -306,6 +311,7 @@ If you need assistance you can ask in the discord [V Rising Mod Community](https
 ## Credits
 
 For the development of this mod i have used parts of the code of: 
+- [molenzwiebel (Wetstone)](https://github.com/molenzwiebel/Wetstone/tree/master/API) 
 - [Kaltharos (RPGMods)](https://github.com/Kaltharos/RPGMods) 
 - [syllabicat (VBloodKills)](https://github.com/syllabicat/VBloodKills) 
 - [adainrivers (VRising.GameData)](https://github.com/adainrivers/VRising.GameData)

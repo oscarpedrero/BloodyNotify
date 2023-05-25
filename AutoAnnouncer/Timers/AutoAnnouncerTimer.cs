@@ -1,9 +1,7 @@
 ﻿using Notify.Helpers;
-using Notify.Patch;
+using Notify.Hooks;
 using System;
 using Unity.Entities;
-using VRising.GameData;
-using Wetstone.Hooks;
 
 namespace Notify.AutoAnnouncer.Timers
 {
@@ -39,7 +37,7 @@ namespace Notify.AutoAnnouncer.Timers
 
         private void GameFrame_OnUpdate()
         {
-            Update(GameData.World);
+            Update(World.DefaultGameObjectInjectionWorld);
         }
 
         private void Update(World world)

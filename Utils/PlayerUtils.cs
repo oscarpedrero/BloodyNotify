@@ -1,11 +1,11 @@
-﻿using ProjectM.Network;
+﻿using Notify.Helpers;
+using ProjectM.Network;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Unity.Collections;
 using Unity.Entities;
-using VRising.GameData;
-using Wetstone.API;
+using System.Linq;
 
 namespace Notify.Utils
 {
@@ -29,18 +29,19 @@ namespace Notify.Utils
 
         }
 
-        private static User getUserComponente(Entity userEntity)
+        public static User getUserComponente(Entity userEntity)
         {
             return entityManager.GetComponentData<User>(userEntity);
         }
 
-        public IEnumerable<string> GetAllUsersOnline()
+        public static IEnumerable<Entity> GetAllUsersOnline()
         {
 
-            var users = GameData.Users.Online;
-            foreach (var user in users)
+            NativeArray<Entity> userEntities = VWorld.Server.EntityManager.CreateEntityQuery(ComponentType.ReadOnly<User>()).ToEntityArray(Allocator.Temp);
+            int len = userEntities.Length;
+            for (int i = 0; i < len; ++i)
             {
-                yield return user.CharacterName;
+                yield return userEntities[i];
             }
 
         }

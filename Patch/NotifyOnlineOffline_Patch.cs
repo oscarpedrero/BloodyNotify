@@ -4,9 +4,6 @@ using Notify.Utils;
 using ProjectM;
 using ProjectM.Network;
 using Stunlock.Network;
-using Wetstone.API;
-using VRising.GameData;
-using VRising.GameData.Methods;
 
 namespace Notify.Patch;
 
@@ -22,16 +19,17 @@ public class ServerBootstrapSystem_Patch
         var serverClient = __instance._ApprovedUsersLookup[userIndex];
         var userEntity = serverClient.UserEntity;
 
-        var user = GameData.Users.FromEntity(userEntity);
+        //var user = GameData.Users.FromEntity(userEntity);
 
 
         bool isNewPlayer = PlayerUtils.isNewUser(userEntity);
+        var userNick = PlayerUtils.getCharacterName(userEntity);
+
         if (!isNewPlayer)
         {
             if (DBHelper.isEnabledAnnounceOnline())
             {
-                var userNick = user.CharacterName;
-                var _message = DBHelper.getUserOnlineValue(user.CharacterName);
+                var _message = DBHelper.getUserOnlineValue(userNick);
                 _message = _message.Replace("#user#", $"{FontColorChat.Yellow(userNick)}");
                 ServerChatUtils.SendSystemMessageToAllClients(entityManager, FontColorChat.Green($"{_message}"));
 
@@ -52,8 +50,8 @@ public class ServerBootstrapSystem_Patch
             var lineReplace = "";
             foreach (string line in _messageLines)
             {
-                lineReplace = line.Replace("#user#", $"{user.CharacterName}");
-                user.SendSystemMessage(lineReplace);
+                lineReplace = line.Replace("#user#", $"{userNick}");
+                ServerChatUtils.SendSystemMessageToClient(entityManager, PlayerUtils.getUserComponente(userEntity), lineReplace);
             }
             
         }
@@ -71,8 +69,7 @@ public class ServerBootstrapSystem_Patch
                 var userIndex = __instance._NetEndPointToApprovedUserIndex[netConnectionId];
                 var serverClient = __instance._ApprovedUsersLookup[userIndex];
                 var userEntity = serverClient.UserEntity;
-                var user = GameData.Users.FromEntity(userEntity);
-                var userNick = user.CharacterName;
+                var userNick = PlayerUtils.getCharacterName(userEntity);
                 var _message = DBHelper.getUserOfflineValue(userNick);
                 _message = _message.Replace("#user#", $"{FontColorChat.Yellow(userNick)}");
                 ServerChatUtils.SendSystemMessageToAllClients(entityManager, $"{_message}");

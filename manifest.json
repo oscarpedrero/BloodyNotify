@@ -1,10 +1,10 @@
 ﻿{
   "name": "Notify",
-  "version_number": "1.4.8",
+  "version_number": "2.0",
   "website_url": "https://github.com/oscarpedrero/Notify",
   "description": "A mod that notifies when a user connects or disconnects from the server, new user connect from the server, when a player kills a VBlood boss, Message of the day system and auto announce system that runs every certain interval.",
   "dependencies": [
     "BepInEx-BepInExPack_V_Rising-1.0.0",
-    "molenzwiebel-Wetstone-1.2.0"
+    "VRising.VampireCommandFramework-0.5.3"
   ]
 }

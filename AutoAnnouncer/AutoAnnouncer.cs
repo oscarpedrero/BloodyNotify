@@ -1,6 +1,5 @@
 ﻿using Notify.Helpers;
 using ProjectM;
-using Wetstone.API;
 
 namespace Notify.AutoAnnouncer
 {

@@ -1,5 +1,5 @@
-﻿using ProjectM;
-using Wetstone.API;
+﻿using Notify.Helpers;
+using ProjectM;
 
 namespace Notify.Utils
 {
@@ -20,7 +20,7 @@ namespace Notify.Utils
             }
             try
             {
-                name = s.PrefabNameLookupMap[hashCode].ToString();
+                name = s.PrefabLookupMap[hashCode].ToString();
             }
             catch
             {

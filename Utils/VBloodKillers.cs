@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Wetstone.API;
 using ProjectM;
 using Notify.Helpers;
-using VRising.GameData;
-using VRising.GameData.Methods;
 
 /**
  * 
@@ -44,13 +41,13 @@ namespace Notify.Utils
             var message = GetAnnouncementMessage(vblood);
             if (message != null)
             {
-                var usersOnline = GameData.Users.Online;
+                var usersOnline = PlayerUtils.GetAllUsersOnline();
                 foreach (var user in usersOnline)
                 {
-                    var isUserIgnore = DBHelper.getVBloodNotifyIgnore(user.CharacterName);
+                    var isUserIgnore = DBHelper.getVBloodNotifyIgnore(PlayerUtils.getCharacterName(user));
                     if (!isUserIgnore)
                     {
-                        user.SendSystemMessage(message);
+                        ServerChatUtils.SendSystemMessageToClient(VWorld.Server.EntityManager, PlayerUtils.getUserComponente(user), message);
                     }
                 }
                 RemoveKillers(vblood);
