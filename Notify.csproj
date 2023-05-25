@@ -1,24 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<AssemblyName>Notify</AssemblyName>
-		<Description>Add functionality to the server to have MOTD, Auto Announcer, when a user is online, when a user goes offline or when someone kills a VBlood in v rising.</Description>
-		<Version>2.0</Version>
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-		<LangVersion>latest</LangVersion>
-	</PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AssemblyName>Notify</AssemblyName>
+    <Description>Add functionality to the server to have MOTD, Auto Announcer, when a user is online, when a user goes offline or when someone kills a VBlood in v rising.</Description>
+    <Version>2.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
 
-	<Target Name="CopyDLLs" AfterTargets="Build">
-		<Message Text="DLL to V Rising Server" Importance="High" />
-		<Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="D:\steamcmd\steamapps\common\VRisingDedicatedServer\BepInEx\plugins" />
-		<Message Text="DLL Copied OK" Importance="High" />
-	</Target>
+  <Target Name="CopyDLLs" AfterTargets="Build">
+    <Message Text="DLL to V Rising Server" Importance="High" />
+    <Copy SourceFiles="$(TargetDir)$(ProjectName).dll" DestinationFolder="D:\steamcmd\steamapps\common\VRisingDedicatedServer\BepInEx\plugins" />
+    <Message Text="DLL Copied OK" Importance="High" />
+  </Target>
 
-	<ItemGroup>
-		<PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be*" IncludeAssets="compile" />
-		<PackageReference Include="BepInEx.Core" Version="6.0.0-be*" IncludeAssets="compile" />
-		<PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
-		<PackageReference Include="VRising.Unhollowed.Client" Version="0.6.1.*" />
-		<PackageReference Include="VRising.VampireCommandFramework" Version="0.5.3" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be*" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.Core" Version="6.0.0-be*" IncludeAssets="compile" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+    <PackageReference Include="VRising.Unhollowed.Client" Version="0.6.1.*" />
+    <PackageReference Include="VRising.VampireCommandFramework" Version="0.5.3" />
+  </ItemGroup>
 </Project>
