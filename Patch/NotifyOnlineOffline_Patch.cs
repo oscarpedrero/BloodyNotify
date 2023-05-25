@@ -27,7 +27,7 @@ public class ServerBootstrapSystem_Patch
 
         if (!isNewPlayer)
         {
-            if (DBHelper.isEnabledAnnounceOnline())
+            if (DBHelper.EnabledFeatures[NotifyFeature.online])
             {
                 var _message = DBHelper.getUserOnlineValue(userNick);
                 _message = _message.Replace("#user#", $"{FontColorChat.Yellow(userNick)}");
@@ -37,14 +37,14 @@ public class ServerBootstrapSystem_Patch
         }
         else
         {
-            if (DBHelper.isEnabledAnnounceNewUser())
+            if (DBHelper.EnabledFeatures[NotifyFeature.newuser])
             {
                 var _message = DBHelper.getUserOnlineValue("");
                 ServerChatUtils.SendSystemMessageToAllClients(entityManager, FontColorChat.Green($"{_message}"));
             }
         }
 
-        if (DBHelper.isEnabledMessageOfTheDay())
+        if (DBHelper.EnabledFeatures[NotifyFeature.motd])
         {
             var _messageLines = DBHelper.getMessageOfTheDay();
             var lineReplace = "";
@@ -61,7 +61,7 @@ public class ServerBootstrapSystem_Patch
     [HarmonyPrefix]
     public static void Prefix(ServerBootstrapSystem __instance, NetConnectionId netConnectionId, ConnectionStatusChangeReason connectionStatusReason, string extraData)
     {
-        if (DBHelper.isEnabledAnnounceeOffline())
+        if (DBHelper.EnabledFeatures[NotifyFeature.offline])
         {
             if (connectionStatusReason != ConnectionStatusChangeReason.IncorrectPassword)
             {

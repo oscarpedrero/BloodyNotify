@@ -19,13 +19,17 @@ public class OnInitialize
         Plugin.Logger.LogInfo("Game has bootstrapped. Worlds and systems now exist.");
 
         GameFrame.Initialize();
-        DBHelper.setAnnounceOnline(Plugin.AnnounceOnline.Value);
-        DBHelper.setAnnounceOffline(Plugin.AnnounceeOffline.Value);
-        DBHelper.setAnnounceNewUser(Plugin.AnnounceNewUser.Value);
-        DBHelper.setAnnounceVBlood(Plugin.AnnounceVBlood.Value);
-        DBHelper.setVBloodFinalConcatCharacters(Plugin.VBloodFinalConcatCharacters.Value);
-        DBHelper.setAutoAnnouncer(Plugin.AutoAnnouncerConfig.Value);
-        DBHelper.setMessageOfTheDayEnabled(Plugin.MessageOfTheDay.Value);
+
+		DBHelper.EnabledFeatures[NotifyFeature.online] = Plugin.AnnounceOnline.Value;
+		DBHelper.EnabledFeatures[NotifyFeature.offline] = Plugin.AnnounceeOffline.Value;
+		DBHelper.EnabledFeatures[NotifyFeature.newuser] = Plugin.AnnounceNewUser.Value;
+		DBHelper.EnabledFeatures[NotifyFeature.vblood] = Plugin.AnnounceVBlood.Value;
+		DBHelper.EnabledFeatures[NotifyFeature.auto] = Plugin.AutoAnnouncerConfig.Value;
+		DBHelper.EnabledFeatures[NotifyFeature.motd] = Plugin.MessageOfTheDay.Value;
+		
+
+		DBHelper.setVBloodFinalConcatCharacters(Plugin.VBloodFinalConcatCharacters.Value);
+
         DBHelper.setIntervalAutoAnnouncer(Plugin.IntervalAutoAnnouncer.Value);
         Plugin.Logger.LogInfo("GameData Init");
         _autoAnnouncerTimer = new AutoAnnouncerTimer();

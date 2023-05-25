@@ -5,278 +5,233 @@ using Notify.AutoAnnouncer.Models;
 
 namespace Notify.Helpers
 {
-    internal class DBHelper
-    {
-        private static bool AnnounceOnline = false;
-        private static bool AnnounceeOffline = false;
-        private static bool AnnounceNewUser = false;
-        private static bool AnnounceVBlood = false;
-        private static string VBloodFinalConcatCharacters = "and";
-        private static bool AutoAnnouncer = false;
-        private static bool MessageOfTheDayEnabled = false;
-        private static int IntervalAutoAnnouncer = 0;
-        private static List<AutoAnnouncerMessage> AutoAnnouncerMessages = new List<AutoAnnouncerMessage>();
+	internal class DBHelper
+	{
+		private static string VBloodFinalConcatCharacters = "and";
+		private static int IntervalAutoAnnouncer = 0;
+		private static List<AutoAnnouncerMessage> AutoAnnouncerMessages = new List<AutoAnnouncerMessage>();
 
-        private static List<string> MessageOfTheDay = new List<string>();
+		private static List<string> MessageOfTheDay = new List<string>();
 
-        private static Dictionary<string, string> DefaultAnnounce { get; set; } = new Dictionary<string, string>();
+		private static Dictionary<string, string> DefaultAnnounce { get; set; } = new Dictionary<string, string>();
 
-        private static Dictionary<string, string> UsersConfigOnline { get; set; } = new Dictionary<string, string>();
+		private static Dictionary<string, string> UsersConfigOnline { get; set; } = new Dictionary<string, string>();
 
-        private static Dictionary<string, string> UsersConfigOffline { get; set; } = new Dictionary<string, string>();
+		private static Dictionary<string, string> UsersConfigOffline { get; set; } = new Dictionary<string, string>();
 
-        private static Dictionary<string, string> PrefabToNames { get; set; } = new Dictionary<string, string>();
+		private static Dictionary<string, string> PrefabToNames { get; set; } = new Dictionary<string, string>();
 
-        private static Dictionary<string, bool> VBloodNotifyIgnore { get; set; } = new Dictionary<string, bool>();
+		private static Dictionary<string, bool> VBloodNotifyIgnore { get; set; } = new Dictionary<string, bool>();
+	
+		static DBHelper()
+		{
+			setAllFeatures(false);
+		}
 
-        public static void setAnnounceOnline(bool value)
-        {
-            AnnounceOnline = value;
-        }
+		internal static Dictionary<NotifyFeature, bool> EnabledFeatures = new();
 
-        public static void setAnnounceOffline(bool value)
-        {
-            AnnounceeOffline = value;
-        }
+		internal static void setAllFeatures(bool isEnabled)
+		{
+			foreach (NotifyFeature feature in System.Enum.GetValues(typeof(NotifyFeature)))
+			{
+				EnabledFeatures[feature] = isEnabled;
+			}
+		}
 
-        public static void setAnnounceNewUser(bool value)
-        {
-            AnnounceNewUser = value;
-        }
+		public static void setVBloodFinalConcatCharacters(string value)
+		{
+			VBloodFinalConcatCharacters = value;
+		}
+		
+		public static string getVBloodFinalConcatCharacters()
+		{
+			return VBloodFinalConcatCharacters;
+		}
 
-        public static void setAnnounceVBlood(bool value)
-        {
-            AnnounceVBlood = value;
-        }
+		public static bool setDefaultAnnounce(Dictionary<string, string> value)
+		{
+			if (value == null)
+				return false;
 
-        public static void setVBloodFinalConcatCharacters(string value)
-        {
-            VBloodFinalConcatCharacters = value;
-        }
+			DefaultAnnounce = value;
+			return true;
+		}
+		public static bool setUsersOnline(Dictionary<string, string> value)
+		{
+			if (value == null)
+				return false;
 
-        public static bool isEnabledAnnounceOnline()
-        {
-            return AnnounceOnline;
-        }
-        public static bool isEnabledAnnounceeOffline()
-        {
-            return AnnounceeOffline;
-        }
+			UsersConfigOnline = value;
+			return true;
+		}
+		public static bool setUsersOffline(Dictionary<string, string> value)
+		{
+			if (value == null)
+				return false;
 
-        public static bool isEnabledAnnounceNewUser()
-        {
-            return AnnounceNewUser;
-        }
+			UsersConfigOffline = value;
+			return true;
+		}
+		public static bool setPrefabsNames(Dictionary<string, string> value)
+		{
+			if (value == null)
+				return false;
 
-        public static bool isEnabledAnnounceVBlood()
-        {
-            return AnnounceVBlood;
-        }
+			PrefabToNames = value;
+			return true;
+		}
+		public static bool setVBloodNotifyIgnore(Dictionary<string, bool> value)
+		{
+			if (value == null)
+				return false;
 
-        public static string getVBloodFinalConcatCharacters()
-        {
-            return VBloodFinalConcatCharacters;
-        }
+			VBloodNotifyIgnore = value;
+			return true;
+		}
 
-        public static bool setDefaultAnnounce(Dictionary<string, string> value)
-        {
-            if (value == null)
-                return false;
+		public static string getDefaultAnnounceValue(string value)
+		{
+			if (value == null)
+				return value;
 
-            DefaultAnnounce = value;
-            return true;
-        }
-        public static bool setUsersOnline(Dictionary<string, string> value)
-        {
-            if (value == null)
-                return false;
+			if (DefaultAnnounce.ContainsKey(value))
+			{
+				return DefaultAnnounce[value];
+			}
+			else
+			{
+				return value;
+			}
+		}
 
-            UsersConfigOnline = value;
-            return true;
-        }
-        public static bool setUsersOffline(Dictionary<string, string> value)
-        {
-            if (value == null)
-                return false;
+		public static string getUserOnlineValue(string user)
+		{
+			if (user == null || user == "")
+			{
+				return getDefaultAnnounceValue("newUser");
+			}
 
-            UsersConfigOffline = value;
-            return true;
-        }
-        public static bool setPrefabsNames(Dictionary<string, string> value)
-        {
-            if (value == null)
-                return false;
+			if (UsersConfigOnline.ContainsKey(user))
+			{
+				return UsersConfigOnline[user];
+			}
+			else
+			{
+				return getDefaultAnnounceValue("online");
+			}
+		}
 
-            PrefabToNames = value;
-            return true;
-        }
-        public static bool setVBloodNotifyIgnore(Dictionary<string, bool> value)
-        {
-            if (value == null)
-                return false;
+		public static string getUserOfflineValue(string user)
+		{
+			if (user == null || user == "")
+			{
+				return user;
+			}
 
-            VBloodNotifyIgnore = value;
-            return true;
-        }
+			if (UsersConfigOffline.ContainsKey(user))
+			{
+				return UsersConfigOffline[user];
+			}
+			else
+			{
+				return getDefaultAnnounceValue("offline");
+			}
+		}
 
-        public static string getDefaultAnnounceValue(string value)
-        {
-            if (value == null)
-                return value;
+		public static string getPrefabNameValue(string prefabName)
+		{
+			if (prefabName == null)
+			{
+				return "NoPrefabName";
+			}
 
-            if (DefaultAnnounce.ContainsKey(value))
-            {
-                return DefaultAnnounce[value];
-            } else
-            {
-                return value;
-            }
-        }
+			if (PrefabToNames.ContainsKey(prefabName))
+			{
+				return PrefabToNames[prefabName];
+			}
+			else
+			{
+				return PrefabToNames["NoPrefabName"];
+			}
+		}
 
-        public static string getUserOnlineValue(string user)
-        {
-            if (user == null || user == "")
-            {
-                return getDefaultAnnounceValue("newUser");
-            }
+		public static bool getVBloodNotifyIgnore(string characterName)
+		{
+			if (characterName == null)
+			{
+				return false;
+			}
 
-            if (UsersConfigOnline.ContainsKey(user))
-            {
-                return UsersConfigOnline[user];
-            } else
-            {
-                return getDefaultAnnounceValue("online");
-            }
-        }
+			if (VBloodNotifyIgnore.ContainsKey(characterName))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
 
-        public static string getUserOfflineValue(string user)
-        {
-            if (user == null || user == "")
-            {
-                return user;
-            }
+		public static bool addVBloodNotifyIgnore(string characterName)
+		{
 
-            if (UsersConfigOffline.ContainsKey(user))
-            {
-                return UsersConfigOffline[user];
-            } else
-            {
-                return getDefaultAnnounceValue("offline");
-            }
-        }
+			if (VBloodNotifyIgnore.ContainsKey(characterName))
+			{
+				return true;
+			}
+			else
+			{
+				VBloodNotifyIgnore.Add(characterName, true);
+				SaveConfigHelper.SaveVBloodNotifyIgnoreConfig(VBloodNotifyIgnore);
+				return true;
+			}
+		}
 
-        public static string getPrefabNameValue(string prefabName)
-        {
-            if (prefabName == null)
-            {
-                return "NoPrefabName";
-            }
+		public static bool removeVBloodNotifyIgnore(string characterName)
+		{
 
-            if (PrefabToNames.ContainsKey(prefabName))
-            {
-                return PrefabToNames[prefabName];
-            } else
-            {
-                return PrefabToNames["NoPrefabName"];
-            }
-        }
+			if (VBloodNotifyIgnore.ContainsKey(characterName))
+			{
+				VBloodNotifyIgnore.Remove(characterName);
+				SaveConfigHelper.SaveVBloodNotifyIgnoreConfig(VBloodNotifyIgnore);
+				return true;
+			}
+			else
+			{
+				return true;
+			}
+		}
 
-        public static bool getVBloodNotifyIgnore(string characterName)
-        {
-            if (characterName == null)
-            {
-                return false;
-            }
+		public static int getIntervalAutoAnnouncer()
+		{
+			return IntervalAutoAnnouncer;
+		}
 
-            if (VBloodNotifyIgnore.ContainsKey(characterName))
-            {
-                return true;
-            } else
-            {
-                return false;
-            }
-        }
+		public static void setIntervalAutoAnnouncer(int intervalAutoAnnouncer)
+		{
+			IntervalAutoAnnouncer = intervalAutoAnnouncer;
+		}
 
-        public static bool addVBloodNotifyIgnore(string characterName)
-        {
-            
-            if (VBloodNotifyIgnore.ContainsKey(characterName))
-            {
-                return true;
-            } else
-            {
-                VBloodNotifyIgnore.Add(characterName, true);
-                SaveConfigHelper.SaveVBloodNotifyIgnoreConfig(VBloodNotifyIgnore);
-                return true;
-            }
-        }
+		public static List<AutoAnnouncerMessage> getAutoAnnouncerMessages()
+		{
+			return AutoAnnouncerMessages;
+		}
 
-        public static bool removeVBloodNotifyIgnore(string characterName)
-        {
+		public static void addAutoAnnouncerMessages(AutoAnnouncerMessage autoAnnouncerMessages)
+		{
+			AutoAnnouncerMessages.Add(autoAnnouncerMessages);
+		}
 
-            if (VBloodNotifyIgnore.ContainsKey(characterName))
-            {
-                VBloodNotifyIgnore.Remove(characterName);
-                SaveConfigHelper.SaveVBloodNotifyIgnoreConfig(VBloodNotifyIgnore);
-                return true;
-            }
-            else
-            {
-                return true;
-            }
-        }
+		public static void setMessageOfTheDay(List<string> _messageOfTheDay)
+		{
+			MessageOfTheDay = _messageOfTheDay;
+		}
 
-        public static bool isEnabledAutoAnnouncer()
-        {
-            return AutoAnnouncer;
-        }
-
-        public static void setAutoAnnouncer(bool autoAnnouncer)
-        {
-            AutoAnnouncer = autoAnnouncer;
-        }
-
-        public static int getIntervalAutoAnnouncer()
-        {
-            return IntervalAutoAnnouncer;
-        }
-
-        public static void setIntervalAutoAnnouncer(int intervalAutoAnnouncer)
-        {
-            IntervalAutoAnnouncer = intervalAutoAnnouncer;
-        }
-
-        public static List<AutoAnnouncerMessage> getAutoAnnouncerMessages()
-        {
-            return AutoAnnouncerMessages;
-        }
-
-        public static void addAutoAnnouncerMessages(AutoAnnouncerMessage autoAnnouncerMessages)
-        {
-            AutoAnnouncerMessages.Add(autoAnnouncerMessages);
-        }
+		public static List<string> getMessageOfTheDay()
+		{
+			return MessageOfTheDay;
+		}
 
 
-        public static void setMessageOfTheDayEnabled(bool _messageOfTheDay)
-        {
-            MessageOfTheDayEnabled = _messageOfTheDay;
-        }
-
-        public static bool isEnabledMessageOfTheDay()
-        {
-            return MessageOfTheDayEnabled;
-        }
-
-        public static void setMessageOfTheDay(List<string> _messageOfTheDay)
-        {
-            MessageOfTheDay = _messageOfTheDay;
-        }
-
-        public static List<string> getMessageOfTheDay()
-        {
-            return MessageOfTheDay;
-        }
-
-
-    }
+	}
 }

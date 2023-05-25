@@ -29,7 +29,7 @@ public class VBloodSystem_Patch
     [HarmonyPrefix]
     public static void OnUpdate_Prefix(VBloodSystem __instance)
     {
-        if (DBHelper.isEnabledAnnounceVBlood())
+        if (DBHelper.EnabledFeatures[NotifyFeature.vblood])
         {
             if (__instance.EventList.Length > 0)
             {
