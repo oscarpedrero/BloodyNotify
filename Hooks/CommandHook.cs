@@ -6,7 +6,7 @@ using Unity.Entities;
 namespace Notify.Hooks
 {
     [CommandGroup("notify")]
-    public partial class CommandHook
+    public class CommandHook
     {
 
         private static EntityManager entityManager = VWorld.Server.EntityManager;
