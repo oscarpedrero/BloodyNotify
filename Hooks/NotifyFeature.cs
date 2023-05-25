@@ -9,10 +9,10 @@
 /// </remarks>
 public enum NotifyFeature
 {
-	motd,
-	newuser,
-	offline,
-	online,
-	auto,
-	vblood
+    motd,
+    newuser,
+    offline,
+    online,
+    auto,
+    vblood
 }

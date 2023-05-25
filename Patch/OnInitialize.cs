@@ -20,15 +20,15 @@ public class OnInitialize
 
         GameFrame.Initialize();
 
-		DBHelper.EnabledFeatures[NotifyFeature.online] = Plugin.AnnounceOnline.Value;
-		DBHelper.EnabledFeatures[NotifyFeature.offline] = Plugin.AnnounceeOffline.Value;
-		DBHelper.EnabledFeatures[NotifyFeature.newuser] = Plugin.AnnounceNewUser.Value;
-		DBHelper.EnabledFeatures[NotifyFeature.vblood] = Plugin.AnnounceVBlood.Value;
-		DBHelper.EnabledFeatures[NotifyFeature.auto] = Plugin.AutoAnnouncerConfig.Value;
-		DBHelper.EnabledFeatures[NotifyFeature.motd] = Plugin.MessageOfTheDay.Value;
-		
+        DBHelper.EnabledFeatures[NotifyFeature.online] = Plugin.AnnounceOnline.Value;
+        DBHelper.EnabledFeatures[NotifyFeature.offline] = Plugin.AnnounceeOffline.Value;
+        DBHelper.EnabledFeatures[NotifyFeature.newuser] = Plugin.AnnounceNewUser.Value;
+        DBHelper.EnabledFeatures[NotifyFeature.vblood] = Plugin.AnnounceVBlood.Value;
+        DBHelper.EnabledFeatures[NotifyFeature.auto] = Plugin.AutoAnnouncerConfig.Value;
+        DBHelper.EnabledFeatures[NotifyFeature.motd] = Plugin.MessageOfTheDay.Value;
 
-		DBHelper.setVBloodFinalConcatCharacters(Plugin.VBloodFinalConcatCharacters.Value);
+
+        DBHelper.setVBloodFinalConcatCharacters(Plugin.VBloodFinalConcatCharacters.Value);
 
         DBHelper.setIntervalAutoAnnouncer(Plugin.IntervalAutoAnnouncer.Value);
         Plugin.Logger.LogInfo("GameData Init");
