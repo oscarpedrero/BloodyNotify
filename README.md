@@ -1,4 +1,4 @@
-# Notify - Mod Server for V Rising
+# Notify - Mod Server for V Rising ( Gloomrot update )
 
 ## Requirements:
 
@@ -8,9 +8,9 @@ For the correct functioning of this mod you must have the following dependencies
 - [VRising.VampireCommandFramework 0.5.3](https://github.com/decaprime/VampireCommandFramework) 
 
 
-### NEW FROM VERSION 2.0 ( BETA ) Gloomrot update
+### NEW FROM VERSION 2.0.1 ( BETA ) 
 
-Gloomrot update
+Enable / Disable mod features via command .notify config <feature> <enabled/disabled> has been changed to .notify config <feature> <true/false> Refactoring by [deca](https://github.com/decaprime)
 
 ### Actual Features
 
@@ -27,7 +27,10 @@ Gloomrot update
 <details>
 <summary>Changelog</summary>
 
-`2.0`
+`2.0.1`
+- Enable / Disable mod features via command .notify config <feature> <enabled/disabled> has been changed to .notify config <feature> <true/false> Refactoring by [deca](https://github.com/decaprime)
+
+`2.0.0`
 - Gloomrot update
 - Remove Wetstone
 - Remove VRising.GameData
@@ -133,18 +136,18 @@ Gloomrot update
 |--------------------------------------------------|-------------------------------|
 | `.help notify`                                   | Command that returns all available commands - NEW -         
 | `.notify reload` (Only Admins)                   | To reload the configuration of all config files. - NEW -
-| `.notify config online enabled` (Only Admins)   | Enabled announceonline System. - NEW -
-| `.notify config online disabled` (Only Admins)  | Disabled announceonline System. - NEW -
-| `.notify config offline enabled` (Only Admins)  | Enabled announceoffline System. - NEW -
-| `.notify config offline disabled` (Only Admins) | Disabled announceoffline System. - NEW -
-| `.notify config newuser enabled` (Only Admins)  | Enabled announcenewuser System. - NEW -
-| `.notify config newuser disabled` (Only Admins) |  Disabled announcenewuser System. - NEW -
-| `.notify config vblood enabled` (Only Admins)   | Enabled vbloodannounce System. - NEW -
-| `.notify config vblood disabled` (Only Admins)  | Disabled vbloodannounce System. - NEW -
-| `.notify config auto start` (Only Admins)      | Start AutoAnnouncer System. - NEW -
-| `.notify config auto stop` (Only Admins)       | Stop AutoAnnouncer System. - NEW -
-| `.notify config motd enabled` (Only Admins)               | Enabled Message of the day System. - NEW -
-| `.notify config motd disabled` (Only Admins)                | Disabled Message of the day System. - NEW -
+| `.notify config online true` (Only Admins)   | Enabled announceonline System. - NEW -
+| `.notify config online false` (Only Admins)  | Disabled announceonline System. - NEW -
+| `.notify config offline true` (Only Admins)  | Enabled announceoffline System. - NEW -
+| `.notify config offline false` (Only Admins) | Disabled announceoffline System. - NEW -
+| `.notify config newuser true` (Only Admins)  | Enabled announcenewuser System. - NEW -
+| `.notify config newuser false` (Only Admins) |  Disabled announcenewuser System. - NEW -
+| `.notify config vblood true` (Only Admins)   | Enabled vbloodannounce System. - NEW -
+| `.notify config vblood false` (Only Admins)  | Disabled vbloodannounce System. - NEW -
+| `.notify config auto true` (Only Admins)      | Start AutoAnnouncer System. - NEW -
+| `.notify config auto false` (Only Admins)       | Stop AutoAnnouncer System. - NEW -
+| `.notify config motd true` (Only Admins)               | Enabled Message of the day System. - NEW -
+| `.notify config motd false` (Only Admins)                | Disabled Message of the day System. - NEW -
 | `.notify vblood ignore`                  | Turn on VBlood death notifications - NEW -
 | `.notify vblood unignore`                | Turn off VBlood death notifications - NEW -
 

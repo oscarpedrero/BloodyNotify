@@ -69,7 +69,7 @@ namespace Notify.Hooks
             }
         }
 
-        [Command("config", "cfg", usage: "[ auto, motd, newuser, online, offline, vblood ] enabled/disabled", description: "To change mod settings. [ auto, motd, newuser, online, offline, vblood ]", adminOnly: true)]
+        [Command("config", "cfg", usage: "[ auto, motd, newuser, online, offline, vblood ] true/false", description: "Enabled / Disabled the features of the mod. [ auto, motd, newuser, online, offline, vblood ]", adminOnly: true)]
         public static void ConfigMod(ChatCommandContext ctx, NotifyFeature feature, bool isEnabled)
         {
 
