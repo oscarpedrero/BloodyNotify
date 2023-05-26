@@ -23,6 +23,7 @@ Enable / Disable mod features via command .notify config <feature> <enabled/disa
 ### Next Features
 
 - [ ] Announce Admin use console command to another admins online
+- [ ] Announcement when someone starts a fight against a VBlood Boss
 
 <details>
 <summary>Changelog</summary>
