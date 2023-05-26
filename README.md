@@ -25,6 +25,11 @@ Enable / Disable mod features via command .notify config <feature> <enabled/disa
 - [ ] Announce Admin use console command to another admins online
 - [ ] Announcement when someone starts a fight against a VBlood Boss
 
+### Known Issues
+
+- [ ] Not all new VBlood Prefabs and Names have been added to the Config List. Report by [Vapok](https://github.com/Vapok)
+
+
 <details>
 <summary>Changelog</summary>
 
