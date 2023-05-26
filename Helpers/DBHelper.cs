@@ -7,13 +7,7 @@ namespace Notify.Helpers
 {
     internal class DBHelper
     {
-        private static bool AnnounceOnline = false;
-        private static bool AnnounceeOffline = false;
-        private static bool AnnounceNewUser = false;
-        private static bool AnnounceVBlood = false;
         private static string VBloodFinalConcatCharacters = "and";
-        private static bool AutoAnnouncer = false;
-        private static bool MessageOfTheDayEnabled = false;
         private static int IntervalAutoAnnouncer = 0;
         private static List<AutoAnnouncerMessage> AutoAnnouncerMessages = new List<AutoAnnouncerMessage>();
 
@@ -29,48 +23,24 @@ namespace Notify.Helpers
 
         private static Dictionary<string, bool> VBloodNotifyIgnore { get; set; } = new Dictionary<string, bool>();
 
-        public static void setAnnounceOnline(bool value)
+        static DBHelper()
         {
-            AnnounceOnline = value;
+            setAllFeatures(false);
         }
 
-        public static void setAnnounceOffline(bool value)
-        {
-            AnnounceeOffline = value;
-        }
+        internal static Dictionary<NotifyFeature, bool> EnabledFeatures = new();
 
-        public static void setAnnounceNewUser(bool value)
+        internal static void setAllFeatures(bool isEnabled)
         {
-            AnnounceNewUser = value;
-        }
-
-        public static void setAnnounceVBlood(bool value)
-        {
-            AnnounceVBlood = value;
+            foreach (NotifyFeature feature in System.Enum.GetValues(typeof(NotifyFeature)))
+            {
+                EnabledFeatures[feature] = isEnabled;
+            }
         }
 
         public static void setVBloodFinalConcatCharacters(string value)
         {
             VBloodFinalConcatCharacters = value;
-        }
-
-        public static bool isEnabledAnnounceOnline()
-        {
-            return AnnounceOnline;
-        }
-        public static bool isEnabledAnnounceeOffline()
-        {
-            return AnnounceeOffline;
-        }
-
-        public static bool isEnabledAnnounceNewUser()
-        {
-            return AnnounceNewUser;
-        }
-
-        public static bool isEnabledAnnounceVBlood()
-        {
-            return AnnounceVBlood;
         }
 
         public static string getVBloodFinalConcatCharacters()
@@ -127,7 +97,8 @@ namespace Notify.Helpers
             if (DefaultAnnounce.ContainsKey(value))
             {
                 return DefaultAnnounce[value];
-            } else
+            }
+            else
             {
                 return value;
             }
@@ -143,7 +114,8 @@ namespace Notify.Helpers
             if (UsersConfigOnline.ContainsKey(user))
             {
                 return UsersConfigOnline[user];
-            } else
+            }
+            else
             {
                 return getDefaultAnnounceValue("online");
             }
@@ -159,7 +131,8 @@ namespace Notify.Helpers
             if (UsersConfigOffline.ContainsKey(user))
             {
                 return UsersConfigOffline[user];
-            } else
+            }
+            else
             {
                 return getDefaultAnnounceValue("offline");
             }
@@ -175,7 +148,8 @@ namespace Notify.Helpers
             if (PrefabToNames.ContainsKey(prefabName))
             {
                 return PrefabToNames[prefabName];
-            } else
+            }
+            else
             {
                 return PrefabToNames["NoPrefabName"];
             }
@@ -191,7 +165,8 @@ namespace Notify.Helpers
             if (VBloodNotifyIgnore.ContainsKey(characterName))
             {
                 return true;
-            } else
+            }
+            else
             {
                 return false;
             }
@@ -199,11 +174,12 @@ namespace Notify.Helpers
 
         public static bool addVBloodNotifyIgnore(string characterName)
         {
-            
+
             if (VBloodNotifyIgnore.ContainsKey(characterName))
             {
                 return true;
-            } else
+            }
+            else
             {
                 VBloodNotifyIgnore.Add(characterName, true);
                 SaveConfigHelper.SaveVBloodNotifyIgnoreConfig(VBloodNotifyIgnore);
@@ -226,16 +202,6 @@ namespace Notify.Helpers
             }
         }
 
-        public static bool isEnabledAutoAnnouncer()
-        {
-            return AutoAnnouncer;
-        }
-
-        public static void setAutoAnnouncer(bool autoAnnouncer)
-        {
-            AutoAnnouncer = autoAnnouncer;
-        }
-
         public static int getIntervalAutoAnnouncer()
         {
             return IntervalAutoAnnouncer;
@@ -254,17 +220,6 @@ namespace Notify.Helpers
         public static void addAutoAnnouncerMessages(AutoAnnouncerMessage autoAnnouncerMessages)
         {
             AutoAnnouncerMessages.Add(autoAnnouncerMessages);
-        }
-
-
-        public static void setMessageOfTheDayEnabled(bool _messageOfTheDay)
-        {
-            MessageOfTheDayEnabled = _messageOfTheDay;
-        }
-
-        public static bool isEnabledMessageOfTheDay()
-        {
-            return MessageOfTheDayEnabled;
         }
 
         public static void setMessageOfTheDay(List<string> _messageOfTheDay)
