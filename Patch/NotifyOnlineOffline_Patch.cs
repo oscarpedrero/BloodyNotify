@@ -4,6 +4,7 @@ using Notify.Utils;
 using ProjectM;
 using ProjectM.Network;
 using Stunlock.Network;
+using Unity.DebugDisplay;
 using Wetstone.API;
 using VRising.GameData;
 using VRising.GameData.Methods;
@@ -20,10 +21,10 @@ public class ServerBootstrapSystem_Patch
         var entityManager = VWorld.Server.EntityManager;
         var userIndex = __instance._NetEndPointToApprovedUserIndex[netConnectionId];
         var serverClient = __instance._ApprovedUsersLookup[userIndex];
+        
         var userEntity = serverClient.UserEntity;
-
+        
         var user = GameData.Users.FromEntity(userEntity);
-
 
         bool isNewPlayer = PlayerUtils.isNewUser(userEntity);
         if (!isNewPlayer)

@@ -14,17 +14,21 @@ namespace Notify.Utils
         {
             var s = VWorld.Server.GetExistingSystem<PrefabCollectionSystem>();
             string name = "Nonexistent";
+            
             if (hashCode.GuidHash == 0)
             {
                 return name;
             }
             try
             {
-                name = s.PrefabNameLookupMap[hashCode].ToString();
+                name = s.PrefabDataLookup[hashCode].AssetName.ToString();
+                
+                Plugin.Logger.LogDebug($"VBlood prefab: {name}");
             }
             catch
             {
                 name = "NoPrefabName";
+                Plugin.Logger.LogWarning($"VBlood prefab missing: {name}");
             }
             return name;
         }

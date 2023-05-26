@@ -39,7 +39,7 @@ namespace Notify.AutoAnnouncer.Timers
 
         private void GameFrame_OnUpdate()
         {
-            Update(GameData.World);
+            //Update(GameData.World);
         }
 
         private void Update(World world)

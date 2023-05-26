@@ -167,6 +167,7 @@ namespace Notify.Helpers
 
         public static string getPrefabNameValue(string prefabName)
         {
+            Plugin.Logger.LogWarning($"VBlood Prefab Name Expected: [{prefabName}]");
             if (prefabName == null)
             {
                 return "NoPrefabName";

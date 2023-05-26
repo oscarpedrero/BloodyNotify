@@ -1,5 +1,4 @@
 ﻿using BepInEx;
-using BepInEx.IL2CPP;
 using BepInEx.Configuration;
 using HarmonyLib;
 using System.IO;
@@ -16,6 +15,7 @@ using Unity.Entities;
 using ProjectM;
 using System;
 using Notify.Patch;
+using BepInEx.Unity.IL2CPP;
 
 namespace Notify
 {
@@ -46,21 +46,28 @@ namespace Notify
 
         public override void Load()
         {
-            if (!VWorld.IsServer) return;
+            if (!VWorld.IsServer)
+            {
+                Log.LogWarning($"Notify is a Server-Side Only Mod. Disabling for Client Use.");
+                return;
+            }
+
             Instance = this;
             InitConfig();
             Logger = Log;
             _harmony = new Harmony(PluginInfo.PLUGIN_GUID);
             _harmony.PatchAll(Assembly.GetExecutingAssembly());
             LoadConfigHelper.LoadAllConfig();
+
             Chat.OnChatMessage += ChatCommandHook.Chat_OnChatMessage;
             GameData.OnInitialize += GameDataOnInitialize;
-            Log.LogInfo($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
+            Log.LogWarning($"Plugin {PluginInfo.PLUGIN_GUID} is loaded!");
         }
 
         public override bool Unload()
         {
             if (!VWorld.IsServer) return true;
+            
             Chat.OnChatMessage -= ChatCommandHook.Chat_OnChatMessage;
             GameData.OnInitialize -= GameDataOnInitialize;
             Config.Clear();
@@ -71,7 +78,6 @@ namespace Notify
 
         private void InitConfig()
         {
-
             AnnounceOnline = Config.Bind("UserOnline", "enabled", true, "Enable Announce when user online");
             AnnounceeOffline = Config.Bind("UserOffline", "enabled", true, "Enable Announce when user offline");
             AnnounceNewUser = Config.Bind("NewUserOnline", "enabled", true, "Enable Announce when new user create in server");
@@ -84,13 +90,13 @@ namespace Notify
             if (!Directory.Exists(ConfigPath)) Directory.CreateDirectory(ConfigPath);
 
             ConfigDefaultHelper.CheckAndCreateConfigs();
-            
-
         }
 
         public void OnGameInitialized()
         {
-            DBHelper.setAnnounceOnline(AnnounceOnline.Value);
+            if (!VWorld.IsServer) return;
+            
+            DBHelper.setAnnounceOnline(AnnounceOnline.Value);            
             DBHelper.setAnnounceOffline(AnnounceeOffline.Value);
             DBHelper.setAnnounceNewUser(AnnounceNewUser.Value);
             DBHelper.setAnnounceVBlood(AnnounceVBlood.Value);
@@ -98,7 +104,6 @@ namespace Notify
             DBHelper.setAutoAnnouncer(AutoAnnouncerConfig.Value);
             DBHelper.setMessageOfTheDayEnabled(MessageOfTheDay.Value);
             DBHelper.setIntervalAutoAnnouncer(IntervalAutoAnnouncer.Value);
-
         }
 
         public static void StartAutoAnnouncer()
