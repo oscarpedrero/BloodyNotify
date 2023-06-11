@@ -16,7 +16,6 @@ namespace Notify
 {
     [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
     [BepInDependency("gg.deca.VampireCommandFramework")]
-    [VampireCommandFramework.Breadstone.Reloadable]
     public class Plugin : BasePlugin
     {
 
