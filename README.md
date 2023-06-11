@@ -4,8 +4,8 @@
 
 For the correct functioning of this mod you must have the following dependencies installed on your server:
 
-- [BepInExPack V Rising ](https://github.com/decaprime/VRising-Modding/releases/tag/0.668.001) 
-- [VRising.VampireCommandFramework 0.8.0](https://github.com/decaprime/VampireCommandFramework) 
+- [BepInExPack V Rising ](https://v-rising.thunderstore.io/package/BepInEx/BepInExPack_V_Rising/) 
+- [VRising.VampireCommandFramework 0.8.0](https://v-rising.thunderstore.io/package/deca/VampireCommandFramework/) 
 
 
 ### Actual Features
