@@ -5,12 +5,8 @@
 For the correct functioning of this mod you must have the following dependencies installed on your server:
 
 - [BepInExPack V Rising ](https://github.com/decaprime/VRising-Modding/releases/tag/0.668.001) 
-- [VRising.VampireCommandFramework 0.5.3](https://github.com/decaprime/VampireCommandFramework) 
+- [VRising.VampireCommandFramework 0.8.0](https://github.com/decaprime/VampireCommandFramework) 
 
-
-### NEW FROM VERSION 2.0.1 ( BETA ) 
-
-Enable / Disable mod features via command .notify config <feature> <enabled/disabled> has been changed to .notify config <feature> <true/false> Refactoring by [deca](https://github.com/decaprime)
 
 ### Actual Features
 
@@ -32,6 +28,9 @@ Enable / Disable mod features via command .notify config <feature> <enabled/disa
 
 <details>
 <summary>Changelog</summary>
+
+`2.1`
+- Update VCF and prepare zip for thunderstore
 
 `2.0.1`
 - Enable / Disable mod features via command .notify config <feature> <enabled/disabled> has been changed to .notify config <feature> <true/false> Refactoring by [deca](https://github.com/decaprime)
