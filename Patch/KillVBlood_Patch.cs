@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Unity.Entities;
+using UnityEngine.Rendering.HighDefinition;
 
 
 /**
@@ -39,10 +40,9 @@ public class VBloodSystem_Patch
                     {
                         var player = entityManager.GetComponentData<PlayerCharacter>(event_vblood.Target);
                         var user = entityManager.GetComponentData<User>(player.UserEntity);
-                        // Modify from original code for get PrefabName(string) and not GuidHash(int)
-                        var vblood = PrefabsUtils.getPrefabName(event_vblood.Source);
-                        VBloodKillers.AddKiller(vblood, user.CharacterName.ToString());
-                        lastKillerUpdate[vblood] = DateTime.Now;
+                        var vblood = __instance._PrefabCollectionSystem.PrefabDataLookup[event_vblood.Source].AssetName;
+                        VBloodKillers.AddKiller(vblood.ToString(), user.CharacterName.ToString());
+                        lastKillerUpdate[vblood.ToString()] = DateTime.Now;
                         checkKiller = true;
                     }
                 }
