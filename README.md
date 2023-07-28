@@ -289,7 +289,7 @@ For example, to disable "Putrid Rat" look in the configuration file for "CHAR_Ve
   "CHAR_Wildlife_Wolf_VBlood": false,
   "CHAR_Bandit_Deadeye_Frostarrow_VBlood": false,
   "CHAR_Bandit_Foreman_VBlood": false,
-  "CHAR_Bandit_StoneBreaker_VBlood": true,
+  "CHAR_Bandit_StoneBreaker_VBlood": false,
   "CHAR_Bandit_Deadeye_Chaosarrow_VBlood": false,
   "CHAR_Undead_BishopOfDeath_VBlood": false,
   "CHAR_Bandit_Stalker_VBlood": false,
