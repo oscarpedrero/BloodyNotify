@@ -28,6 +28,7 @@ namespace Notify.Hooks
             if (!DBHelper.EnabledFeatures[NotifyFeature.vblood])
             {
                 LoadConfigHelper.LoadPrefabsName();
+                LoadConfigHelper.LoadPrefabsIgnore();
             }
 
             if (!DBHelper.EnabledFeatures[NotifyFeature.newuser])

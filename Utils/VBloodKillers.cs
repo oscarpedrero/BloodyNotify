@@ -59,7 +59,17 @@ namespace Notify.Utils
         {
             var killers = GetKillers(vblood);
             var vbloodLabel = DBHelper.getPrefabNameValue(vblood);
+            var vbloodIgnore = DBHelper.getPrefabIgnoreValue(vblood);
             var sbKillersLabel = new StringBuilder();
+            
+            if (vbloodIgnore)
+            {
+                Plugin.Logger.LogError("VBLOOD IGNORE TRUE");
+                Plugin.Logger.LogError(vbloodLabel);
+                Plugin.Logger.LogError(vbloodLabel);
+                return null;
+            }
+            Plugin.Logger.LogError("VBLOOD IGNORE FALSE");
             if (killers.Count == 0) return null;
             if (killers.Count == 1)
             {

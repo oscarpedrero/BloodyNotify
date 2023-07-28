@@ -13,6 +13,7 @@ For the correct functioning of this mod you must have the following dependencies
 - [x] Announce User Online
 - [x] Announce User Offline
 - [x] Announce kill VBlood Boss
+- [x] Ignore Announce kill VBlood Boss
 - [x] Auto Announcer
 - [x] Message Of The Day
 
@@ -21,13 +22,15 @@ For the correct functioning of this mod you must have the following dependencies
 - [ ] Announce Admin use console command to another admins online
 - [ ] Announcement when someone starts a fight against a VBlood Boss
 
-### Known Issues
-
-- [ ] Not all new VBlood Prefabs and Names have been added to the Config List. Report by [Vapok](https://github.com/Vapok)
-
 
 <details>
 <summary>Changelog</summary>
+
+`2.3`
+- Ignore the notification of the death of a VBlood
+
+`2.2`
+- Fixed the error that did not identify the VBlood
 
 `2.1`
 - Update VCF and prepare zip for thunderstore
@@ -134,6 +137,16 @@ For the correct functioning of this mod you must have the following dependencies
 - Added notifications when a user disconnects from the server
 
 </details>
+
+### New featured
+
+Now you can remove the announcement of the death of a specific vblood, you only have to edit the configuration file that is in **/BepInEx/config/Notify/prefabs_names_ignore.json** and set the vblood prefab you want to true. 
+
+For example, to disable "Putrid Rat" look in the configuration file for "CHAR_Vermin_DireRat_VBlood" and set it to true
+
+```json
+"CHAR_Vermin_DireRat_VBlood": true,
+```
 
 ## Chat Commands
 
@@ -260,6 +273,86 @@ To translate the name of VBlood boss, you only have to edit the configuration fi
 	"NoPrefabName": "VBlood Boss"
 }
 ```
+## Ignore the notification of the death of a VBlood
+
+To ignore the notification of the death of a VBlood, you only have to edit the configuration file that is in **/BepInEx/config/Notify/prefabs_names_ignore.json** and set the vblood prefab you want to true. 
+
+For example, to disable "Putrid Rat" look in the configuration file for "CHAR_Vermin_DireRat_VBlood" and set it to true
+
+```json
+"CHAR_Vermin_DireRat_VBlood": true,
+```
+
+**/BepInEx/config/Notify/prefabs_names_ignore.json**
+```json
+{
+  "CHAR_Wildlife_Wolf_VBlood": false,
+  "CHAR_Bandit_Deadeye_Frostarrow_VBlood": false,
+  "CHAR_Bandit_Foreman_VBlood": false,
+  "CHAR_Bandit_StoneBreaker_VBlood": true,
+  "CHAR_Bandit_Deadeye_Chaosarrow_VBlood": false,
+  "CHAR_Undead_BishopOfDeath_VBlood": false,
+  "CHAR_Bandit_Stalker_VBlood": false,
+  "CHAR_Vermin_DireRat_VBlood": false,
+  "CHAR_Bandit_Bomber_VBlood": false,
+  "CHAR_Wildlife_Poloma_VBlood": false,
+  "CHAR_Wildlife_Bear_Dire_Vblood": false,
+  "CHAR_Undead_Priest_VBlood": false,
+  "CHAR_Bandit_Tourok_VBlood": false,
+  "CHAR_Villager_Tailor_VBlood": false,
+  "CHAR_Militia_Guard_VBlood": false,
+  "CHAR_Farmlands_Nun_VBlood": false,
+  "CHAR_VHunter_Leader_VBlood": false,
+  "CHAR_Undead_BishopOfShadows_VBlood": false,
+  "CHAR_Geomancer_Human_VBlood": false,
+  "CHAR_Militia_Longbowman_LightArrow_Vblood": false,
+  "CHAR_Wendigo_VBlood": false,
+  "CHAR_Militia_Leader_VBlood": false,
+  "CHAR_Militia_BishopOfDunley_VBlood": false,
+  "CHAR_Spider_Queen_VBlood": false,
+  "CHAR_Cursed_ToadKing_VBlood": false,
+  "CHAR_VHunter_Jade_VBlood": false,
+  "CHAR_Undead_ZealousCultist_VBlood": false,
+  "CHAR_WerewolfChieftain_VBlood": false,
+  "CHAR_ArchMage_VBlood": false,
+  "CHAR_Town_Cardinal_VBlood": false,
+  "CHAR_Winter_Yeti_VBlood": false,
+  "CHAR_Harpy_Matriarch_VBlood": false,
+  "CHAR_Cursed_Witch_VBlood": false,
+  "CHAR_BatVampire_VBlood": false,
+  "CHAR_Cursed_MountainBeast_VBlood": false,
+  "CHAR_Manticore_VBlood": false,
+  "CHAR_Paladin_VBlood": false,
+  "CHAR_Bandit_GraveDigger_VBlood_UNUSED": false,
+  "CHAR_Bandit_Leader_VBlood_UNUSED": false,
+  "CHAR_Bandit_Miner_VBlood_UNUSED": false,
+  "CHAR_Bandit_Thief_VBlood_UNUSED": false,
+  "CHAR_ChurchOfLight_Cardinal_VBlood": false,
+  "CHAR_ChurchOfLight_Overseer_VBlood": false,
+  "CHAR_ChurchOfLight_Paladin_VBlood": false,
+  "CHAR_ChurchOfLight_Sommelier_VBlood": false,
+  "CHAR_Forest_Bear_Dire_Vblood": false,
+  "CHAR_Forest_Wolf_VBlood": false,
+  "CHAR_Geomancer_Golem_VBlood": false,
+  "CHAR_Gloomrot_Iva_VBlood": false,
+  "CHAR_Gloomrot_Monster_VBlood": false,
+  "CHAR_Gloomrot_Purifier_VBlood": false,
+  "CHAR_Gloomrot_RailgunSergeant_VBlood": false,
+  "CHAR_Gloomrot_TheProfessor_VBlood": false,
+  "CHAR_Gloomrot_Voltage_VBlood": false,
+  "CHAR_Militia_Glassblower_VBlood": false,
+  "CHAR_Militia_Hound_VBlood": false,
+  "CHAR_Militia_HoundMaster_VBlood": false,
+  "CHAR_Militia_Nun_VBlood": false,
+  "CHAR_Militia_Scribe_VBlood": false,
+  "CHAR_Poloma_VBlood": false,
+  "CHAR_Undead_CursedSmith_VBlood": false,
+  "CHAR_Undead_Infiltrator_VBlood": false,
+  "CHAR_Undead_Leader_Vblood": false,
+  "CHAR_Villager_CursedWanderer_VBlood": false,
+  "NoPrefabName": false
+}
+```
 ## Auto Announcer Messages - NEW
 
 To configure the Auto Announce messages you must edit the configuration file that is in **/BepInEx/config/Notify/auto_announcer_messages.json**
@@ -289,12 +382,12 @@ To configure the Auto Announce messages you must edit the configuration file tha
 
 To configure the Message of the day you must edit the configuration file that is in **/BepInEx/config/Notify/message_of_the_day.json**
 ```json
-{
+[
     "<color=#FFFFFF>Hello <i>#user#</i> this is Message of the day Line 1</color>", 
     "<color=#B22222>Message of the day Line 2</color>",
     "<color=#00FFFF>Message of the day Line 3</color>",
     "<color=#FFFFFF>Message of the day Line 4</color>"
-}
+]
 ```
 
 > Each element of the array is a line that will paint the message system

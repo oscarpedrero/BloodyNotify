@@ -85,6 +85,76 @@ namespace Notify.Helpers
               { "NoPrefabName", "VBlood Boss" }
         };
 
+        public static Dictionary<string, bool> PrefabsIgnoreDefaul => new Dictionary<string, bool>()
+        {
+            {"CHAR_Wildlife_Wolf_VBlood", false},
+              {"CHAR_Bandit_Deadeye_Frostarrow_VBlood", false},
+              {"CHAR_Bandit_Foreman_VBlood", false},
+              {"CHAR_Bandit_StoneBreaker_VBlood", false},
+              {"CHAR_Bandit_Deadeye_Chaosarrow_VBlood", false},
+              {"CHAR_Undead_BishopOfDeath_VBlood", false},
+              {"CHAR_Bandit_Stalker_VBlood", false},
+              {"CHAR_Vermin_DireRat_VBlood", false},
+              {"CHAR_Bandit_Bomber_VBlood", false},
+              {"CHAR_Wildlife_Poloma_VBlood", false},
+              {"CHAR_Wildlife_Bear_Dire_Vblood", false},
+              {"CHAR_Undead_Priest_VBlood", false},
+              {"CHAR_Bandit_Tourok_VBlood", false},
+              {"CHAR_Villager_Tailor_VBlood", false},
+              {"CHAR_Militia_Guard_VBlood", false},
+              {"CHAR_Farmlands_Nun_VBlood", false},
+              {"CHAR_VHunter_Leader_VBlood", false},
+              {"CHAR_Undead_BishopOfShadows_VBlood", false},
+              {"CHAR_Geomancer_Human_VBlood", false},
+              {"CHAR_Militia_Longbowman_LightArrow_Vblood", false},
+              {"CHAR_Wendigo_VBlood", false},
+              {"CHAR_Militia_Leader_VBlood", false},
+              {"CHAR_Militia_BishopOfDunley_VBlood", false},
+              {"CHAR_Spider_Queen_VBlood", false},
+              {"CHAR_Cursed_ToadKing_VBlood", false},
+              {"CHAR_VHunter_Jade_VBlood", false},
+              {"CHAR_Undead_ZealousCultist_VBlood", false},
+              {"CHAR_WerewolfChieftain_VBlood", false},
+              {"CHAR_ArchMage_VBlood", false},
+              {"CHAR_Town_Cardinal_VBlood", false},
+              {"CHAR_Winter_Yeti_VBlood", false},
+              {"CHAR_Harpy_Matriarch_VBlood", false},
+              {"CHAR_Cursed_Witch_VBlood",false},
+              {"CHAR_BatVampire_VBlood",false},
+              {"CHAR_Cursed_MountainBeast_VBlood", false},
+              {"CHAR_Manticore_VBlood", false},
+              {"CHAR_Paladin_VBlood", false},
+              {"CHAR_Bandit_GraveDigger_VBlood_UNUSED", false},
+              {"CHAR_Bandit_Leader_VBlood_UNUSED",false},
+              {"CHAR_Bandit_Miner_VBlood_UNUSED", false},
+              {"CHAR_Bandit_Thief_VBlood_UNUSED", false},
+              {"CHAR_ChurchOfLight_Cardinal_VBlood",false},
+              {"CHAR_ChurchOfLight_Overseer_VBlood",false},
+              {"CHAR_ChurchOfLight_Paladin_VBlood", false},
+              {"CHAR_ChurchOfLight_Sommelier_VBlood",false},
+              {"CHAR_Forest_Bear_Dire_Vblood", false},
+              {"CHAR_Forest_Wolf_VBlood", false},
+              {"CHAR_Geomancer_Golem_VBlood", false},
+              {"CHAR_Gloomrot_Iva_VBlood", false},
+              {"CHAR_Gloomrot_Monster_VBlood",false},
+              {"CHAR_Gloomrot_Purifier_VBlood", false},
+              {"CHAR_Gloomrot_RailgunSergeant_VBlood",false},
+              {"CHAR_Gloomrot_TheProfessor_VBlood", false},
+              {"CHAR_Gloomrot_Voltage_VBlood", false},
+              {"CHAR_Militia_Glassblower_VBlood",false},
+              {"CHAR_Militia_Hound_VBlood",false},
+              {"CHAR_Militia_HoundMaster_VBlood",false},
+              {"CHAR_Militia_Nun_VBlood",false},
+              {"CHAR_Militia_Scribe_VBlood", false},
+              {"CHAR_Poloma_VBlood",false},
+              {"CHAR_Undead_CursedSmith_VBlood", false},
+              {"CHAR_Undead_Infiltrator_VBlood", false},
+              {"CHAR_Undead_Leader_Vblood", false},
+              {"CHAR_Villager_CursedWanderer_VBlood", false },
+              {"NoPrefabName", false }
+        };
+        
+
         public static Dictionary<string, string> DefaultOnline => new Dictionary<string, string>()
         {
             {  "nick" , "#user# is online!" }
@@ -136,6 +206,12 @@ namespace Notify.Helpers
             File.WriteAllText(Path.Combine(ConfigPath, "prefabs_names.json"), jsonOutPut);
         }
 
+        public static void CreateIgnoreVBloodDefaultConfig()
+        {
+            var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(PrefabsIgnoreDefaul);
+            File.WriteAllText(Path.Combine(ConfigPath, "prefabs_names_ignore.json"), jsonOutPut);
+        }
+
         public static void CreateVBloodNotifyIgnoreConfig()
         {
             var jsonOutPut = System.Text.Json.JsonSerializer.Serialize(DefaultVBloodAnnounceIgnoreUsers);
@@ -173,6 +249,11 @@ namespace Notify.Helpers
             if (!File.Exists(Path.Combine(ConfigPath, "prefabs_names.json")))
             {
                 CreateLocationVBloodDefaultConfig();
+            }
+
+            if (!File.Exists(Path.Combine(ConfigPath, "prefabs_names_ignore.json")))
+            {
+                CreateIgnoreVBloodDefaultConfig();
             }
 
             if (!File.Exists(Path.Combine(ConfigPath, "vbloodannounce_ignore_users.json")))

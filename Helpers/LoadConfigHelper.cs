@@ -17,6 +17,7 @@ namespace Notify.Helpers
             LoadUsersConfigOnline();
             LoadUsersConfigOffline();
             LoadPrefabsName();
+            LoadPrefabsIgnore();
             VBloodNotifyIgnoreConfig();
             LoadAutoAnnouncerMessagesConfig();
             LoadMessageOfTheDayConfig();
@@ -47,6 +48,13 @@ namespace Notify.Helpers
             var json = File.ReadAllText(Path.Combine(ConfigDefaultHelper.ConfigPath, "prefabs_names.json"));
             var dictionary = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
             DBHelper.setPrefabsNames(dictionary);
+        }
+
+        public static void LoadPrefabsIgnore()
+        {
+            var json = File.ReadAllText(Path.Combine(ConfigDefaultHelper.ConfigPath, "prefabs_names_ignore.json"));
+            var dictionary = JsonSerializer.Deserialize<Dictionary<string, bool>>(json);
+            DBHelper.setPrefabsIgnore(dictionary);
         }
 
         public static void VBloodNotifyIgnoreConfig()

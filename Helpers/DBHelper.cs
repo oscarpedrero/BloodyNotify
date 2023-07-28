@@ -21,6 +21,8 @@ namespace Notify.Helpers
 
         private static Dictionary<string, string> PrefabToNames { get; set; } = new Dictionary<string, string>();
 
+        private static Dictionary<string, bool> PrefabsIgnore { get; set; } = new Dictionary<string, bool>();
+
         private static Dictionary<string, bool> VBloodNotifyIgnore { get; set; } = new Dictionary<string, bool>();
 
         static DBHelper()
@@ -78,6 +80,15 @@ namespace Notify.Helpers
                 return false;
 
             PrefabToNames = value;
+            return true;
+        }
+        public static bool setPrefabsIgnore(Dictionary<string, bool> value)
+        {
+            if (value == null)
+                return false;
+
+            PrefabsIgnore = value;
+
             return true;
         }
         public static bool setVBloodNotifyIgnore(Dictionary<string, bool> value)
@@ -152,6 +163,26 @@ namespace Notify.Helpers
             else
             {
                 return PrefabToNames["NoPrefabName"];
+            }
+        }
+
+        public static bool getPrefabIgnoreValue(string prefabName)
+        {
+            if (prefabName == null)
+            {
+                Plugin.Logger.LogError("VBLOOD IGNORE TRUE NULL");
+                return true;
+            }
+
+            if (PrefabsIgnore.ContainsKey(prefabName))
+            {
+                Plugin.Logger.LogError("VBLOOD IGNORE FALSE");
+                return PrefabsIgnore[prefabName];
+            }
+            else
+            {
+                Plugin.Logger.LogError("VBLOOD IGNORE TRUE 2");
+                return true;
             }
         }
 
