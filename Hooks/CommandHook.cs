@@ -74,9 +74,9 @@ namespace Notify.Hooks
         public static void ConfigMod(ChatCommandContext ctx, NotifyFeature feature, bool isEnabled)
         {
 
-            Plugin.Logger.LogInfo("Config Parameters");
-            Plugin.Logger.LogInfo($"{feature}");
-            Plugin.Logger.LogInfo($"{isEnabled}");
+            //Plugin.Logger.LogInfo("Config Parameters");
+            //Plugin.Logger.LogInfo($"{feature}");
+            //Plugin.Logger.LogInfo($"{isEnabled}");
 
 
             DBHelper.EnabledFeatures[feature] = isEnabled;

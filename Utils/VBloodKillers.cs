@@ -39,6 +39,7 @@ namespace Notify.Utils
         public static void SendAnnouncementMessage(string vblood)
         {
             var message = GetAnnouncementMessage(vblood);
+            if (message == "ignore") RemoveKillers(vblood);
             if (message != null)
             {
                 var usersOnline = PlayerUtils.GetAllUsersOnline();
@@ -64,12 +65,8 @@ namespace Notify.Utils
             
             if (vbloodIgnore)
             {
-                Plugin.Logger.LogError("VBLOOD IGNORE TRUE");
-                Plugin.Logger.LogError(vbloodLabel);
-                Plugin.Logger.LogError(vbloodLabel);
-                return null;
+                return "ignore";
             }
-            Plugin.Logger.LogError("VBLOOD IGNORE FALSE");
             if (killers.Count == 0) return null;
             if (killers.Count == 1)
             {

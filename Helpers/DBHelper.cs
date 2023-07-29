@@ -170,18 +170,15 @@ namespace Notify.Helpers
         {
             if (prefabName == null)
             {
-                Plugin.Logger.LogError("VBLOOD IGNORE TRUE NULL");
                 return true;
             }
 
             if (PrefabsIgnore.ContainsKey(prefabName))
             {
-                Plugin.Logger.LogError("VBLOOD IGNORE FALSE");
                 return PrefabsIgnore[prefabName];
             }
             else
             {
-                Plugin.Logger.LogError("VBLOOD IGNORE TRUE 2");
                 return true;
             }
         }

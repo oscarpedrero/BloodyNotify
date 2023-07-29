@@ -26,6 +26,9 @@ For the correct functioning of this mod you must have the following dependencies
 <details>
 <summary>Changelog</summary>
 
+`2.3.1`
+- Improved mod performance
+
 `2.3`
 - Ignore the notification of the death of a VBlood
 
