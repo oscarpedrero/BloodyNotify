@@ -1,4 +1,4 @@
-# Notify - Mod Server for V Rising ( Gloomrot update )
+# Notify - Mod Server for V Rising ( 1.0 update )
 
 ## Requirements:
 
