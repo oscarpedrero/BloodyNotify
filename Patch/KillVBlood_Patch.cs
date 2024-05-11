@@ -3,6 +3,7 @@ using Notify.Helpers;
 using Notify.Utils;
 using ProjectM;
 using ProjectM.Network;
+using Stunlock.Core;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -40,9 +41,12 @@ public class VBloodSystem_Patch
                     {
                         var player = entityManager.GetComponentData<PlayerCharacter>(event_vblood.Target);
                         var user = entityManager.GetComponentData<User>(player.UserEntity);
-                        var vblood = __instance._PrefabCollectionSystem.PrefabDataLookup[event_vblood.Source].AssetName;
-                        VBloodKillers.AddKiller(vblood.ToString(), user.CharacterName.ToString());
-                        lastKillerUpdate[vblood.ToString()] = DateTime.Now;
+                        //var vblood = __instance._PrefabCollectionSystem.PrefabLookupMap[event_vblood.Source];
+                        //var vblood = __instance._PrefabCollectionSystem.PrefabLookupMap[event_vblood.Source].AssetName;
+                        var collectionSystem = VWorld.Server.GetExistingSystemManaged<PrefabCollectionSystem>();
+                        var vbloodString = collectionSystem.PrefabGuidToNameDictionary[event_vblood.Source];
+                        VBloodKillers.AddKiller(vbloodString.ToString(), user.CharacterName.ToString());
+                        lastKillerUpdate[vbloodString.ToString()]= DateTime.Now;
                         checkKiller = true;
                     }
                 }

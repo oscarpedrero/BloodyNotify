@@ -1,5 +1,6 @@
 ﻿using Notify.Helpers;
 using ProjectM;
+using Stunlock.Core;
 
 namespace Notify.Utils
 {
@@ -12,7 +13,7 @@ namespace Notify.Utils
          **/
         public static string getPrefabName(PrefabGUID hashCode)
         {
-            var s = VWorld.Server.GetExistingSystem<PrefabCollectionSystem>();
+            var s = VWorld.Server.GetExistingSystemManaged<PrefabCollectionSystem>();
             string name = "Nonexistent";
             if (hashCode.GuidHash == 0)
             {

@@ -6,10 +6,6 @@ using System.IO;
 using System.Reflection;
 using BepInEx.Logging;
 using Notify.Helpers;
-using Notify.Hooks;
-using Notify.AutoAnnouncer.Timers;
-using Notify.AutoAnnouncer;
-using System;
 using VampireCommandFramework;
 
 namespace Notify
