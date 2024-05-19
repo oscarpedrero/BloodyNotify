@@ -78,7 +78,11 @@ namespace BloodyNotify.Systems
         public static void SendAnnouncementMessage(string vblood)
         {
             var message = GetAnnouncementMessage(vblood);
-            if (message == "ignore") RemoveKillers(vblood);
+            if (message == "ignore")
+            {
+                RemoveKillers(vblood);
+                return;
+            }
             if (message != null)
             {
                 var usersOnline = Core.Users.Online;

@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Add functionality to the server to have MOTD, Auto Announcer, when a user is onli" +
     "ne, when a user goes offline or when someone kills a VBlood in v rising.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("3.0.1")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("3.0.1+9a18c4ef189a84479a5265234d78facb023c7eec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("3.0.1+59f2653c7711338126b75d3c8566f281a7a3da6a")]
 [assembly: System.Reflection.AssemblyProductAttribute("BloodyNotify")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BloodyNotify")]
 [assembly: System.Reflection.AssemblyVersionAttribute("3.0.1")]

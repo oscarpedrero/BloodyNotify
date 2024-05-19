@@ -22,6 +22,9 @@ For the correct functioning of this mod you must have the following dependencies
 <details>
 <summary>Changelog</summary>
 
+`3.0.2`
+- Fixed bug that showed "ignore" when VBlood death notifications were disabled
+
 `3.0.1`
 - Name change from Notify to BloodyNotify
 - Complete refactoring of the mod
