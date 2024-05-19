@@ -15,11 +15,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Add functionality to the server to have MOTD, Auto Announcer, when a user is onli" +
     "ne, when a user goes offline or when someone kills a VBlood in v rising.")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("3.0.1")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("3.0.1+675ab7d81ef3950fc57baac9f37a8e6f9269f192")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("3.0.2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("3.0.2+628ecff6f124b655fc0f024dd0eaa3ed91b73654")]
 [assembly: System.Reflection.AssemblyProductAttribute("BloodyNotify")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BloodyNotify")]
-[assembly: System.Reflection.AssemblyVersionAttribute("3.0.1")]
+[assembly: System.Reflection.AssemblyVersionAttribute("3.0.2")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.
 
