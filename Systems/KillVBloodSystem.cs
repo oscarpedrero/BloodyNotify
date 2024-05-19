@@ -24,6 +24,9 @@ namespace BloodyNotify.Systems
 
         public static void OnDetahVblood(VBloodSystem sender, NativeList<VBloodConsumed> deathEvents)
         {
+
+            if(!Database.EnabledFeatures[NotifyFeature.vblood]) { return; }
+
             if (deathEvents.Length > 0)
             {
                 foreach (var event_vblood in deathEvents)
