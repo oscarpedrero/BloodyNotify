@@ -16,11 +16,7 @@ For the correct functioning of this mod you must have the following dependencies
 - [x] Ignore Announce kill VBlood Boss
 - [x] Auto Announcer
 - [x] Message Of The Day
-
-### Next Features
-
-- [ ] Announce Admin use console command to another admins online
-- [ ] Announcement when someone starts a fight against a VBlood Boss
+- [x] Command for list users online
 
 
 <details>
