@@ -23,7 +23,10 @@ For the correct functioning of this mod you must have the following dependencies
 <summary>Changelog</summary>
 
 `3.0.1`
+- Name change from Notify to BloodyNotify
 - Complete refactoring of the mod
+- Added command for list users online
+- Added new VBloods prefabs from 1.0.
 
 `3.0.0`
 - Pre-release for use in VRising version 1.0
