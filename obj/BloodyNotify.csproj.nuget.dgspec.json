@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\MODS\\Notify\\BloodyNotify.csproj": {}
+    "E:\\MODS\\BloodyNotify\\BloodyNotify.csproj": {}
   },
   "projects": {
-    "E:\\MODS\\Notify\\BloodyNotify.csproj": {
+    "E:\\MODS\\BloodyNotify\\BloodyNotify.csproj": {
       "version": "3.0.1",
       "restore": {
-        "projectUniqueName": "E:\\MODS\\Notify\\BloodyNotify.csproj",
+        "projectUniqueName": "E:\\MODS\\BloodyNotify\\BloodyNotify.csproj",
         "projectName": "BloodyNotify",
-        "projectPath": "E:\\MODS\\Notify\\BloodyNotify.csproj",
+        "projectPath": "E:\\MODS\\BloodyNotify\\BloodyNotify.csproj",
         "packagesPath": "C:\\Users\\Trodi\\.nuget\\packages\\",
-        "outputPath": "E:\\MODS\\Notify\\obj\\",
+        "outputPath": "E:\\MODS\\BloodyNotify\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "E:\\MODS\\Notify\\NuGet.Config",
+          "E:\\MODS\\BloodyNotify\\NuGet.Config",
           "C:\\Users\\Trodi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

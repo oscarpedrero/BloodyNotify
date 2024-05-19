@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kQtYnKGKTtdhaEHfTbBdtORkrZYyN22ttY+xula8CheuMvasc8BRlPFL5TS3NEZSNC7C1a7c4HGnRNbfnbcNGA==",
+  "dgSpecHash": "om3NiPcVD6VQjEIhuRxJNzttRGELk9C9Aoxf6YHKn5vm/WD0nxvybHu3JKE3SdrfLOZ4rAxNl/WgKc3oJMw8Bw==",
   "success": true,
-  "projectFilePath": "E:\\MODS\\Notify\\BloodyNotify.csproj",
+  "projectFilePath": "E:\\MODS\\BloodyNotify\\BloodyNotify.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Trodi\\.nuget\\packages\\asmresolver\\5.1.0\\asmresolver.5.1.0.nupkg.sha512",
     "C:\\Users\\Trodi\\.nuget\\packages\\asmresolver.dotnet\\5.1.0\\asmresolver.dotnet.5.1.0.nupkg.sha512",

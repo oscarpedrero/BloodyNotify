@@ -143,16 +143,6 @@ For the correct functioning of this mod you must have the following dependencies
 
 </details>
 
-### New featured
-
-Now you can remove the announcement of the death of a specific vblood, you only have to edit the configuration file that is in **/BepInEx/config/BloodyNotify/prefabs_names_ignore.json** and set the vblood prefab you want to true. 
-
-For example, to disable "Putrid Rat" look in the configuration file for "CHAR_Vermin_DireRat_VBlood" and set it to true
-
-```json
-"CHAR_Vermin_DireRat_VBlood": true,
-```
-
 ## Chat Commands
 
 | COMMAND                                          |DESCRIPTION
