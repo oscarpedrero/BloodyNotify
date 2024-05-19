@@ -1,0 +1,110 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\MODS\\Notify\\BloodyNotify.csproj": {}
+  },
+  "projects": {
+    "E:\\MODS\\Notify\\BloodyNotify.csproj": {
+      "version": "3.0.1",
+      "restore": {
+        "projectUniqueName": "E:\\MODS\\Notify\\BloodyNotify.csproj",
+        "projectName": "BloodyNotify",
+        "projectPath": "E:\\MODS\\Notify\\BloodyNotify.csproj",
+        "packagesPath": "C:\\Users\\Trodi\\.nuget\\packages\\",
+        "outputPath": "E:\\MODS\\Notify\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "E:\\MODS\\Notify\\NuGet.Config",
+          "C:\\Users\\Trodi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "E:\\MODS\\BloodyWallet\\bin\\Debug": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.bepinex.dev/v3/index.json": {},
+          "https://nuget.samboy.dev/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "BepInEx.Core": {
+              "include": "Compile",
+              "target": "Package",
+              "version": "[6.0.0-be.668, )"
+            },
+            "BepInEx.PluginInfoProps": {
+              "target": "Package",
+              "version": "[2.*, )"
+            },
+            "BepInEx.Unity.IL2CPP": {
+              "include": "Compile",
+              "target": "Package",
+              "version": "[6.0.0-be.668, )"
+            },
+            "Fody": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.8.0, )"
+            },
+            "ILMerge.Fody": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.24.0, )"
+            },
+            "VRising.Bloodstone": {
+              "target": "Package",
+              "version": "[0.1.*, )"
+            },
+            "VRising.Unhollowed.Client": {
+              "target": "Package",
+              "version": "[1.0.0.*, )"
+            },
+            "VRising.VampireCommandFramework": {
+              "target": "Package",
+              "version": "[0.8.*, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

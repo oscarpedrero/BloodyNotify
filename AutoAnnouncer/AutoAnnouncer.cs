@@ -1,7 +1,11 @@
-﻿using Notify.Helpers;
+﻿using BloodyNotify.DB;
+using BloodyNotify.Patch;
 using ProjectM;
+using System;
+using System.Threading;
+using UnityEngine;
 
-namespace Notify.AutoAnnouncer
+namespace BloodyNotify.AutoAnnouncer
 {
     public  class AutoAnnouncerFunction
     {
@@ -9,7 +13,7 @@ namespace Notify.AutoAnnouncer
 
         public static void OnTimedAutoAnnouncer()
         {
-            var messages = DBHelper.getAutoAnnouncerMessages();
+            var messages = Database.getAutoAnnouncerMessages();
 
             if (messages.Count > 0)
             {
@@ -17,14 +21,14 @@ namespace Notify.AutoAnnouncer
                 {
                     foreach (var line in messages[0].MessageLines)
                     {
-                        ServerChatUtils.SendSystemMessageToAllClients(VWorld.Server.EntityManager, line);
+                        ServerChatUtils.SendSystemMessageToAllClients(Plugin.SystemsCore.EntityManager, line);
                     }
                 }
                 else
                 {
                     foreach (var line in messages[__indexMessage].MessageLines)
                     {
-                        ServerChatUtils.SendSystemMessageToAllClients(VWorld.Server.EntityManager, line);
+                        ServerChatUtils.SendSystemMessageToAllClients(Plugin.SystemsCore.EntityManager, line);
                     }
 
                     __indexMessage++;
@@ -35,8 +39,20 @@ namespace Notify.AutoAnnouncer
                     }
                 }
             }
-
-            Plugin.Logger.LogWarning("Timer executed");
         }
+
+        public static void StartAutoAnnouncer()
+        {
+            static void action()
+            {
+                if (Database.EnabledFeatures[NotifyFeature.auto])
+                {
+                    OnTimedAutoAnnouncer();
+                }
+            }
+
+            ActionSchedulerPatch.RunActionEveryInterval(action, Database.getIntervalAutoAnnouncer());
+        }
+
     }
 }

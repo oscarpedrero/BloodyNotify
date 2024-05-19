@@ -1,10 +1,10 @@
-﻿using Notify.AutoAnnouncer.Models;
+﻿using BloodyNotify.AutoAnnouncer.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 
-namespace Notify.AutoAnnouncer.Parser
+namespace BloodyNotify.AutoAnnouncer.Parser
 {
     public class MessageParser
     {

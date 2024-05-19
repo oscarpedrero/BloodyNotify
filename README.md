@@ -1,4 +1,4 @@
-# Notify - Mod Server for V Rising ( 1.0 update )
+# BloodyNotify - Mod Server for V Rising ( 1.0 update )
 
 ## Requirements:
 
@@ -25,6 +25,9 @@ For the correct functioning of this mod you must have the following dependencies
 
 <details>
 <summary>Changelog</summary>
+
+`3.0.1`
+- Complete refactoring of the mod
 
 `3.0.0`
 - Pre-release for use in VRising version 1.0
@@ -146,7 +149,7 @@ For the correct functioning of this mod you must have the following dependencies
 
 ### New featured
 
-Now you can remove the announcement of the death of a specific vblood, you only have to edit the configuration file that is in **/BepInEx/config/Notify/prefabs_names_ignore.json** and set the vblood prefab you want to true. 
+Now you can remove the announcement of the death of a specific vblood, you only have to edit the configuration file that is in **/BepInEx/config/BloodyNotify/prefabs_names_ignore.json** and set the vblood prefab you want to true. 
 
 For example, to disable "Putrid Rat" look in the configuration file for "CHAR_Vermin_DireRat_VBlood" and set it to true
 
@@ -158,28 +161,29 @@ For example, to disable "Putrid Rat" look in the configuration file for "CHAR_Ve
 
 | COMMAND                                          |DESCRIPTION
 |--------------------------------------------------|-------------------------------|
-| `.help notify`                                   | Command that returns all available commands - NEW -         
-| `.notify reload` (Only Admins)                   | To reload the configuration of all config files. - NEW -
-| `.notify config online true` (Only Admins)   | Enabled announceonline System. - NEW -
-| `.notify config online false` (Only Admins)  | Disabled announceonline System. - NEW -
-| `.notify config offline true` (Only Admins)  | Enabled announceoffline System. - NEW -
-| `.notify config offline false` (Only Admins) | Disabled announceoffline System. - NEW -
-| `.notify config newuser true` (Only Admins)  | Enabled announcenewuser System. - NEW -
-| `.notify config newuser false` (Only Admins) |  Disabled announcenewuser System. - NEW -
-| `.notify config vblood true` (Only Admins)   | Enabled vbloodannounce System. - NEW -
-| `.notify config vblood false` (Only Admins)  | Disabled vbloodannounce System. - NEW -
-| `.notify config auto true` (Only Admins)      | Start AutoAnnouncer System. - NEW -
-| `.notify config auto false` (Only Admins)       | Stop AutoAnnouncer System. - NEW -
-| `.notify config motd true` (Only Admins)               | Enabled Message of the day System. - NEW -
-| `.notify config motd false` (Only Admins)                | Disabled Message of the day System. - NEW -
-| `.notify vblood ignore`                  | Turn on VBlood death notifications - NEW -
-| `.notify vblood unignore`                | Turn off VBlood death notifications - NEW -
+| `.help bn`                                   | Command that returns all available commands       
+| `.bn online`                                   | Command that returns all user online - NEW -         
+| `.bn reload` (Only Admins)                   | To reload the configuration of all config files. 
+| `.bn config online true` (Only Admins)   | Enabled announceonline System. 
+| `.bn config online false` (Only Admins)  | Disabled announceonline System. 
+| `.bn config offline true` (Only Admins)  | Enabled announceoffline System. 
+| `.bn config offline false` (Only Admins) | Disabled announceoffline System. 
+| `.bn config newuser true` (Only Admins)  | Enabled announcenewuser System. 
+| `.bn config newuser false` (Only Admins) |  Disabled announcenewuser System. 
+| `.bn config vblood true` (Only Admins)   | Enabled vbloodannounce System. 
+| `.bn config vblood false` (Only Admins)  | Disabled vbloodannounce System. 
+| `.bn config auto true` (Only Admins)      | Start AutoAnnouncer System. 
+| `.bn config auto false` (Only Admins)       | Stop AutoAnnouncer System. 
+| `.bn config motd true` (Only Admins)               | Enabled Message of the day System. 
+| `.bn config motd false` (Only Admins)                | Disabled Message of the day System. 
+| `.bn vblood ignore`                  | Turn on VBlood death notifications 
+| `.bn vblood unignore`                | Turn off VBlood death notifications 
 
 # Configuration
 
 Once the mod installed, a configuration file will be created in the \BepInEx\config server folder where you can activate or desactivate any of the mod notifications.
 
-**Notify.cfg**
+**BloodyNotify.cfg**
 
 |SECTION|PARAM| DESCRIPTION                                                     | DEFAULT
 |----------------|-------------------------------|-----------------------------------------------------------------|-----------------------------|
@@ -196,7 +200,7 @@ Once the mod installed, a configuration file will be created in the \BepInEx\con
 
 ## Default Messages
 
-To configure the default messages in case you do not have personalized messages per player you only have to edit the configuration file that is in **/BepInEx/config/Notify/default_announce.json**
+To configure the default messages in case you do not have personalized messages per player you only have to edit the configuration file that is in **/BepInEx/config/BloodyNotify/default_announce.json**
 ```json
 {
   "online":"#user# is online!",
@@ -214,7 +218,7 @@ To configure the default messages in case you do not have personalized messages 
 
 ## Customize Player Announce
 
-To configure the customize messages per player connected, you only have to edit the configuration file that is in **/BepInEx/config/Notify/users_online.json**
+To configure the customize messages per player connected, you only have to edit the configuration file that is in **/BepInEx/config/BloodyNotify/users_online.json**
 
 ```json
 {
@@ -224,7 +228,7 @@ To configure the customize messages per player connected, you only have to edit 
 ```
 > The text string #user# is used to overwrite the name of the corresponding player(s)
 
-To configure the customize messages per player disconnected, you only have to edit the configuration file that is in **/BepInEx/config/Notify/users_offline.json**
+To configure the customize messages per player disconnected, you only have to edit the configuration file that is in **/BepInEx/config/BloodyNotify/users_offline.json**
 
 ```json
 {
@@ -236,63 +240,85 @@ To configure the customize messages per player disconnected, you only have to ed
 
 ## Translate VBlod boss name
 
-To translate the name of VBlood boss, you only have to edit the configuration file that is in **/BepInEx/config/Notify/prefabs_names.json**
+To translate the name of VBlood boss, you only have to edit the configuration file that is in **/BepInEx/config/BloodyNotify/prefabs_names.json**
 ```json
 {
-  "CHAR_Cursed_Witch_VBlood": "Matka",
-  "CHAR_Geomancer_Human_VBlood": "Terah",
-  "CHAR_VHunter_Jade_VBlood": "Jade",
-  "CHAR_Villager_Tailor_VBlood": "Beatrice",
-  "CHAR_Undead_Priest_VBlood": "Nicholaus",
-  "CHAR_Bandit_Tourok_VBlood": "Quincey (Quincy)",
-  "CHAR_Spider_Queen_VBlood": "Ungora (Spider)",
-  "CHAR_Winter_Yeti_VBlood": "Terrorclaw",
-  "CHAR_Undead_BishopOfDeath_VBlood": "Goreswine",
-  "CHAR_Militia_Leader_VBlood": "Octavian",
-  "CHAR_Undead_BishopOfShadows_VBlood": "Leandra",
-  "CHAR_Bandit_Foreman_VBlood": "Rufus",
-  "CHAR_Forest_Bear_Dire_VBlood": "Ferocious Bear",
-  "CHAR_Militia_Nun_VBlood": "Christina",
-  "CHAR_Bandit_Bomber_VBlood": "Clive",
-  "CHAR_Cursed_MountainBeast_VBlood": "Gorecrusher the Behemoth",
-  "CHAR_Undead_ZealousCultist_VBlood": "Foulrot",
-  "CHAR_Poloma_VBlood": "Polora",
-  "CHAR_BatVampire_VBlood": "Styx (Bat)",
-  "CHAR_ArchMage_VBlood": "Mairwyn",
-  "CHAR_Cursed_ToadKing_VBlood": "The Duke of Balaton (Frog)",
-  "CHAR_Manticore_VBlood": "The Winged Horror",
-  "CHAR_Militia_Guard_VBlood": "Vincent",
-  "CHAR_Militia_BishopOfDunley_VBlood": "Raziel",
-  "CHAR_Harpy_Matriarch_VBlood": "Morian",
-  "CHAR_ChurchOfLight_Paladin_VBlood": "Solarus",
-  "CHAR_VHunter_Leader_VBlood": "Tristan",
-  "CHAR_Bandit_StoneBreaker_VBlood": "Errol",
-  "CHAR_ChurchOfLight_Cardinal_VBlood": "Azariel",
-  "CHAR_Forest_Wolf_VBlood": "Alpha Wolf",
-  "CHAR_Militia_Longbowman_LightArrow_VBlood": "Meredith",
+  "CHAR_Wildlife_Wolf_VBlood": "Alpha Wolf",
+  "CHAR_Bandit_Deadeye_Frostarrow_VBlood": "Keely the Frost Archer",
+  "CHAR_Bandit_Foreman_VBlood": "Rufus the Foreman",
+  "CHAR_Bandit_StoneBreaker_VBlood": "Errol the Stonebreaker",
+  "CHAR_Bandit_Deadeye_Chaosarrow_VBlood": "Lidia the Chaos Archer",
+  "CHAR_Undead_BishopOfDeath_VBlood": "Goreswine the Ravager",
+  "CHAR_Bandit_Stalker_VBlood": "Grayson the Armourer",
   "CHAR_Vermin_DireRat_VBlood": "Putrid Rat",
-  "CHAR_Wendigo_VBlood": "Frostmaw",
-  "CHAR_Bandit_Stalker_VBlood": "Grayson",
-  "CHAR_Gloomrot_Monster_VBlood": "Adam",
-  "CHAR_Gloomrot_RailgunSergeant_VBlood": "Voltatia",
-  "CHAR_Gloomrot_Iva_VBlood": "Ziva",
-  "CHAR_Gloomrot_Purifier_VBlood": "Angram",
-  "CHAR_Gloomrot_TheProfessor_VBlood": "Henry Blackbrew",
-  "CHAR_Gloomrot_Voltage_VBlood": "Domina",
-  "CHAR_Undead_CursedSmith_VBlood": "Cyril",
-  "CHAR_Villager_CursedWanderer_VBlood": "The Old Wanderer",
-  "CHAR_ChurchOfLight_Sommelier_VBlood": "Baron du Bouchon",
+  "CHAR_Bandit_Bomber_VBlood": "Clive the Firestarter",
+  "CHAR_Wildlife_Poloma_VBlood": "Polora the Feywalker",
+  "CHAR_Wildlife_Bear_Dire_Vblood": "Ferocious Bear",
+  "CHAR_Undead_Priest_VBlood": "Nicholaus the Fallen",
+  "CHAR_Bandit_Tourok_VBlood": "Quincey the Bandit King",
+  "CHAR_Villager_Tailor_VBlood": "Beatrice the Tailor",
+  "CHAR_Militia_Guard_VBlood": "Vincent the Frostbringer",
+  "CHAR_Farmlands_Nun_VBlood": "Christina the Sun Priestess",
+  "CHAR_VHunter_Leader_VBlood": "Tristan the Vampire Hunter",
+  "CHAR_Undead_BishopOfShadows_VBlood": "Leandra the Shadow Priestess",
+  "CHAR_Geomancer_Human_VBlood": "Terah the Geomancer",
+  "CHAR_Militia_Longbowman_LightArrow_Vblood": "Meredith the Bright Archer",
+  "CHAR_Wendigo_VBlood": "Frostmaw the Mountain Terror",
+  "CHAR_Militia_Leader_VBlood": "Octavian the Militia Captain",
+  "CHAR_Militia_BishopOfDunley_VBlood": "Raziel the Shepherd",
+  "CHAR_Spider_Queen_VBlood": "Ungora the Spider Queen",
+  "CHAR_Cursed_ToadKing_VBlood": "The Duke of Balaton",
+  "CHAR_VHunter_Jade_VBlood": "Jade the Vampire Hunter",
+  "CHAR_Undead_ZealousCultist_VBlood": "Foulrot the Soultaker",
+  "CHAR_WerewolfChieftain_VBlood": "Willfred the Werewolf Chief",
+  "CHAR_ArchMage_VBlood": "Mairwyn the Elementalist",
+  "CHAR_Town_Cardinal_VBlood": "Azariel the Sunbringer",
+  "CHAR_Winter_Yeti_VBlood": "Terrorclaw the Ogre",
+  "CHAR_Harpy_Matriarch_VBlood": "Morian the Stormwing Matriarch",
+  "CHAR_Cursed_Witch_VBlood": "Matka the Curse Weaver",
+  "CHAR_BatVampire_VBlood": "Nightmarshal Styx the Sunderer",
+  "CHAR_Cursed_MountainBeast_VBlood": "Gorecrusher the Behemoth",
+  "CHAR_Manticore_VBlood": "The Winged Horror",
+  "CHAR_Paladin_VBlood": "Solarus the Immaculate",
+  "CHAR_Bandit_GraveDigger_VBlood_UNUSED": "CHAR_Bandit_GraveDigger_VBlood_UNUSED",
+  "CHAR_Bandit_Leader_VBlood_UNUSED": "CHAR_Bandit_Leader_VBlood_UNUSED",
+  "CHAR_Bandit_Miner_VBlood_UNUSED": "CHAR_Bandit_Miner_VBlood_UNUSED",
+  "CHAR_Bandit_Thief_VBlood_UNUSED": "CHAR_Bandit_Thief_VBlood_UNUSED",
+  "CHAR_ChurchOfLight_Cardinal_VBlood": "Azariel the Sunbringer",
   "CHAR_ChurchOfLight_Overseer_VBlood": "Sir Magnus the Overseer",
-  "CHAR_Militia_Scribe_VBlood": "Maja",
-  "CHAR_Undead_Infiltrator_VBlood": "Bane",
+  "CHAR_ChurchOfLight_Paladin_VBlood": "Solarus the Immaculate",
+  "CHAR_ChurchOfLight_Sommelier_VBlood": "Baron du Bouchon the Sommelier",
+  "CHAR_Forest_Bear_Dire_Vblood": "Ferocious Bear",
+  "CHAR_Forest_Wolf_VBlood": "Alpha Wolf",
+  "CHAR_Geomancer_Golem_VBlood": "CHAR_Geomancer_Golem_VBlood",
+  "CHAR_Gloomrot_Iva_VBlood": "Ziva the Engineer",
+  "CHAR_Gloomrot_Monster_VBlood": "Adam the Firstborn",
+  "CHAR_Gloomrot_Purifier_VBlood": "Angram the Purifier",
+  "CHAR_Gloomrot_RailgunSergeant_VBlood": "Voltatia the Power Master",
+  "CHAR_Gloomrot_TheProfessor_VBlood": "Henry Blackbrew the Doctor",
+  "CHAR_Gloomrot_Voltage_VBlood": "Domina the Blade Dancer",
   "CHAR_Militia_Glassblower_VBlood": "Grethel the Glassblower",
-  "CHAR_Undead_Leader_VBlood": "Kriig",
-  "NoPrefabName": "Unknow VBlood Boss"
+  "CHAR_Militia_Hound_VBlood": "CHAR_Militia_Hound_VBlood",
+  "CHAR_Militia_HoundMaster_VBlood": "CHAR_Militia_HoundMaster_VBlood",
+  "CHAR_Militia_Nun_VBlood": "Christina the Sun Priestess",
+  "CHAR_Militia_Scribe_VBlood": "Maja the Dark Savant",
+  "CHAR_Poloma_VBlood": "Polora the Feywalker",
+  "CHAR_Undead_CursedSmith_VBlood": "Cyril the Cursed Smith",
+  "CHAR_Undead_Infiltrator_VBlood": "Bane the Shadowblade",
+  "CHAR_Undead_Leader_Vblood": "Kriig the Undead General",
+  "CHAR_Villager_CursedWanderer_VBlood": "The Old Wanderer",
+  "CHAR_Bandit_Fisherman_VBlood": "Finn the Fisherman",
+  "CHAR_VHunter_CastleMan": "Simon Belmont the Vampire Hunter",
+  "CHAR_Vampire_BloodKnight_VBlood": "General Valencia the Depraved",
+  "CHAR_Vampire_Dracula_VBlood": "Dracula the Immortal King",
+  "CHAR_Vampire_HighLord_VBlood": "General Cassius the Betrayer",
+  "CHAR_Vampire_IceRanger_VBlood": "General Elena the Hollow",
+  "NoPrefabName": "VBlood Boss"
 }
 ```
 ## Ignore the notification of the death of a VBlood
 
-To ignore the notification of the death of a VBlood, you only have to edit the configuration file that is in **/BepInEx/config/Notify/prefabs_names_ignore.json** and set the vblood prefab you want to true. 
+To ignore the notification of the death of a VBlood, you only have to edit the configuration file that is in **/BepInEx/config/BloodyNotify/prefabs_names_ignore.json** and set the vblood prefab you want to true. 
 
 For example, to disable "Putrid Rat" look in the configuration file for "CHAR_Vermin_DireRat_VBlood" and set it to true
 
@@ -300,63 +326,85 @@ For example, to disable "Putrid Rat" look in the configuration file for "CHAR_Ve
 "CHAR_Vermin_DireRat_VBlood": true,
 ```
 
-**/BepInEx/config/Notify/prefabs_names_ignore.json**
+**/BepInEx/config/BloodyNotify/prefabs_names_ignore.json**
 ```json
 {
-  "CHAR_Cursed_Witch_VBlood": false,
-  "CHAR_Geomancer_Human_VBlood": false,
-  "CHAR_VHunter_Jade_VBlood": false,
-  "CHAR_Villager_Tailor_VBlood": false,
+  "CHAR_Wildlife_Wolf_VBlood": false,
+  "CHAR_Bandit_Deadeye_Frostarrow_VBlood": false,
+  "CHAR_Bandit_Foreman_VBlood": false,
+  "CHAR_Bandit_StoneBreaker_VBlood": false,
+  "CHAR_Bandit_Deadeye_Chaosarrow_VBlood": false,
+  "CHAR_Undead_BishopOfDeath_VBlood": false,
+  "CHAR_Bandit_Stalker_VBlood": false,
+  "CHAR_Vermin_DireRat_VBlood": false,
+  "CHAR_Bandit_Bomber_VBlood": false,
+  "CHAR_Wildlife_Poloma_VBlood": false,
+  "CHAR_Wildlife_Bear_Dire_Vblood": false,
   "CHAR_Undead_Priest_VBlood": false,
   "CHAR_Bandit_Tourok_VBlood": false,
-  "CHAR_Spider_Queen_VBlood": false,
-  "CHAR_Winter_Yeti_VBlood": false,
-  "CHAR_Undead_BishopOfDeath_VBlood": false,
-  "CHAR_Militia_Leader_VBlood": false,
-  "CHAR_Undead_BishopOfShadows_VBlood": false,
-  "CHAR_Bandit_Foreman_VBlood": false,
-  "CHAR_Forest_Bear_Dire_VBlood": false,
-  "CHAR_Militia_Nun_VBlood": false,
-  "CHAR_Bandit_Bomber_VBlood": false,
-  "CHAR_Cursed_MountainBeast_VBlood": false,
-  "CHAR_Undead_ZealousCultist_VBlood": false,
-  "CHAR_Poloma_VBlood": false,
-  "CHAR_BatVampire_VBlood": false,
-  "CHAR_ArchMage_VBlood": false,
-  "CHAR_Cursed_ToadKing_VBlood": false,
-  "CHAR_Manticore_VBlood": false,
+  "CHAR_Villager_Tailor_VBlood": false,
   "CHAR_Militia_Guard_VBlood": false,
-  "CHAR_Militia_BishopOfDunley_VBlood": false,
-  "CHAR_Harpy_Matriarch_VBlood": false,
-  "CHAR_ChurchOfLight_Paladin_VBlood": false,
+  "CHAR_Farmlands_Nun_VBlood": false,
   "CHAR_VHunter_Leader_VBlood": false,
-  "CHAR_Bandit_StoneBreaker_VBlood": false,
-  "CHAR_ChurchOfLight_Cardinal_VBlood": false,
-  "CHAR_Forest_Wolf_VBlood": false,
-  "CHAR_Militia_Longbowman_LightArrow_VBlood": false,
-  "CHAR_Vermin_DireRat_VBlood": false,
+  "CHAR_Undead_BishopOfShadows_VBlood": false,
+  "CHAR_Geomancer_Human_VBlood": false,
+  "CHAR_Militia_Longbowman_LightArrow_Vblood": false,
   "CHAR_Wendigo_VBlood": false,
-  "CHAR_Bandit_Stalker_VBlood": false,
-  "CHAR_Gloomrot_Monster_VBlood": false,
-  "CHAR_Gloomrot_RailgunSergeant_VBlood": false,
+  "CHAR_Militia_Leader_VBlood": false,
+  "CHAR_Militia_BishopOfDunley_VBlood": false,
+  "CHAR_Spider_Queen_VBlood": false,
+  "CHAR_Cursed_ToadKing_VBlood": false,
+  "CHAR_VHunter_Jade_VBlood": false,
+  "CHAR_Undead_ZealousCultist_VBlood": false,
+  "CHAR_WerewolfChieftain_VBlood": false,
+  "CHAR_ArchMage_VBlood": false,
+  "CHAR_Town_Cardinal_VBlood": false,
+  "CHAR_Winter_Yeti_VBlood": false,
+  "CHAR_Harpy_Matriarch_VBlood": false,
+  "CHAR_Cursed_Witch_VBlood": false,
+  "CHAR_BatVampire_VBlood": false,
+  "CHAR_Cursed_MountainBeast_VBlood": false,
+  "CHAR_Manticore_VBlood": false,
+  "CHAR_Paladin_VBlood": false,
+  "CHAR_Bandit_GraveDigger_VBlood_UNUSED": false,
+  "CHAR_Bandit_Leader_VBlood_UNUSED": false,
+  "CHAR_Bandit_Miner_VBlood_UNUSED": false,
+  "CHAR_Bandit_Thief_VBlood_UNUSED": false,
+  "CHAR_ChurchOfLight_Cardinal_VBlood": false,
+  "CHAR_ChurchOfLight_Overseer_VBlood": false,
+  "CHAR_ChurchOfLight_Paladin_VBlood": false,
+  "CHAR_ChurchOfLight_Sommelier_VBlood": false,
+  "CHAR_Forest_Bear_Dire_Vblood": false,
+  "CHAR_Forest_Wolf_VBlood": false,
+  "CHAR_Geomancer_Golem_VBlood": false,
   "CHAR_Gloomrot_Iva_VBlood": false,
+  "CHAR_Gloomrot_Monster_VBlood": false,
   "CHAR_Gloomrot_Purifier_VBlood": false,
+  "CHAR_Gloomrot_RailgunSergeant_VBlood": false,
   "CHAR_Gloomrot_TheProfessor_VBlood": false,
   "CHAR_Gloomrot_Voltage_VBlood": false,
-  "CHAR_Undead_CursedSmith_VBlood": false,
-  "CHAR_Villager_CursedWanderer_VBlood": false,
-  "CHAR_ChurchOfLight_Sommelier_VBlood": false,
-  "CHAR_ChurchOfLight_Overseer_VBlood": false,
-  "CHAR_Militia_Scribe_VBlood": false,
-  "CHAR_Undead_Infiltrator_VBlood": false,
   "CHAR_Militia_Glassblower_VBlood": false,
-  "CHAR_Undead_Leader_VBlood": false,
+  "CHAR_Militia_Hound_VBlood": false,
+  "CHAR_Militia_HoundMaster_VBlood": false,
+  "CHAR_Militia_Nun_VBlood": false,
+  "CHAR_Militia_Scribe_VBlood": false,
+  "CHAR_Poloma_VBlood": false,
+  "CHAR_Undead_CursedSmith_VBlood": false,
+  "CHAR_Undead_Infiltrator_VBlood": false,
+  "CHAR_Undead_Leader_Vblood": false,
+  "CHAR_Villager_CursedWanderer_VBlood": false,
+  "CHAR_Bandit_Fisherman_VBlood": false,
+  "CHAR_VHunter_CastleMan": false,
+  "CHAR_Vampire_BloodKnight_VBlood": false,
+  "CHAR_Vampire_Dracula_VBlood": false,
+  "CHAR_Vampire_HighLord_VBlood": false,
+  "CHAR_Vampire_IceRanger_VBlood": false,
   "NoPrefabName": false
 }
 ```
 ## Auto Announcer Messages - NEW
 
-To configure the Auto Announce messages you must edit the configuration file that is in **/BepInEx/config/Notify/auto_announcer_messages.json**
+To configure the Auto Announce messages you must edit the configuration file that is in **/BepInEx/config/BloodyNotify/auto_announcer_messages.json**
 ```json
 [
     [
@@ -379,9 +427,9 @@ To configure the Auto Announce messages you must edit the configuration file tha
 > If you configure several messages, the system will go through one by one for each of the configured messages each time the defined interval is met.
 
 
-## Message of the day ( MOTD ) - NEW
+## Message of the day ( MOTD )
 
-To configure the Message of the day you must edit the configuration file that is in **/BepInEx/config/Notify/message_of_the_day.json**
+To configure the Message of the day you must edit the configuration file that is in **/BepInEx/config/BloodyNotify/message_of_the_day.json**
 ```json
 [
     "<color=#FFFFFF>Hello <i>#user#</i> this is Message of the day Line 1</color>", 
@@ -398,12 +446,11 @@ To configure the Message of the day you must edit the configuration file that is
 
 ## VBlood Announce Ignore
 
-If you want to do it by hand you just have to edit the **/BepInEx/config/Notify/vbloodannounce_ignore_users.json** file to add or remove players
+If you want to do it by hand you just have to edit the **/BepInEx/config/BloodyNotify/vbloodannounce_ignore_users.json** file to add or remove players
 
 ```json
 {
-   "CharacterName": true,
-   "OtherCharacterName": true
+    "CharacterName":true
 }
 ```
 ## Help

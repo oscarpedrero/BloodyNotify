@@ -1,91 +1,112 @@
 ﻿using BepInEx;
-using BepInEx.Unity.IL2CPP;
 using BepInEx.Configuration;
+using BepInEx.Unity.IL2CPP;
+using Bloodstone.API;
+using Bloody.Core;
+using Bloody.Core.API;
+using BloodyNotify.AutoAnnouncer;
+using BloodyNotify.DB;
+using BloodyNotify.Patch;
+using BloodyNotify.Systems;
 using HarmonyLib;
 using System.IO;
-using System.Reflection;
-using BepInEx.Logging;
-using Notify.Helpers;
+using Unity.Entities;
 using VampireCommandFramework;
 
-namespace Notify
+namespace BloodyNotify;
+
+[BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
+[BepInDependency("gg.deca.VampireCommandFramework")]
+[BepInDependency("gg.deca.Bloodstone")]
+[Bloodstone.API.Reloadable]
+public class Plugin : BasePlugin, IRunOnInitialized
 {
-    [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
-    [BepInDependency("gg.deca.VampireCommandFramework")]
-    public class Plugin : BasePlugin
+    Harmony _harmony;
+    public static Bloody.Core.Helper.Logger Logger;
+    public static SystemsCore SystemsCore;
+
+    public static ConfigEntry<bool> AnnounceOnline;
+    public static ConfigEntry<bool> AnnounceeOffline;
+    public static ConfigEntry<bool> AnnounceNewUser;
+    public static ConfigEntry<bool> AnnounceVBlood;
+    public static ConfigEntry<string> VBloodFinalConcatCharacters;
+    public static ConfigEntry<bool> AutoAnnouncerConfig;
+    public static ConfigEntry<int> IntervalAutoAnnouncer;
+    public static ConfigEntry<bool> MessageOfTheDay;
+
+    public static readonly string ConfigPath = Path.Combine(Paths.ConfigPath, "BloodyNotify");
+
+    public override void Load()
     {
+        Logger = new(Log);     
 
-        public static ManualLogSource Logger;
+        // Harmony patching
+        _harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
+        _harmony.PatchAll(typeof(ActionSchedulerPatch));
 
-        private Harmony _harmony;
+        // Register all commands in the assembly with VCF
+        CommandRegistry.RegisterAll();
 
-        internal static Plugin Instance { get; private set; }
+        EventsHandlerSystem.OnInitialize += GameDataOnInitialize;
+        InitConfig();
+        LoadDatabase.LoadAllConfig();
 
-        public static ConfigEntry<bool> AnnounceOnline;
-        public static ConfigEntry<bool> AnnounceeOffline;
-        public static ConfigEntry<bool> AnnounceNewUser;
-        public static ConfigEntry<bool> AnnounceVBlood;
-        public static ConfigEntry<string> VBloodFinalConcatCharacters;
-        public static ConfigEntry<bool> AutoAnnouncerConfig;
-        public static ConfigEntry<int> IntervalAutoAnnouncer;
-        public static ConfigEntry<bool> MessageOfTheDay;
 
-        public static readonly string ConfigPath = Path.Combine(BepInEx.Paths.ConfigPath, "Notify");
+        Logger.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} version {MyPluginInfo.PLUGIN_VERSION} is loaded!");
+    }
 
-        public override void Load()
-        {
-            //if (!VWorld.IsServer) return;
-            Instance = this;
-            InitConfig();
-            Logger = Log;
-            LoadConfigHelper.LoadAllConfig();
-            CommandRegistry.RegisterAll();
-            //Chat.OnChatMessage += ChatCommandHook.Chat_OnChatMessage;
-            //GameData.OnInitialize += GameDataOnInitialize;
-            _harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
-            _harmony.PatchAll(Assembly.GetExecutingAssembly());
-            Log.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is loaded!");
-        }
+    private void GameDataOnInitialize(World world)
+    {
+        SystemsCore = Core.SystemsCore;
 
-        public override bool Unload()
-        {
-            //if (!VWorld.IsServer) return true;
-            //Chat.OnChatMessage -= ChatCommandHook.Chat_OnChatMessage;
-            //GameData.OnInitialize -= GameDataOnInitialize;
-            Config.Clear();
-            
-            CommandRegistry.UnregisterAssembly();
-            _harmony.UnpatchSelf();
+        Database.EnabledFeatures[NotifyFeature.online] = AnnounceOnline.Value;
+        Database.EnabledFeatures[NotifyFeature.offline] = AnnounceeOffline.Value;
+        Database.EnabledFeatures[NotifyFeature.newuser] = AnnounceNewUser.Value;
+        Database.EnabledFeatures[NotifyFeature.vblood] = AnnounceVBlood.Value;
+        Database.EnabledFeatures[NotifyFeature.auto] = AutoAnnouncerConfig.Value;
+        Database.EnabledFeatures[NotifyFeature.motd] = MessageOfTheDay.Value;
 
-            return true;
-        }
+        Database.setVBloodFinalConcatCharacters(VBloodFinalConcatCharacters.Value);
+        Database.setIntervalAutoAnnouncer(IntervalAutoAnnouncer.Value);
 
-        private void InitConfig()
-        {
-
-            AnnounceOnline = Config.Bind("UserOnline", "enabled", true, "Enable Announce when user online");
-            AnnounceeOffline = Config.Bind("UserOffline", "enabled", true, "Enable Announce when user offline");
-            AnnounceNewUser = Config.Bind("NewUserOnline", "enabled", true, "Enable Announce when new user create in server");
-            AnnounceVBlood = Config.Bind("AnnounceVBlood", "enabled", true, "Enable Announce when user/users kill a VBlood Boss.");
-            VBloodFinalConcatCharacters = Config.Bind("AnnounceVBlood", "VBloodFinalConcatCharacters", "and", "Final string for concat two or more players kill a VBlood Boss.");
-            AutoAnnouncerConfig = Config.Bind("AutoAnnouncer", "enabled", false, "Enable AutoAnnouncer.");
-            IntervalAutoAnnouncer = Config.Bind("AutoAnnouncer", "interval", 300, "Interval seconds for spam AutoAnnouncer.");
-            MessageOfTheDay = Config.Bind("MessageOfTheDay", "enabled", false, "Enable Message Of The Day.");
-
-            if (!Directory.Exists(ConfigPath)) Directory.CreateDirectory(ConfigPath);
-
-            ConfigDefaultHelper.CheckAndCreateConfigs();
-            
-
-        }
+        EventsHandlerSystem.OnUserConnected += OnlineOfflineSystem.OnUserOnline;
+        EventsHandlerSystem.OnUserDisconnected += OnlineOfflineSystem.OnUserOffline;
+        EventsHandlerSystem.OnDeathVBlood += KillVBloodSystem.OnDetahVblood;
 
         
-
-        public void OnGameInitialized()
-        {
-            
-
-        }
+        AutoAnnouncerFunction.StartAutoAnnouncer();
 
     }
+
+    private void InitConfig()
+    {
+
+        AnnounceOnline = Config.Bind("UserOnline", "enabled", true, "Enable Announce when user online");
+        AnnounceeOffline = Config.Bind("UserOffline", "enabled", true, "Enable Announce when user offline");
+        AnnounceNewUser = Config.Bind("NewUserOnline", "enabled", true, "Enable Announce when new user create in server");
+        AnnounceVBlood = Config.Bind("AnnounceVBlood", "enabled", true, "Enable Announce when user/users kill a VBlood Boss.");
+        VBloodFinalConcatCharacters = Config.Bind("AnnounceVBlood", "VBloodFinalConcatCharacters", "and", "Final string for concat two or more players kill a VBlood Boss.");
+        AutoAnnouncerConfig = Config.Bind("AutoAnnouncer", "enabled", false, "Enable AutoAnnouncer.");
+        IntervalAutoAnnouncer = Config.Bind("AutoAnnouncer", "interval", 300, "Interval seconds for spam AutoAnnouncer.");
+        MessageOfTheDay = Config.Bind("MessageOfTheDay", "enabled", false, "Enable Message Of The Day.");
+
+        if (!Directory.Exists(ConfigPath)) Directory.CreateDirectory(ConfigPath);
+
+        DB.Config.CheckAndCreateConfigs();
+
+
+    }
+
+    public void OnGameInitialized()
+    {
+        
+    }
+
+    public override bool Unload()
+    {
+        CommandRegistry.UnregisterAssembly();
+        _harmony?.UnpatchSelf();
+        return true;
+    }
+
 }
