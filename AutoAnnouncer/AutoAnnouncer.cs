@@ -1,9 +1,6 @@
 ﻿using BloodyNotify.DB;
 using BloodyNotify.Patch;
 using ProjectM;
-using System;
-using System.Threading;
-using UnityEngine;
 
 namespace BloodyNotify.AutoAnnouncer
 {
@@ -43,15 +40,16 @@ namespace BloodyNotify.AutoAnnouncer
 
         public static void StartAutoAnnouncer()
         {
-            static void action()
+            static void AutoAnnouncerAction()
             {
                 if (Database.EnabledFeatures[NotifyFeature.auto])
                 {
                     OnTimedAutoAnnouncer();
+                    ActionSchedulerPatch.RunActionOnceAfterDelay(AutoAnnouncerAction, Database.getIntervalAutoAnnouncer());
                 }
             }
 
-            ActionSchedulerPatch.RunActionEveryInterval(action, Database.getIntervalAutoAnnouncer());
+            ActionSchedulerPatch.RunActionOnceAfterDelay(AutoAnnouncerAction, Database.getIntervalAutoAnnouncer());
         }
 
     }

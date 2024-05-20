@@ -23,6 +23,9 @@ For the correct functioning of this mod you must have the following dependencies
 <summary>Changelog</summary>
 
 `3.0.2`
+- Fixed incompatibility of the AutoAnnouncer system with other modifications.
+
+`3.0.2`
 - Fixed bug that showed "ignore" when VBlood death notifications were disabled
 
 `3.0.1`
