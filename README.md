@@ -22,7 +22,7 @@ For the correct functioning of this mod you must have the following dependencies
 <details>
 <summary>Changelog</summary>
 
-`3.0.2`
+`3.0.3`
 - Fixed incompatibility of the AutoAnnouncer system with other modifications.
 
 `3.0.2`
