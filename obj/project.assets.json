@@ -138,6 +138,22 @@
           }
         }
       },
+      "Bloody.Core/1.2.1": {
+        "type": "package",
+        "dependencies": {
+          "BepInEx.Core": "6.0.0-be.668",
+          "BepInEx.PluginInfoProps": "2.1.0",
+          "BepInEx.Unity.IL2CPP": "6.0.0-be.668",
+          "VRising.Bloodstone": "0.1.6",
+          "VRising.Unhollowed.Client": "1.0.0.792660001"
+        },
+        "compile": {
+          "lib/net6.0/Bloody.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Bloody.Core.dll": {}
+        }
+      },
       "Disarm/2022.1.0-master.26": {
         "type": "package",
         "compile": {
@@ -147,10 +163,10 @@
           "lib/net6.0/_._": {}
         }
       },
-      "Fody/6.8.0": {
+      "Fody/6.6.2": {
         "type": "package",
         "build": {
-          "build/Fody.targets": {}
+          "build/_._": {}
         }
       },
       "HarmonyX/2.10.1": {
@@ -250,25 +266,6 @@
           "lib/net6.0/_._": {
             "related": ".xml"
           }
-        }
-      },
-      "ILMerge.Fody/1.24.0": {
-        "type": "package",
-        "dependencies": {
-          "Fody": "6.6.4"
-        },
-        "compile": {
-          "lib/netstandard2.1/ILMerge.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.1/ILMerge.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "build/ILMerge.Fody.props": {}
         }
       },
       "js6pak.Gee.External.Capstone/2.1.0": {
@@ -1945,6 +1942,21 @@
         "logo.png"
       ]
     },
+    "Bloody.Core/1.2.1": {
+      "sha512": "u2Lujcxf4id0coVI6+PV2v7NZQWePxX4WsnILZOxEQ435dgcWk05u87VUl6q5vdqW3OUH6IQja3gHtHDrHeveA==",
+      "type": "package",
+      "path": "bloody.core/1.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License",
+        "README.md",
+        "bloody.core.1.2.1.nupkg.sha512",
+        "bloody.core.nuspec",
+        "icon.png",
+        "lib/net6.0/Bloody.Core.dll"
+      ]
+    },
     "Disarm/2022.1.0-master.26": {
       "sha512": "YnZEbRGr0nG+N3G8WbRQ4Lkg8dTD3oso9iJlCVBmyhEyhLyqs+drBs1kWQbQqFPnb9mi/RJ++R9bPb+L3HF03Q==",
       "type": "package",
@@ -1958,16 +1970,16 @@
         "lib/netstandard2.0/Disarm.dll"
       ]
     },
-    "Fody/6.8.0": {
-      "sha512": "hfZ/f8Mezt8aTkgv9nsvFdYoQ809/AqwsJlOGOPYIfBcG2aAIG3v3ex9d8ZqQuFYyMoucjRg4eKy3VleeGodKQ==",
+    "Fody/6.6.2": {
+      "sha512": "/PISk/t+lnNm0tiAc3xer3wp7HVnDCkX7gyTzljbC9kygUBJpYU2V1P/MjJeu/C6JhR40QXr9XdoxvqRmaHlhg==",
       "type": "package",
-      "path": "fody/6.8.0",
+      "path": "fody/6.6.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "License.txt",
         "build/Fody.targets",
-        "fody.6.8.0.nupkg.sha512",
+        "fody.6.6.2.nupkg.sha512",
         "fody.nuspec",
         "netclassictask/Fody.dll",
         "netclassictask/FodyCommon.dll",
@@ -2089,28 +2101,6 @@
         "lib/net6.0/Il2CppInterop.Runtime.dll",
         "lib/net6.0/Il2CppInterop.Runtime.xml",
         "logo_icon.png"
-      ]
-    },
-    "ILMerge.Fody/1.24.0": {
-      "sha512": "Jg13T22kxyVUCP1lAfjSDKkL01XzMIM+GWd5kv9Hohi/9L2dhHZK55KQe2Yu/sHoQsYvRToeCDuIBKrNOJza7A==",
-      "type": "package",
-      "path": "ilmerge.fody/1.24.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE",
-        "build/ILMerge.Fody.props",
-        "ilmerge.fody.1.24.0.nupkg.sha512",
-        "ilmerge.fody.nuspec",
-        "lib/net452/ILMerge.dll",
-        "lib/net452/ILMerge.xml",
-        "lib/netstandard2.0/ILMerge.dll",
-        "lib/netstandard2.0/ILMerge.xml",
-        "lib/netstandard2.1/ILMerge.dll",
-        "lib/netstandard2.1/ILMerge.xml",
-        "package_icon.png",
-        "weaver/ILMerge.Fody.dll",
-        "weaver/ILMerge.Fody.xcf"
       ]
     },
     "js6pak.Gee.External.Capstone/2.1.0": {
@@ -5237,8 +5227,7 @@
       "BepInEx.Core >= 6.0.0-be.668",
       "BepInEx.PluginInfoProps >= 2.*",
       "BepInEx.Unity.IL2CPP >= 6.0.0-be.668",
-      "Fody >= 6.8.0",
-      "ILMerge.Fody >= 1.24.0",
+      "Bloody.Core >= 1.2.*",
       "VRising.Bloodstone >= 0.1.*",
       "VRising.Unhollowed.Client >= 1.0.0.*",
       "VRising.VampireCommandFramework >= 0.8.*"
@@ -5248,7 +5237,7 @@
     "C:\\Users\\Trodi\\.nuget\\packages\\": {}
   },
   "project": {
-    "version": "3.0.3",
+    "version": "3.0.4",
     "restore": {
       "projectUniqueName": "E:\\MODS\\BloodyNotify\\BloodyNotify.csproj",
       "projectName": "BloodyNotify",
@@ -5266,7 +5255,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "E:\\MODS\\BloodyWallet\\bin\\Debug": {},
+        "E:\\MODS\\nuget": {},
         "https://api.nuget.org/v3/index.json": {},
         "https://nuget.bepinex.dev/v3/index.json": {},
         "https://nuget.samboy.dev/v3/index.json": {}
@@ -5306,15 +5295,9 @@
             "target": "Package",
             "version": "[6.0.0-be.668, )"
           },
-          "Fody": {
-            "suppressParent": "All",
+          "Bloody.Core": {
             "target": "Package",
-            "version": "[6.8.0, )"
-          },
-          "ILMerge.Fody": {
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[1.24.0, )"
+            "version": "[1.2.*, )"
           },
           "VRising.Bloodstone": {
             "target": "Package",

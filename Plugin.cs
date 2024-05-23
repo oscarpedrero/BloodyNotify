@@ -3,7 +3,7 @@ using BepInEx.Configuration;
 using BepInEx.Unity.IL2CPP;
 using Bloodstone.API;
 using Bloody.Core;
-using Bloody.Core.API;
+using Bloody.Core.API.v1;
 using BloodyNotify.AutoAnnouncer;
 using BloodyNotify.DB;
 using BloodyNotify.Patch;
@@ -18,11 +18,12 @@ namespace BloodyNotify;
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 [BepInDependency("gg.deca.VampireCommandFramework")]
 [BepInDependency("gg.deca.Bloodstone")]
+[BepInDependency("trodi.Bloody.Core")]
 [Bloodstone.API.Reloadable]
 public class Plugin : BasePlugin, IRunOnInitialized
 {
     Harmony _harmony;
-    public static Bloody.Core.Helper.Logger Logger;
+    public static Bloody.Core.Helper.v1.Logger Logger;
     public static SystemsCore SystemsCore;
 
     public static ConfigEntry<bool> AnnounceOnline;
@@ -38,7 +39,15 @@ public class Plugin : BasePlugin, IRunOnInitialized
 
     public override void Load()
     {
-        Logger = new(Log);     
+
+        Logger = new(Log);
+
+
+        if (!Core.IsServer)
+        {
+            Log.LogInfo($"Plugin {MyPluginInfo.PLUGIN_GUID} is only for server!");
+            return;
+        }
 
         // Harmony patching
         _harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
@@ -69,6 +78,7 @@ public class Plugin : BasePlugin, IRunOnInitialized
         Database.setVBloodFinalConcatCharacters(VBloodFinalConcatCharacters.Value);
         Database.setIntervalAutoAnnouncer(IntervalAutoAnnouncer.Value);
 
+        
         EventsHandlerSystem.OnUserConnected += OnlineOfflineSystem.OnUserOnline;
         EventsHandlerSystem.OnUserDisconnected += OnlineOfflineSystem.OnUserOffline;
         EventsHandlerSystem.OnDeathVBlood += KillVBloodSystem.OnDetahVblood;

@@ -10,7 +10,5 @@ E:\MODS\BloodyNotify\obj\Debug\net6.0\BloodyNotify.pdb
 E:\MODS\BloodyNotify\bin\Debug\net6.0\BloodyNotify.deps.json
 E:\MODS\BloodyNotify\bin\Debug\net6.0\BloodyNotify.dll
 E:\MODS\BloodyNotify\bin\Debug\net6.0\BloodyNotify.pdb
-E:\MODS\BloodyNotify\obj\Debug\net6.0\BloodyNotify.csproj.Fody.CopyLocal.cache
-E:\MODS\BloodyNotify\obj\Debug\net6.0\BloodyNotify.csproj.Fody.RuntimeCopyLocal.cache
 E:\MODS\BloodyNotify\obj\Debug\net6.0\ref\BloodyNotify.dll
 E:\MODS\BloodyNotify\obj\Debug\net6.0\BloodyNotify.sourcelink.json

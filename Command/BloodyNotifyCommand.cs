@@ -1,5 +1,6 @@
 ﻿using Bloody.Core;
-using Bloody.Core.API;
+using Bloody.Core.API.v1;
+using Bloody.Core.GameData.v1;
 using BloodyNotify.DB;
 using System.Linq;
 using VampireCommandFramework;
@@ -13,7 +14,7 @@ namespace BloodyNotify.Command
         public static void Online(ChatCommandContext ctx)
         {
             ctx.Reply("Users Online ---------");
-            foreach (var user in Core.Users.Online.OrderBy(x => x.IsAdmin))
+            foreach (var user in GameData.Users.Online.OrderBy(x => x.IsAdmin))
             {
                 if(user.IsAdmin)
                 {

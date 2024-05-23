@@ -14,6 +14,5 @@
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)bepinex.plugininfoprops\2.1.0\build\BepInEx.PluginInfoProps.props" Condition="Exists('$(NuGetPackageRoot)bepinex.plugininfoprops\2.1.0\build\BepInEx.PluginInfoProps.props')" />
-    <Import Project="$(NuGetPackageRoot)ilmerge.fody\1.24.0\build\ILMerge.Fody.props" Condition="Exists('$(NuGetPackageRoot)ilmerge.fody\1.24.0\build\ILMerge.Fody.props')" />
   </ImportGroup>
 </Project>

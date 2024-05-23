@@ -4,8 +4,10 @@
 
 For the correct functioning of this mod you must have the following dependencies installed on your server:
 
-- [BepInExPack V Rising ](https://v-rising.thunderstore.io/package/BepInEx/BepInExPack_V_Rising/) 
-- [VRising.VampireCommandFramework 0.8.0](https://v-rising.thunderstore.io/package/deca/VampireCommandFramework/) 
+1. [BepInEx](https://github.com/BepInEx/BepInEx)
+2. [VampireCommandFramework](https://github.com/decaprime/VampireCommandFramework)
+3. [Bloodstone](https://github.com/decaprime/Bloodstone)
+3. [Bloody.Core](https://github.com/oscarpedrero/BloodyCore)
 
 
 ### Actual Features
@@ -21,6 +23,9 @@ For the correct functioning of this mod you must have the following dependencies
 
 <details>
 <summary>Changelog</summary>
+
+`3.0.4`
+- Bloody.Core dependency removed as dll and added as framework
 
 `3.0.3`
 - Fixed incompatibility of the AutoAnnouncer system with other modifications.

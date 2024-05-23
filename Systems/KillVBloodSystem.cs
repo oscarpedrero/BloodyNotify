@@ -1,6 +1,7 @@
 ﻿using Bloodstone.API;
 using Bloody.Core;
-using Bloody.Core.API;
+using Bloody.Core.API.v1;
+using Bloody.Core.GameData.v1;
 using BloodyNotify.DB;
 using ProjectM;
 using ProjectM.Network;
@@ -88,7 +89,7 @@ namespace BloodyNotify.Systems
             }
             if (message != null)
             {
-                var usersOnline = Core.Users.Online;
+                var usersOnline = GameData.Users.Online;
                 foreach (var user in usersOnline)
                 {
                     var isUserIgnore = Database.getVBloodNotifyIgnore(user.CharacterName);

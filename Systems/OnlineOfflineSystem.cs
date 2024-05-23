@@ -1,6 +1,7 @@
 ﻿using Bloody.Core;
-using Bloody.Core.API;
-using Bloody.Core.Models;
+using Bloody.Core.API.v1;
+using Bloody.Core.GameData.v1;
+using Bloody.Core.Models.v1;
 using BloodyNotify.DB;
 using ProjectM;
 using ProjectM.Network;
@@ -19,7 +20,7 @@ namespace BloodyNotify.Systems
             var serverClient = sender._ApprovedUsersLookup[userIndex];
             var userEntity = serverClient.UserEntity;
 
-            UserModel userModel = Core.Users.FromEntity(userEntity);
+            UserModel userModel = GameData.Users.FromEntity(userEntity);
 
             bool isNewPlayer = IsNewUser(userEntity);
             var userNick = userModel.CharacterName;
@@ -66,7 +67,7 @@ namespace BloodyNotify.Systems
                     var userIndex = sender._NetEndPointToApprovedUserIndex[netConnectionId];
                     var serverClient = sender._ApprovedUsersLookup[userIndex];
                     var userEntity = serverClient.UserEntity;
-                    var userModel = Core.Users.FromEntity(userEntity);
+                    var userModel = GameData.Users.FromEntity(userEntity);
                     var userNick = userModel.CharacterName;
                     var _message = Database.getUserOfflineValue(userNick);
                     _message = _message.Replace("#user#", $"{FontColorChatSystem.Yellow(userNick)}");

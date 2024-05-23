@@ -6,17 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "BloodyNotify/3.0.3": {
+      "BloodyNotify/3.0.4": {
         "dependencies": {
           "BepInEx.Core": "6.0.0-be.668",
           "BepInEx.PluginInfoProps": "2.1.0",
           "BepInEx.Unity.IL2CPP": "6.0.0-be.668",
-          "Fody": "6.8.0",
-          "ILMerge.Fody": "1.24.0",
+          "Bloody.Core": "1.2.1",
           "VRising.Bloodstone": "0.1.6",
           "VRising.Unhollowed.Client": "1.0.0.792660001",
-          "VRising.VampireCommandFramework": "0.8.4",
-          "Bloody.Core": "1.0.0.0"
+          "VRising.VampireCommandFramework": "0.8.4"
         },
         "runtime": {
           "BloodyNotify.dll": {}
@@ -67,8 +65,23 @@
           "Samboy063.Cpp2IL.Core": "2022.1.0-development.866"
         }
       },
+      "Bloody.Core/1.2.1": {
+        "dependencies": {
+          "BepInEx.Core": "6.0.0-be.668",
+          "BepInEx.PluginInfoProps": "2.1.0",
+          "BepInEx.Unity.IL2CPP": "6.0.0-be.668",
+          "VRising.Bloodstone": "0.1.6",
+          "VRising.Unhollowed.Client": "1.0.0.792660001"
+        },
+        "runtime": {
+          "lib/net6.0/Bloody.Core.dll": {
+            "assemblyVersion": "1.2.1.0",
+            "fileVersion": "1.2.1.0"
+          }
+        }
+      },
       "Disarm/2022.1.0-master.26": {},
-      "Fody/6.8.0": {},
+      "Fody/6.6.2": {},
       "HarmonyX/2.10.1": {
         "dependencies": {
           "MonoMod.RuntimeDetour": "22.5.1.1",
@@ -106,11 +119,6 @@
         "dependencies": {
           "Iced": "1.18.0",
           "Il2CppInterop.Common": "1.4.5"
-        }
-      },
-      "ILMerge.Fody/1.24.0": {
-        "dependencies": {
-          "Fody": "6.8.0"
         }
       },
       "js6pak.Gee.External.Capstone/2.1.0": {},
@@ -636,7 +644,7 @@
         "dependencies": {
           "BepInEx.PluginInfoProps": "2.1.0",
           "BepInEx.Unity.IL2CPP": "6.0.0-be.668",
-          "Fody": "6.8.0",
+          "Fody": "6.6.2",
           "Iced": "1.18.0",
           "System.Text.Json": "6.0.7",
           "VRising.Unhollowed.Client": "1.0.0.792660001"
@@ -1351,19 +1359,11 @@
             "fileVersion": "0.8.4.0"
           }
         }
-      },
-      "Bloody.Core/1.0.0.0": {
-        "runtime": {
-          "Bloody.Core.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
       }
     }
   },
   "libraries": {
-    "BloodyNotify/3.0.3": {
+    "BloodyNotify/3.0.4": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -1431,6 +1431,13 @@
       "path": "bepinex.unity.il2cpp/6.0.0-be.668",
       "hashPath": "bepinex.unity.il2cpp.6.0.0-be.668.nupkg.sha512"
     },
+    "Bloody.Core/1.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-u2Lujcxf4id0coVI6+PV2v7NZQWePxX4WsnILZOxEQ435dgcWk05u87VUl6q5vdqW3OUH6IQja3gHtHDrHeveA==",
+      "path": "bloody.core/1.2.1",
+      "hashPath": "bloody.core.1.2.1.nupkg.sha512"
+    },
     "Disarm/2022.1.0-master.26": {
       "type": "package",
       "serviceable": true,
@@ -1438,12 +1445,12 @@
       "path": "disarm/2022.1.0-master.26",
       "hashPath": "disarm.2022.1.0-master.26.nupkg.sha512"
     },
-    "Fody/6.8.0": {
+    "Fody/6.6.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hfZ/f8Mezt8aTkgv9nsvFdYoQ809/AqwsJlOGOPYIfBcG2aAIG3v3ex9d8ZqQuFYyMoucjRg4eKy3VleeGodKQ==",
-      "path": "fody/6.8.0",
-      "hashPath": "fody.6.8.0.nupkg.sha512"
+      "sha512": "sha512-/PISk/t+lnNm0tiAc3xer3wp7HVnDCkX7gyTzljbC9kygUBJpYU2V1P/MjJeu/C6JhR40QXr9XdoxvqRmaHlhg==",
+      "path": "fody/6.6.2",
+      "hashPath": "fody.6.6.2.nupkg.sha512"
     },
     "HarmonyX/2.10.1": {
       "type": "package",
@@ -1486,13 +1493,6 @@
       "sha512": "sha512-NnZooBrmbBQUhA/Av/jiRxXj+VGXjR/HjQ4hHcTC1s7l6qnG21WGgO+LMJy0vXdgS/KU6igmiboxR+pQUALFlA==",
       "path": "il2cppinterop.runtime/1.4.5",
       "hashPath": "il2cppinterop.runtime.1.4.5.nupkg.sha512"
-    },
-    "ILMerge.Fody/1.24.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Jg13T22kxyVUCP1lAfjSDKkL01XzMIM+GWd5kv9Hohi/9L2dhHZK55KQe2Yu/sHoQsYvRToeCDuIBKrNOJza7A==",
-      "path": "ilmerge.fody/1.24.0",
-      "hashPath": "ilmerge.fody.1.24.0.nupkg.sha512"
     },
     "js6pak.Gee.External.Capstone/2.1.0": {
       "type": "package",
@@ -2018,11 +2018,6 @@
       "sha512": "sha512-4G8j0zivjajkLlp/+RRKkiA43764rlwCY4PKRK34TR4w6LgKB4gm4EadPgSy4Vm1+jsktjGEMYSJhS9SOlZUOA==",
       "path": "vrising.vampirecommandframework/0.8.4",
       "hashPath": "vrising.vampirecommandframework.0.8.4.nupkg.sha512"
-    },
-    "Bloody.Core/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }

@@ -2,6 +2,5 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)system.text.json\6.0.7\buildTransitive\netcoreapp3.1\System.Text.Json.targets" Condition="Exists('$(NuGetPackageRoot)system.text.json\6.0.7\buildTransitive\netcoreapp3.1\System.Text.Json.targets')" />
-    <Import Project="$(NuGetPackageRoot)fody\6.8.0\build\Fody.targets" Condition="Exists('$(NuGetPackageRoot)fody\6.8.0\build\Fody.targets')" />
   </ImportGroup>
 </Project>

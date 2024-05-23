@@ -4,6 +4,6 @@ namespace BloodyNotify
     {
         public const string PLUGIN_GUID = "BloodyNotify";
         public const string PLUGIN_NAME = "BloodyNotify";
-        public const string PLUGIN_VERSION = "3.0.3";
+        public const string PLUGIN_VERSION = "3.0.4";
     }
 }
