@@ -24,6 +24,9 @@ For the correct functioning of this mod you must have the following dependencies
 <details>
 <summary>Changelog</summary>
 
+`3.0.5`
+- Fixed bugs with some VBlood by [Waker](https://github.com/WakerPT)
+
 `3.0.4`
 - Bloody.Core dependency removed as dll and added as framework
 
@@ -459,9 +462,10 @@ If you need assistance you can ask in the discord [V Rising Mod Community](https
 
 ## Credits
 
-For the development of this mod i have used parts of the code of: 
-- [molenzwiebel (Wetstone)](https://github.com/molenzwiebel/Wetstone/tree/master/API) 
-- [Kaltharos (RPGMods)](https://github.com/Kaltharos/RPGMods) 
-- [syllabicat (VBloodKills)](https://github.com/syllabicat/VBloodKills) 
-- [adainrivers (VRising.GameData)](https://github.com/adainrivers/VRising.GameData)
-- [adainrivers (RandomEncounters)](https://github.com/adainrivers/randomencounters)
+**Special thanks to the testers and supporters of the project:**
+
+- @Vex, owner & founder of [Vexor RPG](https://discord.gg/JpVsKVvKNR) server, a tester and great supporter who provided his server as a test platform and took care of all the graphics and documentation.
+- [Waker](https://github.com/WakerPT) For helping to solve bugs
+- [V Rising Mod Community](https://discord.gg/vrisingmods) is the premier community of mods for V Rising.
+- [@Deca](https://github.com/decaprime), thank you for the exceptional frameworks [VampireCommandFramework](https://github.com/decaprime/VampireCommandFramework) and [BloodStone](https://github.com/decaprime/Bloodstone), based on [WetStone](https://github.com/molenzwiebel/Wetstone) by [@Molenzwiebel](https://github.com/molenzwiebel).
+
