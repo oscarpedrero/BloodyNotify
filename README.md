@@ -58,7 +58,7 @@ For the correct functioning of this mod you must have the following dependencies
 - Update VCF and prepare zip for thunderstore
 
 `2.0.1`
-- Enable / Disable mod features via command .notify config <feature> <enabled/disabled> has been changed to .notify config <feature> <true/false> Refactoring by [deca](https://github.com/decaprime)
+- Enable / Disable mod features via command .bn config <feature> <enabled/disabled> has been changed to .bn config <feature> <true/false> Refactoring by [deca](https://github.com/decaprime)
 
 `2.0.0`
 - Gloomrot update
@@ -199,7 +199,7 @@ Once the mod installed, a configuration file will be created in the \BepInEx\con
 |AutoAnnouncer|`interval `| Interval seconds for spam AutoAnnouncer.                        |300
 |MessageOfTheDay|`enabled `| Enable Message Of The Day                                       |false
 
-> To reload the configuration of the user messages online, offline or death of the VBlood boss there is the chat command `.notify reload`
+> To reload the configuration of the user messages online, offline or death of the VBlood boss there is the chat command `.bn reload`
 
 ## Default Messages
 
@@ -246,22 +246,18 @@ To configure the customize messages per player disconnected, you only have to ed
 To translate the name of VBlood boss, you only have to edit the configuration file that is in **/BepInEx/config/BloodyNotify/prefabs_names.json**
 ```json
 {
-  "CHAR_Wildlife_Wolf_VBlood": "Alpha Wolf",
-  "CHAR_Bandit_Deadeye_Frostarrow_VBlood": "Keely the Frost Archer",
+  "CHAR_Bandit_Frostarrow_VBlood": "Keely the Frost Archer",
   "CHAR_Bandit_Foreman_VBlood": "Rufus the Foreman",
   "CHAR_Bandit_StoneBreaker_VBlood": "Errol the Stonebreaker",
-  "CHAR_Bandit_Deadeye_Chaosarrow_VBlood": "Lidia the Chaos Archer",
+  "CHAR_Bandit_Chaosarrow_VBlood": "Lidia the Chaos Archer",
   "CHAR_Undead_BishopOfDeath_VBlood": "Goreswine the Ravager",
   "CHAR_Bandit_Stalker_VBlood": "Grayson the Armourer",
   "CHAR_Vermin_DireRat_VBlood": "Putrid Rat",
   "CHAR_Bandit_Bomber_VBlood": "Clive the Firestarter",
-  "CHAR_Wildlife_Poloma_VBlood": "Polora the Feywalker",
-  "CHAR_Wildlife_Bear_Dire_Vblood": "Ferocious Bear",
   "CHAR_Undead_Priest_VBlood": "Nicholaus the Fallen",
   "CHAR_Bandit_Tourok_VBlood": "Quincey the Bandit King",
   "CHAR_Villager_Tailor_VBlood": "Beatrice the Tailor",
   "CHAR_Militia_Guard_VBlood": "Vincent the Frostbringer",
-  "CHAR_Farmlands_Nun_VBlood": "Christina the Sun Priestess",
   "CHAR_VHunter_Leader_VBlood": "Tristan the Vampire Hunter",
   "CHAR_Undead_BishopOfShadows_VBlood": "Leandra the Shadow Priestess",
   "CHAR_Geomancer_Human_VBlood": "Terah the Geomancer",
@@ -270,30 +266,26 @@ To translate the name of VBlood boss, you only have to edit the configuration fi
   "CHAR_Militia_Leader_VBlood": "Octavian the Militia Captain",
   "CHAR_Militia_BishopOfDunley_VBlood": "Raziel the Shepherd",
   "CHAR_Spider_Queen_VBlood": "Ungora the Spider Queen",
-  "CHAR_Cursed_ToadKing_VBlood": "The Duke of Balaton",
+  "CHAR_Cursed_ToadKing_VBlood": "Albert the Duke of Balaton",
   "CHAR_VHunter_Jade_VBlood": "Jade the Vampire Hunter",
   "CHAR_Undead_ZealousCultist_VBlood": "Foulrot the Soultaker",
   "CHAR_WerewolfChieftain_VBlood": "Willfred the Werewolf Chief",
   "CHAR_ArchMage_VBlood": "Mairwyn the Elementalist",
-  "CHAR_Town_Cardinal_VBlood": "Azariel the Sunbringer",
   "CHAR_Winter_Yeti_VBlood": "Terrorclaw the Ogre",
   "CHAR_Harpy_Matriarch_VBlood": "Morian the Stormwing Matriarch",
   "CHAR_Cursed_Witch_VBlood": "Matka the Curse Weaver",
-  "CHAR_BatVampire_VBlood": "Nightmarshal Styx the Sunderer",
+  "CHAR_BatVampire_VBlood": "Lord Styx the Night Champion",
   "CHAR_Cursed_MountainBeast_VBlood": "Gorecrusher the Behemoth",
-  "CHAR_Manticore_VBlood": "The Winged Horror",
-  "CHAR_Paladin_VBlood": "Solarus the Immaculate",
-  "CHAR_Bandit_GraveDigger_VBlood_UNUSED": "CHAR_Bandit_GraveDigger_VBlood_UNUSED",
-  "CHAR_Bandit_Leader_VBlood_UNUSED": "CHAR_Bandit_Leader_VBlood_UNUSED",
-  "CHAR_Bandit_Miner_VBlood_UNUSED": "CHAR_Bandit_Miner_VBlood_UNUSED",
-  "CHAR_Bandit_Thief_VBlood_UNUSED": "CHAR_Bandit_Thief_VBlood_UNUSED",
+  "CHAR_Manticore_VBlood": "Talzur the Winged Horror",
+  "CHAR_Bandit_GraveDigger_VBlood_UNUSED": "Boris the Gravedigger",
+  "CHAR_Bandit_Leader_VBlood_UNUSED": "Quincey the Marauder",
+  "CHAR_Bandit_Miner_VBlood_UNUSED": "Errol the Stonebreaker",
   "CHAR_ChurchOfLight_Cardinal_VBlood": "Azariel the Sunbringer",
   "CHAR_ChurchOfLight_Overseer_VBlood": "Sir Magnus the Overseer",
   "CHAR_ChurchOfLight_Paladin_VBlood": "Solarus the Immaculate",
   "CHAR_ChurchOfLight_Sommelier_VBlood": "Baron du Bouchon the Sommelier",
-  "CHAR_Forest_Bear_Dire_Vblood": "Ferocious Bear",
-  "CHAR_Forest_Wolf_VBlood": "Alpha Wolf",
-  "CHAR_Geomancer_Golem_VBlood": "CHAR_Geomancer_Golem_VBlood",
+  "CHAR_Forest_Bear_Dire_Vblood": "Kodia the Ferocious Bear",
+  "CHAR_Forest_Wolf_VBlood": "Alpha the White Wolf",
   "CHAR_Gloomrot_Iva_VBlood": "Ziva the Engineer",
   "CHAR_Gloomrot_Monster_VBlood": "Adam the Firstborn",
   "CHAR_Gloomrot_Purifier_VBlood": "Angram the Purifier",
@@ -301,15 +293,15 @@ To translate the name of VBlood boss, you only have to edit the configuration fi
   "CHAR_Gloomrot_TheProfessor_VBlood": "Henry Blackbrew the Doctor",
   "CHAR_Gloomrot_Voltage_VBlood": "Domina the Blade Dancer",
   "CHAR_Militia_Glassblower_VBlood": "Grethel the Glassblower",
-  "CHAR_Militia_Hound_VBlood": "CHAR_Militia_Hound_VBlood",
-  "CHAR_Militia_HoundMaster_VBlood": "CHAR_Militia_HoundMaster_VBlood",
+  "CHAR_Militia_Hound_VBlood": "Brutus the Watcher",
+  "CHAR_Militia_HoundMaster_VBlood": "Boyo",
   "CHAR_Militia_Nun_VBlood": "Christina the Sun Priestess",
   "CHAR_Militia_Scribe_VBlood": "Maja the Dark Savant",
   "CHAR_Poloma_VBlood": "Polora the Feywalker",
   "CHAR_Undead_CursedSmith_VBlood": "Cyril the Cursed Smith",
   "CHAR_Undead_Infiltrator_VBlood": "Bane the Shadowblade",
   "CHAR_Undead_Leader_Vblood": "Kriig the Undead General",
-  "CHAR_Villager_CursedWanderer_VBlood": "The Old Wanderer",
+  "CHAR_Villager_CursedWanderer_VBlood": "Ben the Old Wanderer",
   "CHAR_Bandit_Fisherman_VBlood": "Finn the Fisherman",
   "CHAR_VHunter_CastleMan": "Simon Belmont the Vampire Hunter",
   "CHAR_Vampire_BloodKnight_VBlood": "General Valencia the Depraved",
@@ -332,22 +324,18 @@ For example, to disable "Putrid Rat" look in the configuration file for "CHAR_Ve
 **/BepInEx/config/BloodyNotify/prefabs_names_ignore.json**
 ```json
 {
-  "CHAR_Wildlife_Wolf_VBlood": false,
-  "CHAR_Bandit_Deadeye_Frostarrow_VBlood": false,
+  "CHAR_Bandit_Frostarrow_VBlood": false,
   "CHAR_Bandit_Foreman_VBlood": false,
   "CHAR_Bandit_StoneBreaker_VBlood": false,
-  "CHAR_Bandit_Deadeye_Chaosarrow_VBlood": false,
+  "CHAR_Bandit_Chaosarrow_VBlood": false,
   "CHAR_Undead_BishopOfDeath_VBlood": false,
   "CHAR_Bandit_Stalker_VBlood": false,
   "CHAR_Vermin_DireRat_VBlood": false,
   "CHAR_Bandit_Bomber_VBlood": false,
-  "CHAR_Wildlife_Poloma_VBlood": false,
-  "CHAR_Wildlife_Bear_Dire_Vblood": false,
   "CHAR_Undead_Priest_VBlood": false,
   "CHAR_Bandit_Tourok_VBlood": false,
   "CHAR_Villager_Tailor_VBlood": false,
   "CHAR_Militia_Guard_VBlood": false,
-  "CHAR_Farmlands_Nun_VBlood": false,
   "CHAR_VHunter_Leader_VBlood": false,
   "CHAR_Undead_BishopOfShadows_VBlood": false,
   "CHAR_Geomancer_Human_VBlood": false,
@@ -372,14 +360,10 @@ For example, to disable "Putrid Rat" look in the configuration file for "CHAR_Ve
   "CHAR_Bandit_GraveDigger_VBlood_UNUSED": false,
   "CHAR_Bandit_Leader_VBlood_UNUSED": false,
   "CHAR_Bandit_Miner_VBlood_UNUSED": false,
-  "CHAR_Bandit_Thief_VBlood_UNUSED": false,
-  "CHAR_ChurchOfLight_Cardinal_VBlood": false,
   "CHAR_ChurchOfLight_Overseer_VBlood": false,
-  "CHAR_ChurchOfLight_Paladin_VBlood": false,
   "CHAR_ChurchOfLight_Sommelier_VBlood": false,
   "CHAR_Forest_Bear_Dire_Vblood": false,
   "CHAR_Forest_Wolf_VBlood": false,
-  "CHAR_Geomancer_Golem_VBlood": false,
   "CHAR_Gloomrot_Iva_VBlood": false,
   "CHAR_Gloomrot_Monster_VBlood": false,
   "CHAR_Gloomrot_Purifier_VBlood": false,
