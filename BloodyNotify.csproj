@@ -3,12 +3,12 @@
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>BloodyNotify</AssemblyName>
     <Description>Add functionality to the server to have MOTD, Auto Announcer, when a user is online, when a user goes offline or when someone kills a VBlood in v rising.</Description>
-    <Version>3.0.5</Version>
+    <Version>3.0.6</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RootNamespace>BloodyNotify</RootNamespace>
-    <AssemblyVersion>3.0.5</AssemblyVersion>
-    <FileVersion>3.0.5</FileVersion>
+    <AssemblyVersion>3.0.6</AssemblyVersion>
+    <FileVersion>3.0.6</FileVersion>
   </PropertyGroup>
 
 	<ItemGroup>
