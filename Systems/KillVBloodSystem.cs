@@ -2,6 +2,7 @@
 using Bloody.Core;
 using Bloody.Core.API.v1;
 using Bloody.Core.GameData.v1;
+using Bloody.Core.Helper.v1;
 using BloodyNotify.DB;
 using ProjectM;
 using ProjectM.Network;
@@ -81,6 +82,8 @@ namespace BloodyNotify.Systems
 
         public static void SendAnnouncementMessage(string vblood)
         {
+            if (checkifBloodyBoss(vblood)) return;
+
             var message = GetAnnouncementMessage(vblood);
             if (message == "ignore")
             {
@@ -101,6 +104,39 @@ namespace BloodyNotify.Systems
                 RemoveKillers(vblood);
             }
 
+        }
+
+        private static bool checkifBloodyBoss(string vblood)
+        {
+
+            var entitiesQuery = QueryComponents.GetEntitiesByComponentTypes<VBloodUnit, NameableInteractable, LifeTime>(EntityQueryOptions.Default, true);
+
+            foreach (var entity in entitiesQuery)
+            {
+                var npc = GameData.Npcs.FromEntity(entity);
+                var vbloodString = _prefabCollectionSystem.PrefabGuidToNameDictionary[npc.PrefabGUID];
+                if (vbloodString == vblood)
+                {
+
+
+                    NameableInteractable _nameableInteractable = entity.Read<NameableInteractable>();
+                    if (_nameableInteractable.Name.Value.Contains("bb"))
+                    {
+                        var health = entity.Read<Health>();
+                        if (health.IsDead)
+                        {
+                            entitiesQuery.Dispose();
+                            return true;
+                        }
+
+                        entitiesQuery.Dispose();
+                        return false;
+                    }
+                }
+            }
+
+            entitiesQuery.Dispose();
+            return false;
         }
 
         public static string GetAnnouncementMessage(string vblood)

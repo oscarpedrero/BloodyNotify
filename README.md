@@ -24,6 +24,9 @@ For the correct functioning of this mod you must have the following dependencies
 <details>
 <summary>Changelog</summary>
 
+`3.0.6`
+- Added compatibility with BloodyBoss so that if it is a BloodyBoss it does not show the death message of a VBlood
+
 `3.0.5`
 - Fixed bugs with some VBlood by [Waker](https://github.com/WakerPT)
 
