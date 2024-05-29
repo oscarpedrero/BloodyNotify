@@ -24,6 +24,9 @@ For the correct functioning of this mod you must have the following dependencies
 <details>
 <summary>Changelog</summary>
 
+`3.0.7`
+- Fixed bug that duplicates VBlood death message
+
 `3.0.6`
 - Added compatibility with BloodyBoss so that if it is a BloodyBoss it does not show the death message of a VBlood
 

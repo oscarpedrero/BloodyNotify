@@ -1,6 +1,6 @@
 ﻿{
   "name": "Notify",
-  "version_number": "3.0.6",
+  "version_number": "3.0.7",
   "website_url": "https://github.com/oscarpedrero/BloodyNotify",
   "description": "A mod that notifies when a user connects or disconnects from the server, new user connect from the server, when a player kills a VBlood boss, Message of the day system and auto announce system that runs every certain interval.",
   "dependencies": [

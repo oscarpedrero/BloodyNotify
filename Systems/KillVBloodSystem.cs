@@ -82,7 +82,11 @@ namespace BloodyNotify.Systems
 
         public static void SendAnnouncementMessage(string vblood)
         {
-            if (checkifBloodyBoss(vblood)) return;
+            if (checkifBloodyBoss(vblood))
+            {
+                RemoveKillers(vblood);
+                return;
+            }
 
             var message = GetAnnouncementMessage(vblood);
             if (message == "ignore")
