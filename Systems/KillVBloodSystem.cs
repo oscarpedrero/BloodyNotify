@@ -18,11 +18,11 @@ namespace BloodyNotify.Systems
     internal class KillVBloodSystem
     {
         private const double SendMessageDelay = 2;
-        public static Dictionary<string, HashSet<string>> vbloodKills = [];
+        public static Dictionary<string, HashSet<string>> vbloodKills = new();
         private static EntityManager _entityManager = Plugin.SystemsCore.EntityManager;
         private static PrefabCollectionSystem _prefabCollectionSystem = Plugin.SystemsCore.PrefabCollectionSystem;
         private static bool checkKiller = false;
-        private static Dictionary<string, DateTime> lastKillerUpdate = [];
+        private static Dictionary<string, DateTime> lastKillerUpdate = new();
 
         public static void OnDetahVblood(VBloodSystem sender, NativeList<VBloodConsumed> deathEvents)
         {
