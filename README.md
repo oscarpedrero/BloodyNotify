@@ -19,7 +19,6 @@ For the correct functioning of this mod you must have the following dependencies
 - [x] Message Of The Day
 - [x] Command for list users online
 
-
 <details>
 <summary>Changelog</summary>
 
