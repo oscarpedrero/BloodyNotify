@@ -3,21 +3,21 @@
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>BloodyNotify</AssemblyName>
     <Description>Add functionality to the server to have MOTD, Auto Announcer, when a user is online, when a user goes offline or when someone kills a VBlood in v rising.</Description>
-    <Version>3.0.7</Version>
+    <Version>3.0.8</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RootNamespace>BloodyNotify</RootNamespace>
-    <AssemblyVersion>3.0.7</AssemblyVersion>
-    <FileVersion>3.0.7</FileVersion>
+    <AssemblyVersion>3.0.8</AssemblyVersion>
+    <FileVersion>3.0.8</FileVersion>
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.668" IncludeAssets="compile" />
-		<PackageReference Include="BepInEx.Core" Version="6.0.0-be.668" IncludeAssets="compile" />
+		<PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.691" IncludeAssets="compile" />
+		<PackageReference Include="BepInEx.Core" Version="6.0.0-be.691" IncludeAssets="compile" />
 		<PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
-		<PackageReference Include="VRising.Unhollowed.Client" Version="1.0.0.*" />
-		<PackageReference Include="VRising.VampireCommandFramework" Version="0.8.*" />
-		<PackageReference Include="VRising.Bloodstone" Version="0.1.*" />
+		<PackageReference Include="VRising.Unhollowed.Client" Version="1.0.*" />
+		<PackageReference Include="VRising.VampireCommandFramework" Version="0.9.*" />
+		<PackageReference Include="VRising.Bloodstone" Version="0.2.*" />
 		<PackageReference Include="Bloody.Core" Version="1.2.*" />
 	</ItemGroup>
 	<Target Name="CopyDLLsServer" AfterTargets="Build">

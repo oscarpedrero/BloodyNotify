@@ -113,30 +113,39 @@ namespace BloodyNotify.Systems
         private static bool checkifBloodyBoss(string vblood)
         {
 
-            var entitiesQuery = QueryComponents.GetEntitiesByComponentTypes<VBloodUnit, NameableInteractable, LifeTime>(EntityQueryOptions.Default, true);
+            var entitiesQuery = QueryComponents.GetEntitiesByComponentTypes<VBloodUnit, NameableInteractable, LifeTime>(EntityQueryOptions.Default, false);
 
             foreach (var entity in entitiesQuery)
             {
-                var npc = GameData.Npcs.FromEntity(entity);
-                var vbloodString = _prefabCollectionSystem.PrefabGuidToNameDictionary[npc.PrefabGUID];
-                if (vbloodString == vblood)
+                try
                 {
+                    var npc = GameData.Npcs.FromEntity(entity);
 
-
-                    NameableInteractable _nameableInteractable = entity.Read<NameableInteractable>();
-                    if (_nameableInteractable.Name.Value.Contains("bb"))
+                    var vbloodString = _prefabCollectionSystem.PrefabGuidToNameDictionary[npc.PrefabGUID];
+                    if (vbloodString == vblood)
                     {
-                        var health = entity.Read<Health>();
-                        if (health.IsDead)
-                        {
-                            entitiesQuery.Dispose();
-                            return true;
-                        }
 
-                        entitiesQuery.Dispose();
-                        return false;
+
+                        NameableInteractable _nameableInteractable = entity.Read<NameableInteractable>();
+                        if (_nameableInteractable.Name.Value.Contains("bb"))
+                        {
+                            var health = entity.Read<Health>();
+                            if (health.IsDead)
+                            {
+                                entitiesQuery.Dispose();
+                                return true;
+                            }
+
+                            entitiesQuery.Dispose();
+                            return false;
+                        }
                     }
+                } catch {
+
+                    continue;
                 }
+                
+                
             }
 
             entitiesQuery.Dispose();
