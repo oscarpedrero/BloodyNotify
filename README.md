@@ -9,6 +9,7 @@ For the correct functioning of this mod you must have the following dependencies
 3. [VampireCommandFramework](https://thunderstore.io/c/v-rising/p/deca/VampireCommandFramework/)
 4. [Bloody.Core](https://thunderstore.io/c/v-rising/p/Trodi/BloodyCore/)
 
+
 ### Actual Features
 
 - [x] Announce User Online
