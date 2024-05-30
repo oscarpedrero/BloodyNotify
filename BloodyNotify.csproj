@@ -11,7 +11,7 @@
     <FileVersion>3.0.8</FileVersion>
   </PropertyGroup>
 	<Target Name="Thunderstore Copy to Dist" AfterTargets="AfterBuild" Condition=" '$(Configuration' == 'Release'">
-		<Copy SourceFiles="$(OutDir)\BloodyNotify.dll" DestinationFolder="$(SolutionDir)/dist" />
+		<Copy SourceFiles="$(OutDir)\$(ProjectName).dll" DestinationFolder="$(SolutionDir)/dist" />
 	</Target>
 	<ItemGroup>
 		<PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.691" IncludeAssets="compile" />
