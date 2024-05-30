@@ -16,7 +16,7 @@ deca-VampireCommandFramework = "0.9.0"
 Trodi-BloodyCore = "1.2.2"
 
 [build]
-icon = "./icon.png
+icon = "./icon.png"
 readme = "./README.md"
 outdir = "./build"
 
