@@ -23,6 +23,9 @@ For the correct functioning of this mod you must have the following dependencies
 <details>
 <summary>Changelog</summary>
 
+`3.0.9`
+- Update Timer Systems
+
 `3.0.8`
 - Fixed bug that did not allow the VBlood death message to appear.
 
