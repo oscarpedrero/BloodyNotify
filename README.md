@@ -1,5 +1,9 @@
 # BloodyNotify - Mod Server for V Rising
 
+## IMPORTANT NOTE
+
+You must have version 1.2.4 of Bloody.Core installed to be able to use version 3.0.8 or higher of this mod
+
 ## Requirements:
 
 For the correct functioning of this mod you must have the following dependencies installed on your server:
@@ -22,6 +26,9 @@ For the correct functioning of this mod you must have the following dependencies
 
 <details>
 <summary>Changelog</summary>
+
+`3.0.10`
+- Updated the timer system through Coroutine that brings the new version of Bloody.Core
 
 `3.0.9`
 - Update Timer Systems

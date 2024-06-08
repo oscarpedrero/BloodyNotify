@@ -6,7 +6,6 @@ using Bloody.Core;
 using Bloody.Core.API.v1;
 using BloodyNotify.AutoAnnouncer;
 using BloodyNotify.DB;
-using BloodyNotify.Patch;
 using BloodyNotify.Systems;
 using HarmonyLib;
 using System.IO;
@@ -51,7 +50,6 @@ public class Plugin : BasePlugin, IRunOnInitialized
 
         // Harmony patching
         _harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
-        _harmony.PatchAll(typeof(ActionSchedulerPatch));
 
         // Register all commands in the assembly with VCF
         CommandRegistry.RegisterAll();

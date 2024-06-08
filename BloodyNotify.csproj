@@ -20,7 +20,10 @@
 		<PackageReference Include="VRising.Unhollowed.Client" Version="1.0.*" />
 		<PackageReference Include="VRising.VampireCommandFramework" Version="0.9.*" />
 		<PackageReference Include="VRising.Bloodstone" Version="0.2.*" />
-		<PackageReference Include="Bloody.Core" Version="1.2.*" />
+		<PackageReference Include="Bloody.Core" Version="1.2.4" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Patch\" />
 	</ItemGroup>
 	<Target Name="CopyDLLsServer" AfterTargets="Build">
 		<Message Text="DLL to V Rising Server" Importance="High" />

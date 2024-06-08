@@ -1,5 +1,5 @@
-﻿using BloodyNotify.DB;
-using BloodyNotify.Patch;
+﻿using Bloody.Core.API.v1;
+using BloodyNotify.DB;
 using ProjectM;
 
 namespace BloodyNotify.AutoAnnouncer
@@ -45,11 +45,10 @@ namespace BloodyNotify.AutoAnnouncer
                 if (Database.EnabledFeatures[NotifyFeature.auto])
                 {
                     OnTimedAutoAnnouncer();
-                    ActionSchedulerPatch.RunActionOnceAfterDelay(AutoAnnouncerAction, Database.getIntervalAutoAnnouncer());
                 }
             }
 
-            ActionSchedulerPatch.RunActionOnceAfterDelay(AutoAnnouncerAction, Database.getIntervalAutoAnnouncer());
+            CoroutineHandler.StartRepeatingCoroutine(AutoAnnouncerAction, Database.getIntervalAutoAnnouncer());
         }
 
     }
