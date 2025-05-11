@@ -1,7 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 using BepInEx.Unity.IL2CPP;
-using Bloodstone.API;
 using Bloody.Core;
 using Bloody.Core.API.v1;
 using BloodyNotify.AutoAnnouncer;
@@ -16,10 +15,8 @@ namespace BloodyNotify;
 
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 [BepInDependency("gg.deca.VampireCommandFramework")]
-[BepInDependency("gg.deca.Bloodstone")]
 [BepInDependency("trodi.Bloody.Core")]
-[Bloodstone.API.Reloadable]
-public class Plugin : BasePlugin, IRunOnInitialized
+public class Plugin : BasePlugin
 {
     Harmony _harmony;
     public static Bloody.Core.Helper.v1.Logger Logger;

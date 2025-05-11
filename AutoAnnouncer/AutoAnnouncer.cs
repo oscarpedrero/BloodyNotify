@@ -1,6 +1,7 @@
 ﻿using Bloody.Core.API.v1;
 using BloodyNotify.DB;
 using ProjectM;
+using Unity.Collections;
 
 namespace BloodyNotify.AutoAnnouncer
 {
@@ -18,14 +19,16 @@ namespace BloodyNotify.AutoAnnouncer
                 {
                     foreach (var line in messages[0].MessageLines)
                     {
-                        ServerChatUtils.SendSystemMessageToAllClients(Plugin.SystemsCore.EntityManager, line);
+                        var _ref_line = (FixedString512Bytes)line;
+                        ServerChatUtils.SendSystemMessageToAllClients(Plugin.SystemsCore.EntityManager, ref _ref_line);
                     }
                 }
                 else
                 {
                     foreach (var line in messages[__indexMessage].MessageLines)
                     {
-                        ServerChatUtils.SendSystemMessageToAllClients(Plugin.SystemsCore.EntityManager, line);
+                        var _ref_line = (FixedString512Bytes)line;
+                        ServerChatUtils.SendSystemMessageToAllClients(Plugin.SystemsCore.EntityManager, ref _ref_line);
                     }
 
                     __indexMessage++;

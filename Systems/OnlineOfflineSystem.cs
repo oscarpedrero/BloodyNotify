@@ -6,6 +6,7 @@ using BloodyNotify.DB;
 using ProjectM;
 using ProjectM.Network;
 using Stunlock.Network;
+using Unity.Collections;
 using Unity.Entities;
 
 namespace BloodyNotify.Systems
@@ -33,7 +34,8 @@ namespace BloodyNotify.Systems
                 {
                     var _message = Database.getUserOnlineValue(userNick);
                     _message = _message.Replace("#user#", $"{FontColorChatSystem.Yellow(userNick)}");
-                    ServerChatUtils.SendSystemMessageToAllClients(entityManager, FontColorChatSystem.Green($"{_message}"));
+                    var _ref_message = (FixedString512Bytes) FontColorChatSystem.Green($"{_message}");
+                    ServerChatUtils.SendSystemMessageToAllClients(entityManager, ref _ref_message);
                     
                 }
             }
@@ -42,7 +44,8 @@ namespace BloodyNotify.Systems
                 if (Database.EnabledFeatures[NotifyFeature.newuser])
                 {
                     var _message = Database.getUserOnlineValue("");
-                    ServerChatUtils.SendSystemMessageToAllClients(entityManager, FontColorChatSystem.Green($"{_message}"));
+                    var _ref_message = (FixedString512Bytes) FontColorChatSystem.Green($"{_message}");
+                    ServerChatUtils.SendSystemMessageToAllClients(entityManager, ref _ref_message);
                 }
             }
 
@@ -51,8 +54,8 @@ namespace BloodyNotify.Systems
                 var _messageLines = Database.getMessageOfTheDay();
                 foreach (string line in _messageLines)
                 {
-                    string lineReplace = line.Replace("#user#", $"{userNick}");
-                    ServerChatUtils.SendSystemMessageToClient(entityManager, userEntity.Read<User>(), lineReplace);
+                    var lineReplace = (FixedString512Bytes) line.Replace("#user#", $"{userNick}");
+                    ServerChatUtils.SendSystemMessageToClient(entityManager, userEntity.Read<User>(), ref lineReplace);
                 }
 
             }
@@ -71,7 +74,8 @@ namespace BloodyNotify.Systems
                     var userNick = userModel.CharacterName;
                     var _message = Database.getUserOfflineValue(userNick);
                     _message = _message.Replace("#user#", $"{FontColorChatSystem.Yellow(userNick)}");
-                    ServerChatUtils.SendSystemMessageToAllClients(entityManager, $"{_message}");
+                    var _ref_message = (FixedString512Bytes)$"{_message}";
+                    ServerChatUtils.SendSystemMessageToAllClients(entityManager, ref _ref_message);
                 }
             }
         }

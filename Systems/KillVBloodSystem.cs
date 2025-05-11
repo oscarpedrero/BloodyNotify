@@ -1,4 +1,4 @@
-﻿using Bloodstone.API;
+﻿using Bloody.Core.Utils;
 using Bloody.Core;
 using Bloody.Core.API.v1;
 using Bloody.Core.GameData.v1;
@@ -12,6 +12,8 @@ using System.Linq;
 using System.Text;
 using Unity.Collections;
 using Unity.Entities;
+using BloodyNotify.Utils;
+using Stunlock.Core;
 
 namespace BloodyNotify.Systems
 {
@@ -37,7 +39,8 @@ namespace BloodyNotify.Systems
                     {
                         var player = _entityManager.GetComponentData<PlayerCharacter>(event_vblood.Target);
                         var user = _entityManager.GetComponentData<User>(player.UserEntity);
-                        var vbloodString = _prefabCollectionSystem.PrefabGuidToNameDictionary[event_vblood.Source];
+                        var vbloodString = _prefabCollectionSystem._PrefabLookupMap.GetName(event_vblood.Source);
+                        //var vbloodString = _prefabCollectionSystem.PrefabGuidToNameDictionary[event_vblood.Source];
                         AddKiller(vbloodString.ToString(), user.CharacterName.ToString());
                         lastKillerUpdate[vbloodString.ToString()] = DateTime.Now;
                         checkKiller = true;
@@ -102,7 +105,8 @@ namespace BloodyNotify.Systems
                     var isUserIgnore = Database.getVBloodNotifyIgnore(user.CharacterName);
                     if (!isUserIgnore)
                     {
-                        ServerChatUtils.SendSystemMessageToClient(VWorld.Server.EntityManager, user.Internals.User.Value, message);
+                        var _ref_send_message = (FixedString512Bytes)message;
+                        ServerChatUtils.SendSystemMessageToClient(VWorld.Server.EntityManager, user.Internals.User.Value, ref _ref_send_message);
                     }
                 }
                 RemoveKillers(vblood);
@@ -121,7 +125,8 @@ namespace BloodyNotify.Systems
                 {
                     var npc = GameData.Npcs.FromEntity(entity);
 
-                    var vbloodString = _prefabCollectionSystem.PrefabGuidToNameDictionary[npc.PrefabGUID];
+                    var vbloodString = _prefabCollectionSystem._PrefabLookupMap.GetName(npc.PrefabGUID);
+                    // var vbloodString = _prefabCollectionSystem.PrefabGuidToNameDictionary[npc.PrefabGUID];
                     if (vbloodString == vblood)
                     {
 
@@ -176,6 +181,11 @@ namespace BloodyNotify.Systems
             {
                 for (int i = 0; i < killers.Count; i++)
                 {
+                    if(i > 3)
+                    {
+                        // Limited to three players to avoid breaking the chat system's character limit.
+                        break;
+                    }
                     if (i == killers.Count - 1)
                     {
                         sbKillersLabel.Append($"{Database.getVBloodFinalConcatCharacters()} {FontColorChatSystem.Yellow(killers[i])}");
