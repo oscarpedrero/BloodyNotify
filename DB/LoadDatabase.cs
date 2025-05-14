@@ -22,7 +22,7 @@ namespace BloodyNotify.DB
         public static void LoadDefaultAnnounce()
         {
             var json = File.ReadAllText(Path.Combine(Config.ConfigPath, "default_announce.json"));
-            var dictionary = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+            var dictionary = JsonSerializer.Deserialize<Dictionary<string, string[]>>(json);
             Database.setDefaultAnnounce(dictionary);
         }
 
