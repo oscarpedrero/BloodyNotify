@@ -15,7 +15,7 @@ namespace BloodyNotify.DB
 
         private static List<string> MessageOfTheDay = new List<string>();
 
-        private static Dictionary<string, string> DefaultAnnounce { get; set; } = new Dictionary<string, string>();
+        private static Dictionary<string, string[]> DefaultAnnounce { get; set; } = new Dictionary<string, string[]>();
 
         private static Dictionary<string, string> UsersConfigOnline { get; set; } = new Dictionary<string, string>();
 
@@ -52,7 +52,7 @@ namespace BloodyNotify.DB
             return VBloodFinalConcatCharacters;
         }
 
-        public static bool setDefaultAnnounce(Dictionary<string, string> value)
+        public static bool setDefaultAnnounce(Dictionary<string, string[]> value)
         {
             if (value == null)
                 return false;
@@ -109,7 +109,13 @@ namespace BloodyNotify.DB
 
             if (DefaultAnnounce.ContainsKey(value))
             {
-                return DefaultAnnounce[value];
+                var messages = DefaultAnnounce[value];
+                if (messages.Length > 0)
+                {
+                    var random = new System.Random();
+                    return messages[random.Next(messages.Length)];
+                }
+                return value;
             }
             else
             {

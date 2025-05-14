@@ -12,12 +12,36 @@ namespace BloodyNotify.DB
     {
         public static readonly string ConfigPath = Plugin.ConfigPath;
 
-        public static Dictionary<string, string> DefaultAnnounceDictionary => new Dictionary<string, string>()
+        public static Dictionary<string, string[]> DefaultAnnounceDictionary => new Dictionary<string, string[]>()
         {
-            {  "online" , "#user# is online!" },
-            {  "offline" , "#user# has gone offline!" },
-            {  "newUser" , "Welcome to server" },
-            {  "VBlood" , "Congratulations to #user# for beating #vblood#!" }
+            {  "online" , new string[] {
+                "#user# is online!",
+                "#user# has joined the server!",
+                "#user# has entered the world!",
+                "#user# has arrived!",
+                "#user# has logged in!"
+            }},
+            {  "offline" , new string[] {
+                "#user# has gone offline!",
+                "#user# has left the server!",
+                "#user# has logged out!",
+                "#user# has departed!",
+                "#user# has disconnected!"
+            }},
+            {  "newUser" , new string[] {
+                "Welcome to server new vampire!",
+                "A new vampire has joined our ranks!",
+                "Fresh blood has arrived on the server!",
+                "A new challenger approaches!",
+                "Welcome to the world of V Rising!"
+            }},
+            {  "VBlood" , new string[] {
+                "Congratulations to #user# for killing #vblood#!",
+                "#user# has defeated #vblood#!",
+                "#vblood# has fallen to #user#!",
+                "#user# has claimed victory over #vblood#!",
+                "#user# has emerged victorious against #vblood#!"
+            }}
         };
         public static Dictionary<string, string> PrefabToNamesDefault => new Dictionary<string, string>()
         {
